@@ -1,0 +1,76 @@
+---
+file: Sources/multipaste/ClipboardManager.swift
+size: 2216
+mtime: 2026-05-21T11:18:49.163599Z
+sha256: 9db334ea0823f7460a94bc661d73e5936c0bca083a2cfab3c3e1a8b282536478
+---
+
+# Sources/multipaste/ClipboardManager.swift
+
+**Summary:** import AppKit
+
+## Preview
+
+```
+import AppKit
+import Foundation
+
+class ClipboardManager {
+    static let shared = ClipboardManager()
+    
+    private var timer: Timer?
+    private var lastChangeCount: Int = 0
+    private let pasteboard = NSPasteboard.general
+    
+    // Flag to prevent capturing our own synthetic pastes
+    var isPasting = false
+    var lastInjectedText: String?
+    
+    private init() {
+        lastChangeCount = pasteboard.changeCount
+    }
+    
+    func startPolling() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+            self?.checkPasteboard()
+        }
+        // Ensure timer runs even when UI is interacting
+        if let timer = timer {
+            RunLoop.current.add(timer, forMode: .common)
+        }
+    }
+    
+    func stopPolling() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    private func checkPasteboard() {
+        let currentChangeCount = pasteboard.changeCount
+        guard currentChangeCount != lastChangeCount else { return }
+        lastChangeCount = currentChangeCount
+        
+        print("Pasteboard changed to count: \(currentChangeCount)")
+        
+        if isPasting {
+            // Skip capturing if we are currently injecting a paste
+            print("Skipping capture because isPasting is true")
+            return
+        }
+        
+        if let text = pasteboard.string(forType: .string) {
+            if text == lastInjectedText {
+                print("Skipping capture because text matches lastInjectedText: \(text.prefix(20))...")
+                return
+            }
+            
+            print("Found text in pasteboard: \(text.prefix(20))... (lastInjectedText was: \(lastInjectedText?.prefix(20) ?? "nil"))")
+            DatabaseManager.shared.insertClip(content: text, type: "text")
+            NotificationCenter.default.post(name: NSNotification.Name("NewClipAdded"), object: text)
+        } else {
+            print("No string found in pasteboard")
+        }
+    }
+    
+    func
+```

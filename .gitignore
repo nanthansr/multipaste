@@ -1,0 +1,6 @@
+.build/
+*.log
+check_pb*.swift
+test_*.sh
+output.log
+.DS_Store

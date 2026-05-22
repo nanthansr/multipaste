@@ -1,0 +1,2244 @@
+{
+  "version": 1,
+  "generated_at": "2026-05-21T11:53:31.809958+00:00",
+  "repo": "multipaste",
+  "files": {
+    ".build/arm64-apple-macosx/debug/SQLite.build/DerivedSources/resource_bundle_accessor.swift": {
+      "path": ".build/arm64-apple-macosx/debug/SQLite.build/DerivedSources/resource_bundle_accessor.swift",
+      "hash": "f86470a1eb51522fa7d732e39b78a9ecdd671d493ad07f403055a9fd1749754f",
+      "lines": 17,
+      "last_modified": "2026-05-21T02:28:54.028670+00:00",
+      "summary": "Users can write a function called fatalError themselves, we should be resilient against that.",
+      "symbols": []
+    },
+    ".build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt": {
+      "path": ".build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt",
+      "hash": "664b7db19b36165c4f5f8d6ddac2a98f279bdb4707e1b4f917c9a94cfe39e88c",
+      "lines": 2,
+      "last_modified": "2026-05-21T02:28:54.153788+00:00",
+      "summary": "Apple Swift version 6.2.3 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)\nTarget: arm64-apple-macosx26.0",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/.github/issue_template.md": {
+      "path": ".build/checkouts/SQLite.swift/.github/issue_template.md",
+      "hash": "7ef60a41d3afebe150e5bcd074880e8ccc220f7baf852ca45168c211d33aa63b",
+      "lines": 20,
+      "last_modified": "2026-05-21T02:27:57.681481+00:00",
+      "summary": "> Issues are used to track bugs and feature requests.\n> Need help or have a general question? Ask on Stack Overflow (tag sqlite.swift).",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/.github/pull_request_template.md": {
+      "path": ".build/checkouts/SQLite.swift/.github/pull_request_template.md",
+      "hash": "de3017224537ba65831466cb1818fea3bf631ec027f7e1d4abb6b17e2de33f85",
+      "lines": 9,
+      "last_modified": "2026-05-21T02:27:57.681569+00:00",
+      "summary": "Thanks for taking the time to submit a pull request.",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/CHANGELOG.md": {
+      "path": ".build/checkouts/SQLite.swift/CHANGELOG.md",
+      "hash": "d055fb63ded144478ebc87071b421c62a0e78c3f8840b682fc3a873e70c62380",
+      "lines": 294,
+      "last_modified": "2026-05-21T02:27:57.682103+00:00",
+      "summary": "0.16.0 (28-01-2026), [diff][diff-0.16.0]\n========================================\n* Revert trait changes for Linux\n* Remove SwiftToolchainCSQLite (replaced with fork)",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/CONTRIBUTING.md": {
+      "path": ".build/checkouts/SQLite.swift/CONTRIBUTING.md",
+      "hash": "3dd0cc8e5d773ade65a5e0b7f1228ab3cd479d1c0ffbc88d2f310cd9ec83c5b2",
+      "lines": 108,
+      "last_modified": "2026-05-21T02:27:57.682202+00:00",
+      "summary": "Contributing",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Documentation/Index.md": {
+      "path": ".build/checkouts/SQLite.swift/Documentation/Index.md",
+      "hash": "661560b716e5ba68d9838a4f0130b3415f39e03f068acaf5692fbd43b41f9cd6",
+      "lines": 2328,
+      "last_modified": "2026-05-21T02:27:57.682498+00:00",
+      "summary": "SQLite.swift Documentation",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Documentation/Linux.md": {
+      "path": ".build/checkouts/SQLite.swift/Documentation/Linux.md",
+      "hash": "70a4933d7c3f961311e500410085888615128efd361e950ed5408eaff20ee2d5",
+      "lines": 44,
+      "last_modified": "2026-05-21T02:27:57.682636+00:00",
+      "summary": "Linux",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Documentation/Planning.md": {
+      "path": ".build/checkouts/SQLite.swift/Documentation/Planning.md",
+      "hash": "b8a69dcbacad817653c8c1661b524249265855acc6d2c2eb718cf73edc7a937d",
+      "lines": 33,
+      "last_modified": "2026-05-21T02:27:57.682739+00:00",
+      "summary": "SQLite.swift Planning",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Documentation/Release.md": {
+      "path": ".build/checkouts/SQLite.swift/Documentation/Release.md",
+      "hash": "5bbf6b98ef9011bb5a43180f4e8ba8911dd0f9ff8a02eec89e8029436593f2fa",
+      "lines": 13,
+      "last_modified": "2026-05-21T02:27:57.682819+00:00",
+      "summary": "SQLite.swift Release checklist",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Documentation/Upgrading.md": {
+      "path": ".build/checkouts/SQLite.swift/Documentation/Upgrading.md",
+      "hash": "1c920d63952f13fcb7c0899876535a1c19b5ab7c739c05a5bbdb7cf6902008d2",
+      "lines": 11,
+      "last_modified": "2026-05-21T02:27:57.687420+00:00",
+      "summary": "Upgrading",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/LICENSE.txt": {
+      "path": ".build/checkouts/SQLite.swift/LICENSE.txt",
+      "hash": "54309d83b514af75deacb70285d5debe8c74ddfd7ca2d1990ae14a0255aceeba",
+      "lines": 21,
+      "last_modified": "2026-05-21T02:27:57.688267+00:00",
+      "summary": "(The MIT License)",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Package.swift": {
+      "path": ".build/checkouts/SQLite.swift/Package.swift",
+      "hash": "877bc3bd5013d595b8ef4be61989fbe1df8ed6b074ebb9bbdd8921a67d1f3afe",
+      "lines": 69,
+      "last_modified": "2026-05-21T02:27:57.688435+00:00",
+      "summary": "swift-tools-version: 6.1",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/README.md": {
+      "path": ".build/checkouts/SQLite.swift/README.md",
+      "hash": "785c4b0781f75b3120878544bf5ca48f4ed51f2d3ba15b32521eb7d2e50f9ce4",
+      "lines": 293,
+      "last_modified": "2026-05-21T02:27:57.688603+00:00",
+      "summary": "SQLite.swift",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/SQLite.playground/Contents.swift": {
+      "path": ".build/checkouts/SQLite.swift/SQLite.playground/Contents.swift",
+      "hash": "c2b87bf2c30f1ef2fcf17e702cfd7cd33b36f623e03fbb68559b5a66bc22daca",
+      "lines": 132,
+      "last_modified": "2026-05-21T02:27:57.688868+00:00",
+      "summary": "Create an in-memory database",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Backup.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Backup.swift",
+      "hash": "becf655e9e6b4adea8d860e1873f337a008ac81648ed26b81ff930bedae7395b",
+      "lines": 173,
+      "last_modified": "2026-05-21T02:27:57.691158+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Blob.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Blob.swift",
+      "hash": "f4d0e6248cb5b59314ec31164207e0c201839fe1b414b6d64004022726ecae26",
+      "lines": 56,
+      "last_modified": "2026-05-21T02:27:57.691259+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "struct Blob"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Aggregation.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Aggregation.swift",
+      "hash": "fb57696748df6e614addfd447941ff0c01455bcbfdc81f2903c1f215713ffa96",
+      "lines": 155,
+      "last_modified": "2026-05-21T02:27:57.691365+00:00",
+      "summary": "Creates or redefines a custom SQL aggregate.  - Parameters:  - aggregate: The name of the aggregate to create or redefine.  - argumentCount: The number of arguments that the aggregate takes. If `nil`, the aggregate may take any number of arguments.  Default: `nil`  - deterministic: Whether or not the aggregate is deterministic (_i.e._ the aggregate always returns the same result for a given input).  Default: `false`  - step: A block of code to run for each row of an aggregation group. The block is called with an array of raw SQL values mapped to the aggregate’s parameters, and an UnsafeMutable",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Attach.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Attach.swift",
+      "hash": "f2f11735ea5875ad29d10f33132c73aafe041158d56a91f14a6d7deb7e525897",
+      "lines": 24,
+      "last_modified": "2026-05-21T02:27:57.691552+00:00",
+      "summary": "See https://www.zetetic.net/sqlcipher/sqlcipher-api/#attach",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Pragmas.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Pragmas.swift",
+      "hash": "1e6883b4258300e85cc71c7ca6393929101680c2406945feb67313a4c8982bfe",
+      "lines": 51,
+      "last_modified": "2026-05-21T02:27:57.691636+00:00",
+      "summary": "The user version of the database. See SQLite [PRAGMA user_version](https://sqlite.org/pragma.html#pragma_user_version)",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection.swift",
+      "hash": "4700b9fba49f66fb4771c1553c2788fc4033721ae88e75e378625f3bf92589b9",
+      "lines": 787,
+      "last_modified": "2026-05-21T02:27:57.691746+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Errors.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Errors.swift",
+      "hash": "a29d54f067c72c90b945e5e4f6506ad24ea3a186d35967d40148a204514a5d0c",
+      "lines": 21,
+      "last_modified": "2026-05-21T02:27:57.691854+00:00",
+      "summary": "import Foundation",
+      "symbols": [
+        "enum QueryError"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Result.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Result.swift",
+      "hash": "426d7eb2b625d90ad3620f7cfbff063cb61698dc127ab1a7262d03fbec4babec",
+      "lines": 67,
+      "last_modified": "2026-05-21T02:27:57.691945+00:00",
+      "summary": "Represents a SQLite specific [error code](https://sqlite.org/rescode.html)  - message: English-language text that describes the error  - code: SQLite [error code](https://sqlite.org/rescode.html#primary_result_code_list)  - statement: the statement which produced the error",
+      "symbols": [
+        "enum Result"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/SQLiteFeature.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/SQLiteFeature.swift",
+      "hash": "13b055678ffe144979475d21f6020d2dc1c9fbd6ef552dd2a1b8942c9db004eb",
+      "lines": 25,
+      "last_modified": "2026-05-21T02:27:57.692134+00:00",
+      "summary": "import Foundation",
+      "symbols": [
+        "enum SQLiteFeature"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/SQLiteVersion.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/SQLiteVersion.swift",
+      "hash": "beb8666a20e73b6105d3fba0355a2eae308250201f070ec38d9d9a1e6fbed502",
+      "lines": 22,
+      "last_modified": "2026-05-21T02:27:57.692242+00:00",
+      "summary": "import Foundation",
+      "symbols": [
+        "struct SQLiteVersion"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Statement.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Statement.swift",
+      "hash": "d2bbeb91d7c25102c736cb89bb690ac6d66afd34a4ebdaa147982a3f946fdee9",
+      "lines": 339,
+      "last_modified": "2026-05-21T02:27:57.692456+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "protocol FailableIterator",
+        "struct Cursor"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/URIQueryParameter.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/URIQueryParameter.swift",
+      "hash": "57d4baac7f299488ab8b350194239e4b808b97cb9573ac23cfd117afe89af7c7",
+      "lines": 53,
+      "last_modified": "2026-05-21T02:27:57.692544+00:00",
+      "summary": "See https://www.sqlite.org/uri.html",
+      "symbols": [
+        "enum URIQueryParameter"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Value.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Core/Value.swift",
+      "hash": "932ca8dac4c8b49ac0dee2daccdc270a473f22bec79d39fd5260a40e76ac58aa",
+      "lines": 132,
+      "last_modified": "2026-05-21T02:27:57.692627+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "protocol Binding",
+        "protocol Number",
+        "protocol Value"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Extensions/Cipher.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Extensions/Cipher.swift",
+      "hash": "293069565d1dd7e49de047aaab4e80e1b1e9ac6e668e9703b961fdcedb79bd99",
+      "lines": 187,
+      "last_modified": "2026-05-21T02:27:57.692821+00:00",
+      "summary": "Extension methods for [SQLCipher](https://www.zetetic.net/sqlcipher/). @see [sqlcipher api](https://www.zetetic.net/sqlcipher/sqlcipher-api/)",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Extensions/FTS4.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Extensions/FTS4.swift",
+      "hash": "d61f2eb48225c1fd7a1bf3af8fc33ac747daa84846c2ca513ad586f5876b2963",
+      "lines": 330,
+      "last_modified": "2026-05-21T02:27:57.692972+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "struct Tokenizer"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Extensions/FTS5.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Extensions/FTS5.swift",
+      "hash": "93e91003304aaa50eb62bcda9f62124b8990f7f33ee5fddff928b9819b340cf4",
+      "lines": 93,
+      "last_modified": "2026-05-21T02:27:57.693053+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Extensions/RTree.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Extensions/RTree.swift",
+      "hash": "b83dec60934aff76e28949977443bc42184ff0c0e9846327704a221c3fa99514",
+      "lines": 37,
+      "last_modified": "2026-05-21T02:27:57.693139+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Foundation.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Foundation.swift",
+      "hash": "b30fb558b808058a5211789b3f181401c638a9d6ca1e4646e2a1e3a81fc6566b",
+      "lines": 102,
+      "last_modified": "2026-05-21T02:27:57.693229+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Helpers.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Helpers.swift",
+      "hash": "dbe91657cafc6a3a129cb80633f66c22d7ccea8e7cd5e47bf5f83587fe1c68fd",
+      "lines": 131,
+      "last_modified": "2026-05-21T02:27:57.693341+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "protocol _OptionalType",
+        "func transcode",
+        "func value",
+        "func value"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Schema/Connection+Schema.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Schema/Connection+Schema.swift",
+      "hash": "3acd1c3de36d5f0bc831ff44c3dab10a596f24685683becc8012693926d3be7a",
+      "lines": 35,
+      "last_modified": "2026-05-21T02:27:57.693996+00:00",
+      "summary": "There are four columns in each result row. The first column is the name of the table that contains the REFERENCES clause. The second column is the rowid of the row that contains the invalid REFERENCES clause, or NULL if the child table is a WITHOUT ROWID table. The third column is the name of the table that is referred to. The fourth column is the index of the specific foreign key constraint that failed.  https://sqlite.org/pragma.html#pragma_foreign_key_check",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaChanger.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaChanger.swift",
+      "hash": "687def001877cc9e5bd0cfc61c572ed64c42a8f207d62fa31ac37e295e1c5c4c",
+      "lines": 372,
+      "last_modified": "2026-05-21T02:27:57.694220+00:00",
+      "summary": "*",
+      "symbols": [
+        "class SchemaChanger"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaDefinitions.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaDefinitions.swift",
+      "hash": "1deb22f15a666e34fa0d55304181189791cf55dc22a27deb224a1e42b7fb590a",
+      "lines": 433,
+      "last_modified": "2026-05-21T02:27:57.694421+00:00",
+      "summary": "https://sqlite.org/schematab.html#interpretation_of_the_schema_table",
+      "symbols": [
+        "struct TableDefinition",
+        "struct ObjectDefinition",
+        "struct ColumnDefinition",
+        "enum LiteralValue",
+        "struct IndexDefinition",
+        "struct ForeignKeyError"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaReader.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaReader.swift",
+      "hash": "608aca5a0b92b1fe028e48180eb347dd253b63947c9bdadb1ea96e013b72aaf1",
+      "lines": 220,
+      "last_modified": "2026-05-21T02:27:57.694614+00:00",
+      "summary": "https://sqlite.org/pragma.html#pragma_table_info  This pragma returns one row for each column in the named table. Columns in the result set include the column name, data type, whether or not the column can be NULL, and the default value for the column. The \"pk\" column in the result set is zero for columns that are not part of the primary key, and is the index of the column in the primary key for columns that are part of the primary key.",
+      "symbols": [
+        "class SchemaReader",
+        "enum SchemaTable",
+        "enum TableInfoTable",
+        "enum IndexInfoTable",
+        "enum IndexListTable",
+        "enum ForeignKeyListTable"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/AggregateFunctions.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/AggregateFunctions.swift",
+      "hash": "18a4b0231316ca809a154d92315ddf697b801862ecc6833a63fd5e8f737d49c8",
+      "lines": 264,
+      "last_modified": "2026-05-21T02:27:57.694825+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum Function",
+        "func count"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Coding.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Coding.swift",
+      "hash": "86a1b8321499eae986d9191859aa4a46d42aa16887d0029c0112f9c8fda7ceea",
+      "lines": 562,
+      "last_modified": "2026-05-21T02:27:57.694927+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "class SQLiteEncoder",
+        "class SQLiteDecoder"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Collation.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Collation.swift",
+      "hash": "86f92317bb9e0e275f79e3148267faadce4c760cea097ff8892dbf7eeb8ce24a",
+      "lines": 69,
+      "last_modified": "2026-05-21T02:27:57.695028+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum Collation"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/CoreFunctions.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/CoreFunctions.swift",
+      "hash": "747e108d77a778aa3894b2bf4ef2285a6fa421bdc1ec48f16cdaa4de0eec6608",
+      "lines": 795,
+      "last_modified": "2026-05-21T02:27:57.695097+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum Function"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/CustomFunctions.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/CustomFunctions.swift",
+      "hash": "f1f1878e5b012dbd945eb3e176f005129e17dcbea85861df33d2f989694e4927",
+      "lines": 162,
+      "last_modified": "2026-05-21T02:27:57.695277+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/DateAndTimeFunctions.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/DateAndTimeFunctions.swift",
+      "hash": "834aa0cd7d7fdcf19fd680b7a94974cd1c53da991760e7a740e36f304f2a22c4",
+      "lines": 106,
+      "last_modified": "2026-05-21T02:27:57.695395+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Expression.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Expression.swift",
+      "hash": "b9040aa6ba2f2c535ef1b146934cd32739ad43ecc80e7d757aa213a480db39a5",
+      "lines": 146,
+      "last_modified": "2026-05-21T02:27:57.695522+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "protocol ExpressionType",
+        "struct Expression",
+        "protocol Expressible",
+        "func cast",
+        "func cast"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Operators.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Operators.swift",
+      "hash": "8988f1010c8bb9903fbf7e4e239b8393c2e360d47bbe7649d101ecbb3c6fe2e2",
+      "lines": 672,
+      "last_modified": "2026-05-21T02:27:57.695673+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum Operator",
+        "func and",
+        "func and",
+        "func or",
+        "func or"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Query+with.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Query+with.swift",
+      "hash": "4396296ae7eb4670a7fc09d3eddd56aa34caf03a483c5b5b5b46c9a6649df7d8",
+      "lines": 117,
+      "last_modified": "2026-05-21T02:27:57.695799+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum MaterializationHint",
+        "struct WithClauses"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Query.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Query.swift",
+      "hash": "8bee0cdd0713191a78d46e06b89564742f840244bb77baefa4e3a5f154b8b917",
+      "lines": 1300,
+      "last_modified": "2026-05-21T02:27:57.695981+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "protocol QueryType",
+        "protocol SchemaType",
+        "struct Table",
+        "struct View",
+        "struct VirtualTable",
+        "struct ScalarQuery",
+        "struct Select",
+        "struct Insert",
+        "struct Update",
+        "struct Delete",
+        "struct RowIterator",
+        "struct Row",
+        "enum JoinType",
+        "enum OnConflict",
+        "struct QueryClauses"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Schema.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Schema.swift",
+      "hash": "92e711e832cfd68c6467672c6795c7adcb2bb043ecd23dd3c390cf64a4af9fc5",
+      "lines": 601,
+      "last_modified": "2026-05-21T02:27:57.696116+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum PrimaryKey",
+        "struct Module",
+        "func definition",
+        "func reference",
+        "enum Modifier"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Setter.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/Setter.swift",
+      "hash": "c6b37b5d8bd5af957216edd1d75a2cab4dbe310b80fb27b26504e81a7b4824ea",
+      "lines": 288,
+      "last_modified": "2026-05-21T02:27:57.696272+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "struct Setter"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/WindowFunctions.swift": {
+      "path": ".build/checkouts/SQLite.swift/Sources/SQLite/Typed/WindowFunctions.swift",
+      "hash": "c0f25053e0ac1e7a9eb2fd8b2dd183e666584c6df032341632f39e9de8ba805c",
+      "lines": 145,
+      "last_modified": "2026-05-21T02:27:57.696378+00:00",
+      "summary": "see https://www.sqlite.org/windowfunctions.html#builtins",
+      "symbols": [
+        "enum WindowFunction",
+        "func ntile",
+        "func rowNumber",
+        "func rank",
+        "func denseRank",
+        "func percentRank",
+        "func cumeDist"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SPM/Package.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SPM/Package.swift",
+      "hash": "b22e2aaa92fd0bb6faf61be83075889d3201d3fc57473ddb6311896f8a532d40",
+      "lines": 23,
+      "last_modified": "2026-05-21T02:27:57.697077+00:00",
+      "summary": "swift-tools-version:6.1 The swift-tools-version declares the minimum version of Swift required to build this package.",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Tests/SPM/Sources/test/main.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SPM/Sources/test/main.swift",
+      "hash": "30a1cf35904023546a83502f61495c02817fa1d82a1238e63c379c9bed6b2d9c",
+      "lines": 10,
+      "last_modified": "2026-05-21T02:27:57.697393+00:00",
+      "summary": "import SQLite",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/BlobTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/BlobTests.swift",
+      "hash": "a01ebbabe6d06eeb8ea09b9f3432f21d825c1f2be80e6a1dcfed64f5923d9cc8",
+      "lines": 47,
+      "last_modified": "2026-05-21T02:27:57.697762+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class BlobTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/Connection+AttachTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/Connection+AttachTests.swift",
+      "hash": "b3991e029528223e09b81e8b99b7a70784c341b8778bb5ba720d379b1366654a",
+      "lines": 62,
+      "last_modified": "2026-05-21T02:27:57.697854+00:00",
+      "summary": "create a table, insert some data",
+      "symbols": [
+        "class ConnectionAttachTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/Connection+PragmaTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/Connection+PragmaTests.swift",
+      "hash": "f4155a6180d8f8cfe6f27be72818d9e466b0669c8d354c3a81d2496cd373ec60",
+      "lines": 32,
+      "last_modified": "2026-05-21T02:27:57.698201+00:00",
+      "summary": "import XCTest\nimport Foundation\n@testable import SQLite",
+      "symbols": [
+        "class ConnectionPragmaTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ConnectionTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ConnectionTests.swift",
+      "hash": "08b80f960e260196ff9200a0bcd78b38e9c651319c3edfb8bb309eed59ac048c",
+      "lines": 467,
+      "last_modified": "2026-05-21T02:27:57.698322+00:00",
+      "summary": "PRAGMA defer_foreign_keys only supported in SQLite >= 3.8.0",
+      "symbols": [
+        "class ConnectionTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/CoreFunctionsTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/CoreFunctionsTests.swift",
+      "hash": "dbfd6e7a5286147af4ae5e1749aef47e28e2ecfd70c0f438232acf5da26ac12e",
+      "lines": 145,
+      "last_modified": "2026-05-21T02:27:57.698482+00:00",
+      "summary": "AssertSQL(\"ifnull(\\\"doubleOptional\\\", 1.0)\", doubleOptional ?? 1) // rdar://problem/21677256",
+      "symbols": [
+        "class CoreFunctionsTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ResultTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ResultTests.swift",
+      "hash": "bde576522134fc53702d40e03dadd35127d78fd6b8ead601a4b85909e14c41c7",
+      "lines": 69,
+      "last_modified": "2026-05-21T02:27:57.698578+00:00",
+      "summary": "import XCTest\nimport Foundation\n@testable import SQLite",
+      "symbols": [
+        "class ResultTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/StatementTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/StatementTests.swift",
+      "hash": "6e32fef5274c88f83a4fae352b070c05d6f7f872aa18345bffb0300111321fab",
+      "lines": 74,
+      "last_modified": "2026-05-21T02:27:57.698682+00:00",
+      "summary": "Check that a statement reset will close the implicit transaction, allowing wal file to checkpoint",
+      "symbols": [
+        "class StatementTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ValueTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ValueTests.swift",
+      "hash": "39fe38fc97041fe4653388873ea0ae4b5bab8eb5b79f94c87416ffe51b9b78d6",
+      "lines": 6,
+      "last_modified": "2026-05-21T02:27:57.698765+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class ValueTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/CipherTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/CipherTests.swift",
+      "hash": "7ac1f4f9e0135bda61d02e077f09b28afc27036f166282585992f5aac8e8f036",
+      "lines": 131,
+      "last_modified": "2026-05-21T02:27:57.698936+00:00",
+      "summary": "db1",
+      "symbols": [
+        "class CipherTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS4Tests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS4Tests.swift",
+      "hash": "e5383b5cbefd474631cb0fad6dc049a3065d32c3f95b57dddfb531fe4c8d2f8b",
+      "lines": 190,
+      "last_modified": "2026-05-21T02:27:57.699057+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class FTS4Tests",
+        "class FTS4ConfigTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS5IntegrationTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS5IntegrationTests.swift",
+      "hash": "28d5e1231b770c96f1796f636c668eebb757cd361db62eb02e8936fc684d3511",
+      "lines": 69,
+      "last_modified": "2026-05-21T02:27:57.699145+00:00",
+      "summary": "Note: these tests are only run when the FTS5 trait has been enabled.",
+      "symbols": [
+        "class FTS5IntegrationTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS5Tests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS5Tests.swift",
+      "hash": "5d3893445a59b0f5894fba27579151384fa4073e215b18dca52339e14a1dd3e8",
+      "lines": 137,
+      "last_modified": "2026-05-21T02:27:57.699256+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class FTS5Tests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/RTreeTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/RTreeTests.swift",
+      "hash": "7b77e488e743c80a7a9253a84933abb7d82f1bf431d4b64cb44776c56e548907",
+      "lines": 17,
+      "last_modified": "2026-05-21T02:27:57.699342+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class RTreeTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Fixtures.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Fixtures.swift",
+      "hash": "f7b322b52405fd4a5b4f4fb94e7bad04d437f5311f7764d880baa1bf188a8d3f",
+      "lines": 22,
+      "last_modified": "2026-05-21T02:27:57.699433+00:00",
+      "summary": "import Foundation",
+      "symbols": [
+        "func fixture",
+        "func temporaryFile"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/FoundationTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/FoundationTests.swift",
+      "hash": "016d2c5205dc851410378c3ede05768aca90ad8e468106dbd5abfc147e3dbc91",
+      "lines": 40,
+      "last_modified": "2026-05-21T02:27:57.699530+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class FoundationTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/Connection+SchemaTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/Connection+SchemaTests.swift",
+      "hash": "ffd1637d9b1260ef2fccf67de241d7abe863bbf122511a9af3f6e3c0686e44d3",
+      "lines": 52,
+      "last_modified": "2026-05-21T02:27:57.700275+00:00",
+      "summary": "import XCTest\n@testable import SQLite",
+      "symbols": [
+        "class ConnectionSchemaTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaChangerTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaChangerTests.swift",
+      "hash": "6c23278f52f8f016a59a60f19b5a4531c5993ecb0314dc413634314cb89075ac",
+      "lines": 383,
+      "last_modified": "2026-05-21T02:27:57.700453+00:00",
+      "summary": "make sure new table can be queried",
+      "symbols": [
+        "class SchemaChangerTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaDefinitionsTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaDefinitionsTests.swift",
+      "hash": "8b37c6ae703d3e38f8fb2d718f137a8d42c34e89f453ea04050c0c4643813037",
+      "lines": 446,
+      "last_modified": "2026-05-21T02:27:57.700638+00:00",
+      "summary": "[Determination Of Column Affinity](https://sqlite.org/datatype3.html#determination_of_column_affinity) Rule 1",
+      "symbols": [
+        "class ColumnDefinitionTests",
+        "class AffinityTests",
+        "class IndexDefinitionTests",
+        "class ForeignKeyDefinitionTests",
+        "class TableDefinitionTests",
+        "class PrimaryKeyTests",
+        "class LiteralValueTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaReaderTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaReaderTests.swift",
+      "hash": "21d5473ae4ae01ebf8c3a00b0550e2715754f672341035d17cce2bd9b18bb7e1",
+      "lines": 315,
+      "last_modified": "2026-05-21T02:27:57.700800+00:00",
+      "summary": "import XCTest\n@testable import SQLite",
+      "symbols": [
+        "class SchemaReaderTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaTests.swift",
+      "hash": "03ebd22723e09aabf74332f7fdaa497ba2e9292d9dc63b43254ec62e46bde69e",
+      "lines": 867,
+      "last_modified": "2026-05-21T02:27:57.700894+00:00",
+      "summary": "thoroughness test for ambiguity swiftlint:disable:next function_body_length",
+      "symbols": [
+        "class SchemaTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/TestHelpers.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/TestHelpers.swift",
+      "hash": "5eeafc8ee56783d59e47f8844113fc7ba97ec8ec9d9a28db1814beefb6000cc5",
+      "lines": 167,
+      "last_modified": "2026-05-21T02:27:57.701038+00:00",
+      "summary": "print(\"SQL: \\(SQL)\")",
+      "symbols": [
+        "class SQLiteTestCase",
+        "func assertSQL",
+        "func extractAndReplace",
+        "class TestCodable",
+        "struct TestOptionalCodable"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/AggregateFunctionsTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/AggregateFunctionsTests.swift",
+      "hash": "6f85e67ad6fd62556f6ececb9e06838851e091523b7ac55a109389ae914bbdea",
+      "lines": 68,
+      "last_modified": "2026-05-21T02:27:57.701171+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class AggregateFunctionsTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/CustomAggregationTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/CustomAggregationTests.swift",
+      "hash": "0bdb150b06c25bd4b05164bc9126da5d6154827ea9c9860a6d1c3f16be5a57a1",
+      "lines": 152,
+      "last_modified": "2026-05-21T02:27:57.701291+00:00",
+      "summary": "https://github.com/stephencelis/SQLite.swift/issues/1071",
+      "symbols": [
+        "class CustomAggregationTests",
+        "class TestObject"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/CustomFunctionsTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/CustomFunctionsTests.swift",
+      "hash": "f113d8bf5201e0d795901046118a15d80643e16daa3e721117bc5c16b763c952",
+      "lines": 151,
+      "last_modified": "2026-05-21T02:27:57.701400+00:00",
+      "summary": "https://github.com/stephencelis/SQLite.swift/issues/1071",
+      "symbols": [
+        "class CustomFunctionNoArgsTests",
+        "class CustomFunctionWithOneArgTests",
+        "class CustomFunctionWithTwoArgsTests",
+        "class CustomFunctionTruncation"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/DateAndTimeFunctionTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/DateAndTimeFunctionTests.swift",
+      "hash": "8acf80a80293ace15c0214cf9601d4735dbb2e0252facd7e3ac84e4aefeee09d",
+      "lines": 66,
+      "last_modified": "2026-05-21T02:27:57.701500+00:00",
+      "summary": "import XCTest\n@testable import SQLite",
+      "symbols": [
+        "class DateAndTimeFunctionsTests",
+        "class DateExtensionTests",
+        "class DateExpressionTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/ExpressionTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/ExpressionTests.swift",
+      "hash": "4b3e0977134cbbfd5b18ee3234ddcaa40e29d13049af504cddf72f33b42970dd",
+      "lines": 35,
+      "last_modified": "2026-05-21T02:27:57.701590+00:00",
+      "summary": "import XCTest\n@testable import SQLite",
+      "symbols": [
+        "class ExpressionTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/OperatorsTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/OperatorsTests.swift",
+      "hash": "e2bfc69a24b96a6370bdb9686b9e40c79e0477cdefa1d7c365976e140f4dbe06",
+      "lines": 390,
+      "last_modified": "2026-05-21T02:27:57.701682+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class OperatorsTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/QueryIntegrationTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/QueryIntegrationTests.swift",
+      "hash": "58264b156133e97793a15a7641dcc4ea77ac3c93de44c80be2769fef3f8b68e2",
+      "lines": 457,
+      "last_modified": "2026-05-21T02:27:57.701794+00:00",
+      "summary": "MARK: -",
+      "symbols": [
+        "class QueryIntegrationTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/QueryTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/QueryTests.swift",
+      "hash": "5a12139dbaf4b0cd0f498cb369975bcd7af4f460d05419fa08873933e8a28f56",
+      "lines": 575,
+      "last_modified": "2026-05-21T02:27:57.701909+00:00",
+      "summary": "AssertSQL(\"SELECT * FROM \\\"users\\\" ORDER BY \\\"age\\\" DESC, \\\"email\\\" ASC\", users.order(age.desc, email.asc))",
+      "symbols": [
+        "class QueryTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/RowTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/RowTests.swift",
+      "hash": "4074f9e432b4ca71ec8a3926b7db64f8a6361ae3f290ff2e92a8ae25b15c73fb",
+      "lines": 118,
+      "last_modified": "2026-05-21T02:27:57.702029+00:00",
+      "summary": "swiftlint:disable nesting",
+      "symbols": [
+        "class RowTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/SelectTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/SelectTests.swift",
+      "hash": "c8dbc26d7741a65691d9e117da58c7db9c37332eefe1464a78c1cbcc429327cf",
+      "lines": 44,
+      "last_modified": "2026-05-21T02:27:57.702237+00:00",
+      "summary": "import XCTest\n@testable import SQLite",
+      "symbols": [
+        "class SelectTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/SetterTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/SetterTests.swift",
+      "hash": "f2f5cdcb9df015ad1d89c4679f5987660dbcf5bcfb1dd4fd6d4292caea40201b",
+      "lines": 140,
+      "last_modified": "2026-05-21T02:27:57.702354+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class SetterTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/WindowFunctionsTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/WindowFunctionsTests.swift",
+      "hash": "d0d5718f3945bc646a3b94c417980cfc6f8886499fb897691796ab02698c4bd1",
+      "lines": 58,
+      "last_modified": "2026-05-21T02:27:57.702439+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class WindowFunctionsTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Project.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Project.swift",
+      "hash": "c8ffdec479c461e167883288c4f1017a06fd4e641acefb369e2518e445c06138",
+      "lines": 36,
+      "last_modified": "2026-05-21T02:27:57.702713+00:00",
+      "summary": "import ProjectDescription",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/SQLite-Test/Sources/SQLiteTestApp.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/SQLite-Test/Sources/SQLiteTestApp.swift",
+      "hash": "cc4d0a95af1861daf31c066c13ce4980e1745c24677885bc040ef92bbb99ce4d",
+      "lines": 13,
+      "last_modified": "2026-05-21T02:27:57.702902+00:00",
+      "summary": "import SwiftUI\nimport SQLite",
+      "symbols": [
+        "struct SQLiteTestApp"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/SQLite-Test/Tests/SQLiteTestTests.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/SQLite-Test/Tests/SQLiteTestTests.swift",
+      "hash": "fa684ee1fc827162b97a07f67b6b155b0f77b8b3b03d603aed3f30be5023fffe",
+      "lines": 13,
+      "last_modified": "2026-05-21T02:27:57.703051+00:00",
+      "summary": "import Testing\nimport SQLite",
+      "symbols": [
+        "struct SQLiteTestTests"
+      ]
+    },
+    ".build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Tuist/Package.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Tuist/Package.swift",
+      "hash": "419683f6d9b5d9a8f12dffa208da559b8a963dd493bc2f9b19956f11b88806d1",
+      "lines": 22,
+      "last_modified": "2026-05-21T02:27:57.703469+00:00",
+      "summary": "swift-tools-version: 6.0",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Tuist.swift": {
+      "path": ".build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Tuist.swift",
+      "hash": "3a14a03158c09c2f1d427db414831b143bd22813c557f353152792151b558abb",
+      "lines": 3,
+      "last_modified": "2026-05-21T02:27:57.703137+00:00",
+      "summary": "import ProjectDescription",
+      "symbols": []
+    },
+    ".build/checkouts/SQLite.swift/run-tests.sh": {
+      "path": ".build/checkouts/SQLite.swift/run-tests.sh",
+      "hash": "35bfa286b9bd009b57040222b10fa6a73ab61a2619d16d154378580d819f7bbf",
+      "lines": 25,
+      "last_modified": "2026-05-21T02:27:57.703599+00:00",
+      "summary": "#!/bin/bash\nset -ev\nif [ -n \"$BUILD_SCHEME\" ]; then\n    if [ -n \"$IOS_SIMULATOR\" ]; then\n        make test BUILD_SCHEME=\"$BUILD_SCHEME\" IOS_SIMULATOR=\"$IOS_SIMULATOR\" IOS_VERSION=\"$IOS_VERSION\"\n    else\n        make test BUILD_SCHEME=\"$BUILD_SCHEME\"\n    fi\nelif [ -n \"$VALIDATOR_SUBSPEC\" ]; then\n    bundle install\n    case \"$VALIDATOR_SUBSPEC\" in\n      none)\n        bundle exec pod lib lint --no-subspecs --fail-fast\n        ;;\n      *)\n        bundle exec pod lib lint --subspec=\"${VALIDATOR_SUBSPEC}\" --fail-fast\n        ;;\n      esac\nelif [ -n \"$CARTHAGE_PLATFORM\" ]; then\n    cd Tests/Carthage ",
+      "symbols": []
+    },
+    ".build/index-build/arm64-apple-macosx/debug/SQLite.build/DerivedSources/resource_bundle_accessor.swift": {
+      "path": ".build/index-build/arm64-apple-macosx/debug/SQLite.build/DerivedSources/resource_bundle_accessor.swift",
+      "hash": "d0be17f3995313b67c5f69f1c26d09d91a13ebcc2d5f137dbdf559e939e02a8f",
+      "lines": 17,
+      "last_modified": "2026-05-21T02:26:01.867514+00:00",
+      "summary": "Users can write a function called fatalError themselves, we should be resilient against that.",
+      "symbols": []
+    },
+    ".build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt": {
+      "path": ".build/index-build/arm64-apple-macosx/debug/swift-version--1AB21518FC5DEDBE.txt",
+      "hash": "664b7db19b36165c4f5f8d6ddac2a98f279bdb4707e1b4f917c9a94cfe39e88c",
+      "lines": 2,
+      "last_modified": "2026-05-21T02:25:30.461754+00:00",
+      "summary": "Apple Swift version 6.2.3 (swiftlang-6.2.3.3.21 clang-1700.6.3.2)\nTarget: arm64-apple-macosx26.0",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/.github/issue_template.md": {
+      "path": ".build/index-build/checkouts/SQLite.swift/.github/issue_template.md",
+      "hash": "7ef60a41d3afebe150e5bcd074880e8ccc220f7baf852ca45168c211d33aa63b",
+      "lines": 20,
+      "last_modified": "2026-05-21T02:26:01.393286+00:00",
+      "summary": "> Issues are used to track bugs and feature requests.\n> Need help or have a general question? Ask on Stack Overflow (tag sqlite.swift).",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/.github/pull_request_template.md": {
+      "path": ".build/index-build/checkouts/SQLite.swift/.github/pull_request_template.md",
+      "hash": "de3017224537ba65831466cb1818fea3bf631ec027f7e1d4abb6b17e2de33f85",
+      "lines": 9,
+      "last_modified": "2026-05-21T02:26:01.393371+00:00",
+      "summary": "Thanks for taking the time to submit a pull request.",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/CHANGELOG.md": {
+      "path": ".build/index-build/checkouts/SQLite.swift/CHANGELOG.md",
+      "hash": "d055fb63ded144478ebc87071b421c62a0e78c3f8840b682fc3a873e70c62380",
+      "lines": 294,
+      "last_modified": "2026-05-21T02:26:01.393869+00:00",
+      "summary": "0.16.0 (28-01-2026), [diff][diff-0.16.0]\n========================================\n* Revert trait changes for Linux\n* Remove SwiftToolchainCSQLite (replaced with fork)",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/CONTRIBUTING.md": {
+      "path": ".build/index-build/checkouts/SQLite.swift/CONTRIBUTING.md",
+      "hash": "3dd0cc8e5d773ade65a5e0b7f1228ab3cd479d1c0ffbc88d2f310cd9ec83c5b2",
+      "lines": 108,
+      "last_modified": "2026-05-21T02:26:01.393963+00:00",
+      "summary": "Contributing",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Documentation/Index.md": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Documentation/Index.md",
+      "hash": "661560b716e5ba68d9838a4f0130b3415f39e03f068acaf5692fbd43b41f9cd6",
+      "lines": 2328,
+      "last_modified": "2026-05-21T02:26:01.394236+00:00",
+      "summary": "SQLite.swift Documentation",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Documentation/Linux.md": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Documentation/Linux.md",
+      "hash": "70a4933d7c3f961311e500410085888615128efd361e950ed5408eaff20ee2d5",
+      "lines": 44,
+      "last_modified": "2026-05-21T02:26:01.394349+00:00",
+      "summary": "Linux",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Documentation/Planning.md": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Documentation/Planning.md",
+      "hash": "b8a69dcbacad817653c8c1661b524249265855acc6d2c2eb718cf73edc7a937d",
+      "lines": 33,
+      "last_modified": "2026-05-21T02:26:01.394437+00:00",
+      "summary": "SQLite.swift Planning",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Documentation/Release.md": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Documentation/Release.md",
+      "hash": "5bbf6b98ef9011bb5a43180f4e8ba8911dd0f9ff8a02eec89e8029436593f2fa",
+      "lines": 13,
+      "last_modified": "2026-05-21T02:26:01.394510+00:00",
+      "summary": "SQLite.swift Release checklist",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Documentation/Upgrading.md": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Documentation/Upgrading.md",
+      "hash": "1c920d63952f13fcb7c0899876535a1c19b5ab7c739c05a5bbdb7cf6902008d2",
+      "lines": 11,
+      "last_modified": "2026-05-21T02:26:01.401762+00:00",
+      "summary": "Upgrading",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/LICENSE.txt": {
+      "path": ".build/index-build/checkouts/SQLite.swift/LICENSE.txt",
+      "hash": "54309d83b514af75deacb70285d5debe8c74ddfd7ca2d1990ae14a0255aceeba",
+      "lines": 21,
+      "last_modified": "2026-05-21T02:26:01.402073+00:00",
+      "summary": "(The MIT License)",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Package.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Package.swift",
+      "hash": "877bc3bd5013d595b8ef4be61989fbe1df8ed6b074ebb9bbdd8921a67d1f3afe",
+      "lines": 69,
+      "last_modified": "2026-05-21T02:26:01.402378+00:00",
+      "summary": "swift-tools-version: 6.1",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/README.md": {
+      "path": ".build/index-build/checkouts/SQLite.swift/README.md",
+      "hash": "785c4b0781f75b3120878544bf5ca48f4ed51f2d3ba15b32521eb7d2e50f9ce4",
+      "lines": 293,
+      "last_modified": "2026-05-21T02:26:01.402575+00:00",
+      "summary": "SQLite.swift",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/SQLite.playground/Contents.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/SQLite.playground/Contents.swift",
+      "hash": "c2b87bf2c30f1ef2fcf17e702cfd7cd33b36f623e03fbb68559b5a66bc22daca",
+      "lines": 132,
+      "last_modified": "2026-05-21T02:26:01.402740+00:00",
+      "summary": "Create an in-memory database",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Backup.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Backup.swift",
+      "hash": "becf655e9e6b4adea8d860e1873f337a008ac81648ed26b81ff930bedae7395b",
+      "lines": 173,
+      "last_modified": "2026-05-21T02:26:01.404819+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Blob.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Blob.swift",
+      "hash": "f4d0e6248cb5b59314ec31164207e0c201839fe1b414b6d64004022726ecae26",
+      "lines": 56,
+      "last_modified": "2026-05-21T02:26:01.404917+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "struct Blob"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Aggregation.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Aggregation.swift",
+      "hash": "fb57696748df6e614addfd447941ff0c01455bcbfdc81f2903c1f215713ffa96",
+      "lines": 155,
+      "last_modified": "2026-05-21T02:26:01.405030+00:00",
+      "summary": "Creates or redefines a custom SQL aggregate.  - Parameters:  - aggregate: The name of the aggregate to create or redefine.  - argumentCount: The number of arguments that the aggregate takes. If `nil`, the aggregate may take any number of arguments.  Default: `nil`  - deterministic: Whether or not the aggregate is deterministic (_i.e._ the aggregate always returns the same result for a given input).  Default: `false`  - step: A block of code to run for each row of an aggregation group. The block is called with an array of raw SQL values mapped to the aggregate’s parameters, and an UnsafeMutable",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Attach.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Attach.swift",
+      "hash": "f2f11735ea5875ad29d10f33132c73aafe041158d56a91f14a6d7deb7e525897",
+      "lines": 24,
+      "last_modified": "2026-05-21T02:26:01.405170+00:00",
+      "summary": "See https://www.zetetic.net/sqlcipher/sqlcipher-api/#attach",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Pragmas.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection+Pragmas.swift",
+      "hash": "1e6883b4258300e85cc71c7ca6393929101680c2406945feb67313a4c8982bfe",
+      "lines": 51,
+      "last_modified": "2026-05-21T02:26:01.405257+00:00",
+      "summary": "The user version of the database. See SQLite [PRAGMA user_version](https://sqlite.org/pragma.html#pragma_user_version)",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Connection.swift",
+      "hash": "4700b9fba49f66fb4771c1553c2788fc4033721ae88e75e378625f3bf92589b9",
+      "lines": 787,
+      "last_modified": "2026-05-21T02:26:01.405394+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Errors.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Errors.swift",
+      "hash": "a29d54f067c72c90b945e5e4f6506ad24ea3a186d35967d40148a204514a5d0c",
+      "lines": 21,
+      "last_modified": "2026-05-21T02:26:01.405525+00:00",
+      "summary": "import Foundation",
+      "symbols": [
+        "enum QueryError"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Result.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Result.swift",
+      "hash": "426d7eb2b625d90ad3620f7cfbff063cb61698dc127ab1a7262d03fbec4babec",
+      "lines": 67,
+      "last_modified": "2026-05-21T02:26:01.405618+00:00",
+      "summary": "Represents a SQLite specific [error code](https://sqlite.org/rescode.html)  - message: English-language text that describes the error  - code: SQLite [error code](https://sqlite.org/rescode.html#primary_result_code_list)  - statement: the statement which produced the error",
+      "symbols": [
+        "enum Result"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/SQLiteFeature.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/SQLiteFeature.swift",
+      "hash": "13b055678ffe144979475d21f6020d2dc1c9fbd6ef552dd2a1b8942c9db004eb",
+      "lines": 25,
+      "last_modified": "2026-05-21T02:26:01.405719+00:00",
+      "summary": "import Foundation",
+      "symbols": [
+        "enum SQLiteFeature"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/SQLiteVersion.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/SQLiteVersion.swift",
+      "hash": "beb8666a20e73b6105d3fba0355a2eae308250201f070ec38d9d9a1e6fbed502",
+      "lines": 22,
+      "last_modified": "2026-05-21T02:26:01.405815+00:00",
+      "summary": "import Foundation",
+      "symbols": [
+        "struct SQLiteVersion"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Statement.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Statement.swift",
+      "hash": "d2bbeb91d7c25102c736cb89bb690ac6d66afd34a4ebdaa147982a3f946fdee9",
+      "lines": 339,
+      "last_modified": "2026-05-21T02:26:01.406133+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "protocol FailableIterator",
+        "struct Cursor"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/URIQueryParameter.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/URIQueryParameter.swift",
+      "hash": "57d4baac7f299488ab8b350194239e4b808b97cb9573ac23cfd117afe89af7c7",
+      "lines": 53,
+      "last_modified": "2026-05-21T02:26:01.406241+00:00",
+      "summary": "See https://www.sqlite.org/uri.html",
+      "symbols": [
+        "enum URIQueryParameter"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Value.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Core/Value.swift",
+      "hash": "932ca8dac4c8b49ac0dee2daccdc270a473f22bec79d39fd5260a40e76ac58aa",
+      "lines": 132,
+      "last_modified": "2026-05-21T02:26:01.406342+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "protocol Binding",
+        "protocol Number",
+        "protocol Value"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Extensions/Cipher.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Extensions/Cipher.swift",
+      "hash": "293069565d1dd7e49de047aaab4e80e1b1e9ac6e668e9703b961fdcedb79bd99",
+      "lines": 187,
+      "last_modified": "2026-05-21T02:26:01.406566+00:00",
+      "summary": "Extension methods for [SQLCipher](https://www.zetetic.net/sqlcipher/). @see [sqlcipher api](https://www.zetetic.net/sqlcipher/sqlcipher-api/)",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Extensions/FTS4.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Extensions/FTS4.swift",
+      "hash": "d61f2eb48225c1fd7a1bf3af8fc33ac747daa84846c2ca513ad586f5876b2963",
+      "lines": 330,
+      "last_modified": "2026-05-21T02:26:01.406875+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "struct Tokenizer"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Extensions/FTS5.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Extensions/FTS5.swift",
+      "hash": "93e91003304aaa50eb62bcda9f62124b8990f7f33ee5fddff928b9819b340cf4",
+      "lines": 93,
+      "last_modified": "2026-05-21T02:26:01.406989+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Extensions/RTree.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Extensions/RTree.swift",
+      "hash": "b83dec60934aff76e28949977443bc42184ff0c0e9846327704a221c3fa99514",
+      "lines": 37,
+      "last_modified": "2026-05-21T02:26:01.407091+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Foundation.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Foundation.swift",
+      "hash": "b30fb558b808058a5211789b3f181401c638a9d6ca1e4646e2a1e3a81fc6566b",
+      "lines": 102,
+      "last_modified": "2026-05-21T02:26:01.407185+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Helpers.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Helpers.swift",
+      "hash": "dbe91657cafc6a3a129cb80633f66c22d7ccea8e7cd5e47bf5f83587fe1c68fd",
+      "lines": 131,
+      "last_modified": "2026-05-21T02:26:01.407302+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "protocol _OptionalType",
+        "func transcode",
+        "func value",
+        "func value"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Schema/Connection+Schema.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Schema/Connection+Schema.swift",
+      "hash": "3acd1c3de36d5f0bc831ff44c3dab10a596f24685683becc8012693926d3be7a",
+      "lines": 35,
+      "last_modified": "2026-05-21T02:26:01.407845+00:00",
+      "summary": "There are four columns in each result row. The first column is the name of the table that contains the REFERENCES clause. The second column is the rowid of the row that contains the invalid REFERENCES clause, or NULL if the child table is a WITHOUT ROWID table. The third column is the name of the table that is referred to. The fourth column is the index of the specific foreign key constraint that failed.  https://sqlite.org/pragma.html#pragma_foreign_key_check",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaChanger.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaChanger.swift",
+      "hash": "687def001877cc9e5bd0cfc61c572ed64c42a8f207d62fa31ac37e295e1c5c4c",
+      "lines": 372,
+      "last_modified": "2026-05-21T02:26:01.408192+00:00",
+      "summary": "*",
+      "symbols": [
+        "class SchemaChanger"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaDefinitions.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaDefinitions.swift",
+      "hash": "1deb22f15a666e34fa0d55304181189791cf55dc22a27deb224a1e42b7fb590a",
+      "lines": 433,
+      "last_modified": "2026-05-21T02:26:01.408392+00:00",
+      "summary": "https://sqlite.org/schematab.html#interpretation_of_the_schema_table",
+      "symbols": [
+        "struct TableDefinition",
+        "struct ObjectDefinition",
+        "struct ColumnDefinition",
+        "enum LiteralValue",
+        "struct IndexDefinition",
+        "struct ForeignKeyError"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaReader.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Schema/SchemaReader.swift",
+      "hash": "608aca5a0b92b1fe028e48180eb347dd253b63947c9bdadb1ea96e013b72aaf1",
+      "lines": 220,
+      "last_modified": "2026-05-21T02:26:01.408551+00:00",
+      "summary": "https://sqlite.org/pragma.html#pragma_table_info  This pragma returns one row for each column in the named table. Columns in the result set include the column name, data type, whether or not the column can be NULL, and the default value for the column. The \"pk\" column in the result set is zero for columns that are not part of the primary key, and is the index of the column in the primary key for columns that are part of the primary key.",
+      "symbols": [
+        "class SchemaReader",
+        "enum SchemaTable",
+        "enum TableInfoTable",
+        "enum IndexInfoTable",
+        "enum IndexListTable",
+        "enum ForeignKeyListTable"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/AggregateFunctions.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/AggregateFunctions.swift",
+      "hash": "18a4b0231316ca809a154d92315ddf697b801862ecc6833a63fd5e8f737d49c8",
+      "lines": 264,
+      "last_modified": "2026-05-21T02:26:01.408775+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum Function",
+        "func count"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Coding.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Coding.swift",
+      "hash": "86a1b8321499eae986d9191859aa4a46d42aa16887d0029c0112f9c8fda7ceea",
+      "lines": 562,
+      "last_modified": "2026-05-21T02:26:01.408885+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "class SQLiteEncoder",
+        "class SQLiteDecoder"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Collation.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Collation.swift",
+      "hash": "86f92317bb9e0e275f79e3148267faadce4c760cea097ff8892dbf7eeb8ce24a",
+      "lines": 69,
+      "last_modified": "2026-05-21T02:26:01.408994+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum Collation"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/CoreFunctions.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/CoreFunctions.swift",
+      "hash": "747e108d77a778aa3894b2bf4ef2285a6fa421bdc1ec48f16cdaa4de0eec6608",
+      "lines": 795,
+      "last_modified": "2026-05-21T02:26:01.409066+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum Function"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/CustomFunctions.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/CustomFunctions.swift",
+      "hash": "f1f1878e5b012dbd945eb3e176f005129e17dcbea85861df33d2f989694e4927",
+      "lines": 162,
+      "last_modified": "2026-05-21T02:26:01.409253+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/DateAndTimeFunctions.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/DateAndTimeFunctions.swift",
+      "hash": "834aa0cd7d7fdcf19fd680b7a94974cd1c53da991760e7a740e36f304f2a22c4",
+      "lines": 106,
+      "last_modified": "2026-05-21T02:26:01.409365+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Expression.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Expression.swift",
+      "hash": "b9040aa6ba2f2c535ef1b146934cd32739ad43ecc80e7d757aa213a480db39a5",
+      "lines": 146,
+      "last_modified": "2026-05-21T02:26:01.409472+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "protocol ExpressionType",
+        "struct Expression",
+        "protocol Expressible",
+        "func cast",
+        "func cast"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Operators.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Operators.swift",
+      "hash": "8988f1010c8bb9903fbf7e4e239b8393c2e360d47bbe7649d101ecbb3c6fe2e2",
+      "lines": 672,
+      "last_modified": "2026-05-21T02:26:01.409613+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum Operator",
+        "func and",
+        "func and",
+        "func or",
+        "func or"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Query+with.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Query+with.swift",
+      "hash": "4396296ae7eb4670a7fc09d3eddd56aa34caf03a483c5b5b5b46c9a6649df7d8",
+      "lines": 117,
+      "last_modified": "2026-05-21T02:26:01.409849+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum MaterializationHint",
+        "struct WithClauses"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Query.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Query.swift",
+      "hash": "8bee0cdd0713191a78d46e06b89564742f840244bb77baefa4e3a5f154b8b917",
+      "lines": 1300,
+      "last_modified": "2026-05-21T02:26:01.410009+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "protocol QueryType",
+        "protocol SchemaType",
+        "struct Table",
+        "struct View",
+        "struct VirtualTable",
+        "struct ScalarQuery",
+        "struct Select",
+        "struct Insert",
+        "struct Update",
+        "struct Delete",
+        "struct RowIterator",
+        "struct Row",
+        "enum JoinType",
+        "enum OnConflict",
+        "struct QueryClauses"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Schema.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Schema.swift",
+      "hash": "92e711e832cfd68c6467672c6795c7adcb2bb043ecd23dd3c390cf64a4af9fc5",
+      "lines": 601,
+      "last_modified": "2026-05-21T02:26:01.410144+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "enum PrimaryKey",
+        "struct Module",
+        "func definition",
+        "func reference",
+        "enum Modifier"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Setter.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/Setter.swift",
+      "hash": "c6b37b5d8bd5af957216edd1d75a2cab4dbe310b80fb27b26504e81a7b4824ea",
+      "lines": 288,
+      "last_modified": "2026-05-21T02:26:01.410313+00:00",
+      "summary": " SQLite.swift https://github.com/stephencelis/SQLite.swift Copyright © 2014-2015 Stephen Celis.  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  The above copyright notice and this permission notice shall be includ",
+      "symbols": [
+        "struct Setter"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/WindowFunctions.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Sources/SQLite/Typed/WindowFunctions.swift",
+      "hash": "c0f25053e0ac1e7a9eb2fd8b2dd183e666584c6df032341632f39e9de8ba805c",
+      "lines": 145,
+      "last_modified": "2026-05-21T02:26:01.410427+00:00",
+      "summary": "see https://www.sqlite.org/windowfunctions.html#builtins",
+      "symbols": [
+        "enum WindowFunction",
+        "func ntile",
+        "func rowNumber",
+        "func rank",
+        "func denseRank",
+        "func percentRank",
+        "func cumeDist"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SPM/Package.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SPM/Package.swift",
+      "hash": "b22e2aaa92fd0bb6faf61be83075889d3201d3fc57473ddb6311896f8a532d40",
+      "lines": 23,
+      "last_modified": "2026-05-21T02:26:01.410957+00:00",
+      "summary": "swift-tools-version:6.1 The swift-tools-version declares the minimum version of Swift required to build this package.",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SPM/Sources/test/main.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SPM/Sources/test/main.swift",
+      "hash": "30a1cf35904023546a83502f61495c02817fa1d82a1238e63c379c9bed6b2d9c",
+      "lines": 10,
+      "last_modified": "2026-05-21T02:26:01.411113+00:00",
+      "summary": "import SQLite",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/BlobTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/BlobTests.swift",
+      "hash": "a01ebbabe6d06eeb8ea09b9f3432f21d825c1f2be80e6a1dcfed64f5923d9cc8",
+      "lines": 47,
+      "last_modified": "2026-05-21T02:26:01.411469+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class BlobTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/Connection+AttachTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/Connection+AttachTests.swift",
+      "hash": "b3991e029528223e09b81e8b99b7a70784c341b8778bb5ba720d379b1366654a",
+      "lines": 62,
+      "last_modified": "2026-05-21T02:26:01.411551+00:00",
+      "summary": "create a table, insert some data",
+      "symbols": [
+        "class ConnectionAttachTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/Connection+PragmaTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/Connection+PragmaTests.swift",
+      "hash": "f4155a6180d8f8cfe6f27be72818d9e466b0669c8d354c3a81d2496cd373ec60",
+      "lines": 32,
+      "last_modified": "2026-05-21T02:26:01.411628+00:00",
+      "summary": "import XCTest\nimport Foundation\n@testable import SQLite",
+      "symbols": [
+        "class ConnectionPragmaTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ConnectionTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ConnectionTests.swift",
+      "hash": "08b80f960e260196ff9200a0bcd78b38e9c651319c3edfb8bb309eed59ac048c",
+      "lines": 467,
+      "last_modified": "2026-05-21T02:26:01.411732+00:00",
+      "summary": "PRAGMA defer_foreign_keys only supported in SQLite >= 3.8.0",
+      "symbols": [
+        "class ConnectionTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/CoreFunctionsTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/CoreFunctionsTests.swift",
+      "hash": "dbfd6e7a5286147af4ae5e1749aef47e28e2ecfd70c0f438232acf5da26ac12e",
+      "lines": 145,
+      "last_modified": "2026-05-21T02:26:01.411860+00:00",
+      "summary": "AssertSQL(\"ifnull(\\\"doubleOptional\\\", 1.0)\", doubleOptional ?? 1) // rdar://problem/21677256",
+      "symbols": [
+        "class CoreFunctionsTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ResultTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ResultTests.swift",
+      "hash": "bde576522134fc53702d40e03dadd35127d78fd6b8ead601a4b85909e14c41c7",
+      "lines": 69,
+      "last_modified": "2026-05-21T02:26:01.411994+00:00",
+      "summary": "import XCTest\nimport Foundation\n@testable import SQLite",
+      "symbols": [
+        "class ResultTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/StatementTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/StatementTests.swift",
+      "hash": "6e32fef5274c88f83a4fae352b070c05d6f7f872aa18345bffb0300111321fab",
+      "lines": 74,
+      "last_modified": "2026-05-21T02:26:01.412085+00:00",
+      "summary": "Check that a statement reset will close the implicit transaction, allowing wal file to checkpoint",
+      "symbols": [
+        "class StatementTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ValueTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Core/ValueTests.swift",
+      "hash": "39fe38fc97041fe4653388873ea0ae4b5bab8eb5b79f94c87416ffe51b9b78d6",
+      "lines": 6,
+      "last_modified": "2026-05-21T02:26:01.412182+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class ValueTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/CipherTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/CipherTests.swift",
+      "hash": "7ac1f4f9e0135bda61d02e077f09b28afc27036f166282585992f5aac8e8f036",
+      "lines": 131,
+      "last_modified": "2026-05-21T02:26:01.412363+00:00",
+      "summary": "db1",
+      "symbols": [
+        "class CipherTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS4Tests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS4Tests.swift",
+      "hash": "e5383b5cbefd474631cb0fad6dc049a3065d32c3f95b57dddfb531fe4c8d2f8b",
+      "lines": 190,
+      "last_modified": "2026-05-21T02:26:01.412639+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class FTS4Tests",
+        "class FTS4ConfigTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS5IntegrationTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS5IntegrationTests.swift",
+      "hash": "28d5e1231b770c96f1796f636c668eebb757cd361db62eb02e8936fc684d3511",
+      "lines": 69,
+      "last_modified": "2026-05-21T02:26:01.412748+00:00",
+      "summary": "Note: these tests are only run when the FTS5 trait has been enabled.",
+      "symbols": [
+        "class FTS5IntegrationTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS5Tests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/FTS5Tests.swift",
+      "hash": "5d3893445a59b0f5894fba27579151384fa4073e215b18dca52339e14a1dd3e8",
+      "lines": 137,
+      "last_modified": "2026-05-21T02:26:01.412872+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class FTS5Tests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/RTreeTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Extensions/RTreeTests.swift",
+      "hash": "7b77e488e743c80a7a9253a84933abb7d82f1bf431d4b64cb44776c56e548907",
+      "lines": 17,
+      "last_modified": "2026-05-21T02:26:01.412952+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class RTreeTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Fixtures.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Fixtures.swift",
+      "hash": "f7b322b52405fd4a5b4f4fb94e7bad04d437f5311f7764d880baa1bf188a8d3f",
+      "lines": 22,
+      "last_modified": "2026-05-21T02:26:01.413030+00:00",
+      "summary": "import Foundation",
+      "symbols": [
+        "func fixture",
+        "func temporaryFile"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/FoundationTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/FoundationTests.swift",
+      "hash": "016d2c5205dc851410378c3ede05768aca90ad8e468106dbd5abfc147e3dbc91",
+      "lines": 40,
+      "last_modified": "2026-05-21T02:26:01.413115+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class FoundationTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/Connection+SchemaTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/Connection+SchemaTests.swift",
+      "hash": "ffd1637d9b1260ef2fccf67de241d7abe863bbf122511a9af3f6e3c0686e44d3",
+      "lines": 52,
+      "last_modified": "2026-05-21T02:26:01.413850+00:00",
+      "summary": "import XCTest\n@testable import SQLite",
+      "symbols": [
+        "class ConnectionSchemaTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaChangerTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaChangerTests.swift",
+      "hash": "6c23278f52f8f016a59a60f19b5a4531c5993ecb0314dc413634314cb89075ac",
+      "lines": 383,
+      "last_modified": "2026-05-21T02:26:01.414054+00:00",
+      "summary": "make sure new table can be queried",
+      "symbols": [
+        "class SchemaChangerTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaDefinitionsTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaDefinitionsTests.swift",
+      "hash": "8b37c6ae703d3e38f8fb2d718f137a8d42c34e89f453ea04050c0c4643813037",
+      "lines": 446,
+      "last_modified": "2026-05-21T02:26:01.414260+00:00",
+      "summary": "[Determination Of Column Affinity](https://sqlite.org/datatype3.html#determination_of_column_affinity) Rule 1",
+      "symbols": [
+        "class ColumnDefinitionTests",
+        "class AffinityTests",
+        "class IndexDefinitionTests",
+        "class ForeignKeyDefinitionTests",
+        "class TableDefinitionTests",
+        "class PrimaryKeyTests",
+        "class LiteralValueTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaReaderTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaReaderTests.swift",
+      "hash": "21d5473ae4ae01ebf8c3a00b0550e2715754f672341035d17cce2bd9b18bb7e1",
+      "lines": 315,
+      "last_modified": "2026-05-21T02:26:01.414462+00:00",
+      "summary": "import XCTest\n@testable import SQLite",
+      "symbols": [
+        "class SchemaReaderTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Schema/SchemaTests.swift",
+      "hash": "03ebd22723e09aabf74332f7fdaa497ba2e9292d9dc63b43254ec62e46bde69e",
+      "lines": 867,
+      "last_modified": "2026-05-21T02:26:01.414573+00:00",
+      "summary": "thoroughness test for ambiguity swiftlint:disable:next function_body_length",
+      "symbols": [
+        "class SchemaTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/TestHelpers.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/TestHelpers.swift",
+      "hash": "5eeafc8ee56783d59e47f8844113fc7ba97ec8ec9d9a28db1814beefb6000cc5",
+      "lines": 167,
+      "last_modified": "2026-05-21T02:26:01.414713+00:00",
+      "summary": "print(\"SQL: \\(SQL)\")",
+      "symbols": [
+        "class SQLiteTestCase",
+        "func assertSQL",
+        "func extractAndReplace",
+        "class TestCodable",
+        "struct TestOptionalCodable"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/AggregateFunctionsTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/AggregateFunctionsTests.swift",
+      "hash": "6f85e67ad6fd62556f6ececb9e06838851e091523b7ac55a109389ae914bbdea",
+      "lines": 68,
+      "last_modified": "2026-05-21T02:26:01.414867+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class AggregateFunctionsTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/CustomAggregationTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/CustomAggregationTests.swift",
+      "hash": "0bdb150b06c25bd4b05164bc9126da5d6154827ea9c9860a6d1c3f16be5a57a1",
+      "lines": 152,
+      "last_modified": "2026-05-21T02:26:01.414985+00:00",
+      "summary": "https://github.com/stephencelis/SQLite.swift/issues/1071",
+      "symbols": [
+        "class CustomAggregationTests",
+        "class TestObject"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/CustomFunctionsTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/CustomFunctionsTests.swift",
+      "hash": "f113d8bf5201e0d795901046118a15d80643e16daa3e721117bc5c16b763c952",
+      "lines": 151,
+      "last_modified": "2026-05-21T02:26:01.415101+00:00",
+      "summary": "https://github.com/stephencelis/SQLite.swift/issues/1071",
+      "symbols": [
+        "class CustomFunctionNoArgsTests",
+        "class CustomFunctionWithOneArgTests",
+        "class CustomFunctionWithTwoArgsTests",
+        "class CustomFunctionTruncation"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/DateAndTimeFunctionTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/DateAndTimeFunctionTests.swift",
+      "hash": "8acf80a80293ace15c0214cf9601d4735dbb2e0252facd7e3ac84e4aefeee09d",
+      "lines": 66,
+      "last_modified": "2026-05-21T02:26:01.415208+00:00",
+      "summary": "import XCTest\n@testable import SQLite",
+      "symbols": [
+        "class DateAndTimeFunctionsTests",
+        "class DateExtensionTests",
+        "class DateExpressionTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/ExpressionTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/ExpressionTests.swift",
+      "hash": "4b3e0977134cbbfd5b18ee3234ddcaa40e29d13049af504cddf72f33b42970dd",
+      "lines": 35,
+      "last_modified": "2026-05-21T02:26:01.415288+00:00",
+      "summary": "import XCTest\n@testable import SQLite",
+      "symbols": [
+        "class ExpressionTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/OperatorsTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/OperatorsTests.swift",
+      "hash": "e2bfc69a24b96a6370bdb9686b9e40c79e0477cdefa1d7c365976e140f4dbe06",
+      "lines": 390,
+      "last_modified": "2026-05-21T02:26:01.415385+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class OperatorsTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/QueryIntegrationTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/QueryIntegrationTests.swift",
+      "hash": "58264b156133e97793a15a7641dcc4ea77ac3c93de44c80be2769fef3f8b68e2",
+      "lines": 457,
+      "last_modified": "2026-05-21T02:26:01.415511+00:00",
+      "summary": "MARK: -",
+      "symbols": [
+        "class QueryIntegrationTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/QueryTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/QueryTests.swift",
+      "hash": "5a12139dbaf4b0cd0f498cb369975bcd7af4f460d05419fa08873933e8a28f56",
+      "lines": 575,
+      "last_modified": "2026-05-21T02:26:01.415663+00:00",
+      "summary": "AssertSQL(\"SELECT * FROM \\\"users\\\" ORDER BY \\\"age\\\" DESC, \\\"email\\\" ASC\", users.order(age.desc, email.asc))",
+      "symbols": [
+        "class QueryTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/RowTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/RowTests.swift",
+      "hash": "4074f9e432b4ca71ec8a3926b7db64f8a6361ae3f290ff2e92a8ae25b15c73fb",
+      "lines": 118,
+      "last_modified": "2026-05-21T02:26:01.415778+00:00",
+      "summary": "swiftlint:disable nesting",
+      "symbols": [
+        "class RowTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/SelectTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/SelectTests.swift",
+      "hash": "c8dbc26d7741a65691d9e117da58c7db9c37332eefe1464a78c1cbcc429327cf",
+      "lines": 44,
+      "last_modified": "2026-05-21T02:26:01.415869+00:00",
+      "summary": "import XCTest\n@testable import SQLite",
+      "symbols": [
+        "class SelectTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/SetterTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/SetterTests.swift",
+      "hash": "f2f5cdcb9df015ad1d89c4679f5987660dbcf5bcfb1dd4fd6d4292caea40201b",
+      "lines": 140,
+      "last_modified": "2026-05-21T02:26:01.416131+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class SetterTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/WindowFunctionsTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/SQLiteTests/Typed/WindowFunctionsTests.swift",
+      "hash": "d0d5718f3945bc646a3b94c417980cfc6f8886499fb897691796ab02698c4bd1",
+      "lines": 58,
+      "last_modified": "2026-05-21T02:26:01.416245+00:00",
+      "summary": "import XCTest\nimport SQLite",
+      "symbols": [
+        "class WindowFunctionsTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Project.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Project.swift",
+      "hash": "c8ffdec479c461e167883288c4f1017a06fd4e641acefb369e2518e445c06138",
+      "lines": 36,
+      "last_modified": "2026-05-21T02:26:01.416509+00:00",
+      "summary": "import ProjectDescription",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/SQLite-Test/Sources/SQLiteTestApp.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/SQLite-Test/Sources/SQLiteTestApp.swift",
+      "hash": "cc4d0a95af1861daf31c066c13ce4980e1745c24677885bc040ef92bbb99ce4d",
+      "lines": 13,
+      "last_modified": "2026-05-21T02:26:01.416679+00:00",
+      "summary": "import SwiftUI\nimport SQLite",
+      "symbols": [
+        "struct SQLiteTestApp"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/SQLite-Test/Tests/SQLiteTestTests.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/SQLite-Test/Tests/SQLiteTestTests.swift",
+      "hash": "fa684ee1fc827162b97a07f67b6b155b0f77b8b3b03d603aed3f30be5023fffe",
+      "lines": 13,
+      "last_modified": "2026-05-21T02:26:01.416789+00:00",
+      "summary": "import Testing\nimport SQLite",
+      "symbols": [
+        "struct SQLiteTestTests"
+      ]
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Tuist/Package.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Tuist/Package.swift",
+      "hash": "419683f6d9b5d9a8f12dffa208da559b8a963dd493bc2f9b19956f11b88806d1",
+      "lines": 22,
+      "last_modified": "2026-05-21T02:26:01.416999+00:00",
+      "summary": "swift-tools-version: 6.0",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Tuist.swift": {
+      "path": ".build/index-build/checkouts/SQLite.swift/Tests/Tuist/SQLite-Test/Tuist.swift",
+      "hash": "3a14a03158c09c2f1d427db414831b143bd22813c557f353152792151b558abb",
+      "lines": 3,
+      "last_modified": "2026-05-21T02:26:01.416880+00:00",
+      "summary": "import ProjectDescription",
+      "symbols": []
+    },
+    ".build/index-build/checkouts/SQLite.swift/run-tests.sh": {
+      "path": ".build/index-build/checkouts/SQLite.swift/run-tests.sh",
+      "hash": "35bfa286b9bd009b57040222b10fa6a73ab61a2619d16d154378580d819f7bbf",
+      "lines": 25,
+      "last_modified": "2026-05-21T02:26:01.417087+00:00",
+      "summary": "#!/bin/bash\nset -ev\nif [ -n \"$BUILD_SCHEME\" ]; then\n    if [ -n \"$IOS_SIMULATOR\" ]; then\n        make test BUILD_SCHEME=\"$BUILD_SCHEME\" IOS_SIMULATOR=\"$IOS_SIMULATOR\" IOS_VERSION=\"$IOS_VERSION\"\n    else\n        make test BUILD_SCHEME=\"$BUILD_SCHEME\"\n    fi\nelif [ -n \"$VALIDATOR_SUBSPEC\" ]; then\n    bundle install\n    case \"$VALIDATOR_SUBSPEC\" in\n      none)\n        bundle exec pod lib lint --no-subspecs --fail-fast\n        ;;\n      *)\n        bundle exec pod lib lint --subspec=\"${VALIDATOR_SUBSPEC}\" --fail-fast\n        ;;\n      esac\nelif [ -n \"$CARTHAGE_PLATFORM\" ]; then\n    cd Tests/Carthage ",
+      "symbols": []
+    },
+    "MULTIPASTE_PLAN.md": {
+      "path": "MULTIPASTE_PLAN.md",
+      "hash": "2f23997c1c6adfe1d25bbca74ebadd0f78c5691af7cc4912675ac922084d21f5",
+      "lines": 60,
+      "last_modified": "2026-05-21T11:30:10.991901+00:00",
+      "summary": "Multipaste: The \"Cycle & Drop\" Clipboard Buffer",
+      "symbols": []
+    },
+    "Package.swift": {
+      "path": "Package.swift",
+      "hash": "ae0f4c63c5ffff33d3371d9f81b622180c533fc5ab3611eca60750ff03c3fb3b",
+      "lines": 27,
+      "last_modified": "2026-05-21T11:52:34.533675+00:00",
+      "summary": "swift-tools-version: 5.9 The swift-tools-version declares the minimum version of Swift required to build this package.",
+      "symbols": []
+    },
+    "README_MANIFEST.md": {
+      "path": "README_MANIFEST.md",
+      "hash": "5639755087c42794bfa8ea00cdd5d1f82eae588089bace075879c6e84fab417d",
+      "lines": 27,
+      "last_modified": "2026-05-21T11:52:42.095726+00:00",
+      "summary": "Repo-local manifest for agent context",
+      "symbols": []
+    },
+    "README_NOTES.md": {
+      "path": "README_NOTES.md",
+      "hash": "9b93b95d6fb19a8fd11f26ba8370f327d2231cdd0fa77f5bbd852cc362f0b64f",
+      "lines": 11,
+      "last_modified": "2026-05-21T11:53:09.038306+00:00",
+      "summary": "Repo context notes",
+      "symbols": []
+    },
+    "REPO_CONTEXT.md": {
+      "path": "REPO_CONTEXT.md",
+      "hash": "43a61ad41ca2fdf6e5d781ecf7ee8fcaac00e9f1939ef3f7ad4c6b98a44b8ad6",
+      "lines": 1193,
+      "last_modified": "2026-05-21T11:53:27.282773+00:00",
+      "summary": "Repo context manifest (design)",
+      "symbols": []
+    },
+    "Sources/contextbrain/main.swift": {
+      "path": "Sources/contextbrain/main.swift",
+      "hash": "376097157a51d207aeda8fd2a6d5602627a34320f7c8cc531e77bb7aeb4a839c",
+      "lines": 276,
+      "last_modified": "2026-05-21T11:53:25.872513+00:00",
+      "summary": "import Foundation\nimport CryptoKit",
+      "symbols": [
+        "struct FileRecord",
+        "struct ContextBrain",
+        "struct Configuration",
+        "func scanRepository",
+        "func shouldSkipDirectory",
+        "func shouldIncludeFile",
+        "func kindForFile",
+        "func extractSwiftImports",
+        "func extractSymbols",
+        "func summaryForFile",
+        "func renderManifest",
+        "func write",
+        "func matches",
+        "func escapeTableCell"
+      ]
+    },
+    "Sources/multipaste/AppDelegate.swift": {
+      "path": "Sources/multipaste/AppDelegate.swift",
+      "hash": "abd6350e2363f8d35afe6b75b4d95c008344b3b3de0b3b8763aba0aff784a023",
+      "lines": 170,
+      "last_modified": "2026-05-21T02:31:18.913322+00:00",
+      "summary": "Check Accessibility Permissions",
+      "symbols": [
+        "class AppDelegate"
+      ]
+    },
+    "Sources/multipaste/ClipboardManager.swift": {
+      "path": "Sources/multipaste/ClipboardManager.swift",
+      "hash": "9db334ea0823f7460a94bc661d73e5936c0bca083a2cfab3c3e1a8b282536478",
+      "lines": 67,
+      "last_modified": "2026-05-21T11:18:49.163599+00:00",
+      "summary": "Flag to prevent capturing our own synthetic pastes",
+      "symbols": [
+        "class ClipboardManager"
+      ]
+    },
+    "Sources/multipaste/DatabaseManager.swift": {
+      "path": "Sources/multipaste/DatabaseManager.swift",
+      "hash": "2ba5497d8b903a126d321ede97fda7d18dce00ecac62a8c456d8b1a0dc292a6c",
+      "lines": 77,
+      "last_modified": "2026-05-21T11:14:50.660433+00:00",
+      "summary": "Check if the last clip is the same to avoid duplicates",
+      "symbols": [
+        "class DatabaseManager"
+      ]
+    },
+    "Sources/multipaste/HotkeyManager.swift": {
+      "path": "Sources/multipaste/HotkeyManager.swift",
+      "hash": "cbe3dd155b495fd14cb38d15e63a75bc77887e824641ab654289abcc20494aea",
+      "lines": 97,
+      "last_modified": "2026-05-21T02:39:31.729438+00:00",
+      "summary": "Modifiers released, trigger paste",
+      "symbols": [
+        "protocol HotkeyManagerDelegate",
+        "class HotkeyManager"
+      ]
+    },
+    "Sources/multipaste/TooltipManager.swift": {
+      "path": "Sources/multipaste/TooltipManager.swift",
+      "hash": "1be67c85986f9647237c6c2f0a512dfa5276a4cc9450a6e7cfd9efefd71e9601",
+      "lines": 90,
+      "last_modified": "2026-05-21T02:30:14.906770+00:00",
+      "summary": "Try to get caret position via Accessibility",
+      "symbols": [
+        "class TooltipManager"
+      ]
+    },
+    "Sources/multipaste/TooltipView.swift": {
+      "path": "Sources/multipaste/TooltipView.swift",
+      "hash": "14cdc75bcbeca97e5dc2cceeb94a6a6f8b0d129244447b613251ec5db125e55b",
+      "lines": 43,
+      "last_modified": "2026-05-21T02:28:37.636368+00:00",
+      "summary": "import SwiftUI",
+      "symbols": [
+        "struct TooltipView",
+        "struct VisualEffectView"
+      ]
+    },
+    "Sources/multipaste/multipaste.swift": {
+      "path": "Sources/multipaste/multipaste.swift",
+      "hash": "39626e4c87e9af894d9ae2b4702584550c9234a814a2acb8301f1715aba8560a",
+      "lines": 14,
+      "last_modified": "2026-05-21T11:12:16.056883+00:00",
+      "summary": "import AppKit\nimport Darwin",
+      "symbols": [
+        "struct multipaste"
+      ]
+    },
+    "check_pb.swift": {
+      "path": "check_pb.swift",
+      "hash": "da11b5ce6b152a145ecf667ce1c2f9673d5133fc740b9026c63ab39c6f94ac9e",
+      "lines": 4,
+      "last_modified": "2026-05-21T11:13:26.268765+00:00",
+      "summary": "import AppKit",
+      "symbols": []
+    },
+    "check_pb2.swift": {
+      "path": "check_pb2.swift",
+      "hash": "8edaa2aa99aaee65017028e0e894760fb36a9e87c63d809eabc9ae535c9d67e0",
+      "lines": 7,
+      "last_modified": "2026-05-21T11:16:27.390937+00:00",
+      "summary": "import AppKit",
+      "symbols": []
+    },
+    "check_pb3.swift": {
+      "path": "check_pb3.swift",
+      "hash": "1111355369f742a5189bb03bd4e5b8385c8b2d3856a4dc807ea745eb9bd462b4",
+      "lines": 8,
+      "last_modified": "2026-05-21T11:16:49.570207+00:00",
+      "summary": "import AppKit",
+      "symbols": []
+    },
+    "check_pb4.swift": {
+      "path": "check_pb4.swift",
+      "hash": "6ab2c4a4d4cb1095486dc46026c780832599c4571ce59580e22f698053e9aacf",
+      "lines": 14,
+      "last_modified": "2026-05-21T11:16:59.789345+00:00",
+      "summary": "import AppKit\nimport Foundation",
+      "symbols": []
+    },
+    "check_pb5.swift": {
+      "path": "check_pb5.swift",
+      "hash": "f546bd98b4f47ce246527f538c7f3f7ceeddd9f972a56a0ec705601eeb270ebd",
+      "lines": 21,
+      "last_modified": "2026-05-21T11:17:19.581343+00:00",
+      "summary": "Simulate Cmd+V",
+      "symbols": []
+    },
+    "context/README.md": {
+      "path": "context/README.md",
+      "hash": "25d4e6a4a55496234a5615d892cee36aa8cf76008b49bd72e93d799598a3bb84",
+      "lines": 11,
+      "last_modified": "2026-05-21T11:53:03.229930+00:00",
+      "summary": "Context vault",
+      "symbols": []
+    },
+    "docs/context_spec.md": {
+      "path": "docs/context_spec.md",
+      "hash": "187bb0da23bcc6a8946a81c6e5cb31ea5a2a32025c4f6197b8cc3d85f5bc92c4",
+      "lines": 43,
+      "last_modified": "2026-05-21T11:53:16.858058+00:00",
+      "summary": "Repo-local context manifest (design)",
+      "symbols": []
+    },
+    "repo_context_notes/MULTIPASTE_PLAN.md.md": {
+      "path": "repo_context_notes/MULTIPASTE_PLAN.md.md",
+      "hash": "62212109a9bf5fa536cd7b83e9163394e3a7d71b4ca2e3046d6ec6eab25ac974",
+      "lines": 45,
+      "last_modified": "2026-05-21T11:53:12.808315+00:00",
+      "summary": "MULTIPASTE_PLAN.md",
+      "symbols": []
+    },
+    "repo_context_notes/Package.swift.md": {
+      "path": "repo_context_notes/Package.swift.md",
+      "hash": "8211e1fd5b9fc68eb6047d032e1e48e40c296230cba9640b95e812459778f40b",
+      "lines": 42,
+      "last_modified": "2026-05-21T11:53:12.808392+00:00",
+      "summary": "Package.swift",
+      "symbols": []
+    },
+    "repo_context_notes/README_MANIFEST.md.md": {
+      "path": "repo_context_notes/README_MANIFEST.md.md",
+      "hash": "9ca6081e91de08e28a692abc5a5edfb1103ee8e125d8c0a8691ec5be48980c92",
+      "lines": 26,
+      "last_modified": "2026-05-21T11:53:12.808471+00:00",
+      "summary": "README_MANIFEST.md",
+      "symbols": []
+    },
+    "repo_context_notes/Sources__multipaste__AppDelegate.swift.md": {
+      "path": "repo_context_notes/Sources__multipaste__AppDelegate.swift.md",
+      "hash": "b62760d37c58c4a7a059d7d0ec2207b7ce12062fb59822d378810c5296362bb1",
+      "lines": 68,
+      "last_modified": "2026-05-21T11:53:12.808917+00:00",
+      "summary": "Sources/multipaste/AppDelegate.swift",
+      "symbols": []
+    },
+    "repo_context_notes/Sources__multipaste__ClipboardManager.swift.md": {
+      "path": "repo_context_notes/Sources__multipaste__ClipboardManager.swift.md",
+      "hash": "b2782bd791466dd549bb28276c8fbd731c51ebab80fa81ff47bd8ee84da34952",
+      "lines": 76,
+      "last_modified": "2026-05-21T11:53:12.808735+00:00",
+      "summary": "Sources/multipaste/ClipboardManager.swift",
+      "symbols": []
+    },
+    "repo_context_notes/Sources__multipaste__DatabaseManager.swift.md": {
+      "path": "repo_context_notes/Sources__multipaste__DatabaseManager.swift.md",
+      "hash": "f609312487ac3f011b1479a3e29e39904000a2c96b54b47cab496f68d55819a6",
+      "lines": 67,
+      "last_modified": "2026-05-21T11:53:12.809000+00:00",
+      "summary": "Sources/multipaste/DatabaseManager.swift",
+      "symbols": []
+    },
+    "repo_context_notes/Sources__multipaste__HotkeyManager.swift.md": {
+      "path": "repo_context_notes/Sources__multipaste__HotkeyManager.swift.md",
+      "hash": "6dd2f605c0a1ea112c6e652a86658435d2d078aa829e85386327b3a01d902c8d",
+      "lines": 70,
+      "last_modified": "2026-05-21T11:53:12.808557+00:00",
+      "summary": "Sources/multipaste/HotkeyManager.swift",
+      "symbols": []
+    },
+    "repo_context_notes/Sources__multipaste__TooltipManager.swift.md": {
+      "path": "repo_context_notes/Sources__multipaste__TooltipManager.swift.md",
+      "hash": "0d8a836192998c7c16b89314f77d3fc88a7f24724344c0f5a9e3ff4b9d62e77a",
+      "lines": 77,
+      "last_modified": "2026-05-21T11:53:12.808826+00:00",
+      "summary": "Sources/multipaste/TooltipManager.swift",
+      "symbols": []
+    },
+    "repo_context_notes/Sources__multipaste__TooltipView.swift.md": {
+      "path": "repo_context_notes/Sources__multipaste__TooltipView.swift.md",
+      "hash": "22180686bbbe2af1e5b65b1b7caaef4b513780e46d5974437948586135c6c422",
+      "lines": 58,
+      "last_modified": "2026-05-21T11:53:12.809081+00:00",
+      "summary": "Sources/multipaste/TooltipView.swift",
+      "symbols": []
+    },
+    "repo_context_notes/Sources__multipaste__multipaste.swift.md": {
+      "path": "repo_context_notes/Sources__multipaste__multipaste.swift.md",
+      "hash": "6b3bcdd8515f3ae0178a85c0f831b6ec58063d4ebae381b574fe21972797f086",
+      "lines": 29,
+      "last_modified": "2026-05-21T11:53:12.808645+00:00",
+      "summary": "Sources/multipaste/multipaste.swift",
+      "symbols": []
+    },
+    "repo_context_notes/check_pb.swift.md": {
+      "path": "repo_context_notes/check_pb.swift.md",
+      "hash": "a43c908081d235f34d56d175ea68f8ac739dd3d3a4218a9a1f72c354937c6d7d",
+      "lines": 19,
+      "last_modified": "2026-05-21T11:53:12.808151+00:00",
+      "summary": "check_pb.swift",
+      "symbols": []
+    },
+    "repo_context_notes/check_pb2.swift.md": {
+      "path": "repo_context_notes/check_pb2.swift.md",
+      "hash": "7c5d8cda025c1544648b20ae90e987f45c1ad7e50e3fb8a41df20c38d4cc2e4d",
+      "lines": 22,
+      "last_modified": "2026-05-21T11:53:12.807691+00:00",
+      "summary": "check_pb2.swift",
+      "symbols": []
+    },
+    "repo_context_notes/check_pb3.swift.md": {
+      "path": "repo_context_notes/check_pb3.swift.md",
+      "hash": "3664ec6b46ac932445e27ba171b3f3fd9eb24364a8cf8c748fbd1340f07eaaea",
+      "lines": 23,
+      "last_modified": "2026-05-21T11:53:12.807991+00:00",
+      "summary": "check_pb3.swift",
+      "symbols": []
+    },
+    "repo_context_notes/check_pb4.swift.md": {
+      "path": "repo_context_notes/check_pb4.swift.md",
+      "hash": "1d421f763df5b1f083a46e1f0798c7fdc54d9e30fe925d16c05eb8d6139cffb6",
+      "lines": 29,
+      "last_modified": "2026-05-21T11:53:12.807910+00:00",
+      "summary": "check_pb4.swift",
+      "symbols": []
+    },
+    "repo_context_notes/check_pb5.swift.md": {
+      "path": "repo_context_notes/check_pb5.swift.md",
+      "hash": "5f45cd13e9c366c7a51bd932c55693fea8389ecffcc2f1cc40909800753a46b4",
+      "lines": 36,
+      "last_modified": "2026-05-21T11:53:12.808069+00:00",
+      "summary": "check_pb5.swift",
+      "symbols": []
+    },
+    "repo_context_notes/test_fifo.sh.md": {
+      "path": "repo_context_notes/test_fifo.sh.md",
+      "hash": "b4c011177350c5e154db6b3ac5dec61152352196ae5a9ec02e8c0df6b80d3987",
+      "lines": 49,
+      "last_modified": "2026-05-21T11:53:12.808235+00:00",
+      "summary": "test_fifo.sh",
+      "symbols": []
+    },
+    "repo_context_notes/test_loop.sh.md": {
+      "path": "repo_context_notes/test_loop.sh.md",
+      "hash": "60c847276ed08fc47f615db3665b3008f53651588195ad03f3e029a7282629b2",
+      "lines": 45,
+      "last_modified": "2026-05-21T11:53:12.807816+00:00",
+      "summary": "test_loop.sh",
+      "symbols": []
+    },
+    "scripts/generate_context.py": {
+      "path": "scripts/generate_context.py",
+      "hash": "8193851bf524128e3a431d41efd944eb04a52c6e9108efd98f6ef9ba57342101",
+      "lines": 125,
+      "last_modified": "2026-05-21T11:53:13.353868+00:00",
+      "summary": "fallback: first comment or filename",
+      "symbols": []
+    },
+    "scripts/watch_context.py": {
+      "path": "scripts/watch_context.py",
+      "hash": "6d786a849569725e914402e06e78b3035963a5bcc36bdbdeee905497a5f985bf",
+      "lines": 42,
+      "last_modified": "2026-05-21T11:53:19.930078+00:00",
+      "summary": "#!/usr/bin/env python3\n\"\"\"\nSimple polling watcher that regenerates the repo context manifest when files change.",
+      "symbols": []
+    },
+    "test_fifo.sh": {
+      "path": "test_fifo.sh",
+      "hash": "a438aa272b72af2d516fd9149042579593be70c3f34a9aebd993dae0b303566d",
+      "lines": 34,
+      "last_modified": "2026-05-21T11:20:13.849160+00:00",
+      "summary": "#!/bin/bash",
+      "symbols": []
+    },
+    "test_loop.sh": {
+      "path": "test_loop.sh",
+      "hash": "2ca31856f015fa8252d7cc28cd6e0d4897657c01aa6d1c9f2b163b1627398e04",
+      "lines": 30,
+      "last_modified": "2026-05-21T11:11:33.526259+00:00",
+      "summary": "#!/bin/bash",
+      "symbols": []
+    },
+    "tools/gen_manifest.py": {
+      "path": "tools/gen_manifest.py",
+      "hash": "543e652134b54718f8af2bddf504013089b288121b5e1ca14fa47a787e69583a",
+      "lines": 82,
+      "last_modified": "2026-05-21T11:52:38.296868+00:00",
+      "summary": "mutate dirnames in-place to skip ignored dirs",
+      "symbols": []
+    },
+    "tools/generate_context.py": {
+      "path": "tools/generate_context.py",
+      "hash": "1bf5601d12938df829257b96c70eeab07f3c76003b13b42138606f897405ec3c",
+      "lines": 166,
+      "last_modified": "2026-05-21T11:53:08.627785+00:00",
+      "summary": "prefer top comment block",
+      "symbols": []
+    },
+    "tools/generate_manifest.py": {
+      "path": "tools/generate_manifest.py",
+      "hash": "74d23018089b3b2f431e81577531898f6884f8253e4b892276d503cbc25ca81f",
+      "lines": 66,
+      "last_modified": "2026-05-21T11:52:28.940277+00:00",
+      "summary": "skip hidden directories",
+      "symbols": []
+    },
+    "tools/generate_notes.py": {
+      "path": "tools/generate_notes.py",
+      "hash": "ef8acd3ed01e7c3b0aee1674b2b6e3883c8f091bbbc6b28c0aee24471a3f6011",
+      "lines": 64,
+      "last_modified": "2026-05-21T11:53:05.354090+00:00",
+      "summary": "Short auto-summary: first non-empty line of preview",
+      "symbols": []
+    }
+  }
+}

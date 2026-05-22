@@ -1,0 +1,125 @@
+{
+  "generated_at": "2026-05-21T11:52:41.870557Z",
+  "repo": "multipaste",
+  "files": [
+    {
+      "path": "check_pb2.swift",
+      "size": 195,
+      "mtime": "2026-05-21T11:16:27.390937Z",
+      "sha256": "8edaa2aa99aaee65017028e0e894760fb36a9e87c63d809eabc9ae535c9d67e0",
+      "preview": "import AppKit\n\nlet pb = NSPasteboard.general\nprint(\"Initial count: \\(pb.changeCount)\")\npb.clearContents()\npb.setString(\"test\", forType: .string)\nprint(\"Count after setString: \\(pb.changeCount)\")\n"
+    },
+    {
+      "path": "test_loop.sh",
+      "size": 586,
+      "mtime": "2026-05-21T11:11:33.526259Z",
+      "sha256": "2ca31856f015fa8252d7cc28cd6e0d4897657c01aa6d1c9f2b163b1627398e04",
+      "preview": "#!/bin/bash\n\necho \"Starting multipaste...\"\n.build/debug/multipaste > app.log 2>&1 &\nAPP_PID=$!\n\necho \"App PID: $APP_PID\"\nsleep 2\n\necho \"Copying 'Clip 1'...\"\necho -n \"Clip 1\" | pbcopy\nsleep 1\n\necho \"Copying 'Clip 2'...\"\necho -n \"Clip 2\" | pbcopy\nsleep 1\n\necho \"Simulating Cmd+Shift+V...\"\nosascript -e 'tell application \"System Events\" to keystroke \"v\" using {command down, shift down}'\nsleep 2\n\necho \"Simulating Cmd+V...\"\nosascript -e 'tell application \"System Events\" to keystroke \"v\" using {command down}'\nsleep 2\n\necho \"Killing app...\"\nkill -INT $APP_PID\n\necho \"App Log:\"\ncat app.log\n"
+    },
+    {
+      "path": "check_pb4.swift",
+      "size": 352,
+      "mtime": "2026-05-21T11:16:59.789345Z",
+      "sha256": "6ab2c4a4d4cb1095486dc46026c780832599c4571ce59580e22f698053e9aacf",
+      "preview": "import AppKit\nimport Foundation\n\nlet pb = NSPasteboard.general\nprint(\"Initial count: \\(pb.changeCount)\")\npb.clearContents()\npb.setString(\"test\", forType: .string)\nprint(\"Count after setString: \\(pb.changeCount)\")\n\nDispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {\n    print(\"Count after 0.5s: \\(pb.changeCount)\")\n    exit(0)\n}\nRunLoop.main.run()\n"
+    },
+    {
+      "path": "check_pb3.swift",
+      "size": 241,
+      "mtime": "2026-05-21T11:16:49.570207Z",
+      "sha256": "1111355369f742a5189bb03bd4e5b8385c8b2d3856a4dc807ea745eb9bd462b4",
+      "preview": "import AppKit\n\nlet pb = NSPasteboard.general\nprint(\"Initial count: \\(pb.changeCount)\")\npb.clearContents()\nprint(\"Count after clear: \\(pb.changeCount)\")\npb.setString(\"test\", forType: .string)\nprint(\"Count after setString: \\(pb.changeCount)\")\n"
+    },
+    {
+      "path": "check_pb5.swift",
+      "size": 669,
+      "mtime": "2026-05-21T11:17:19.581343Z",
+      "sha256": "f546bd98b4f47ce246527f538c7f3f7ceeddd9f972a56a0ec705601eeb270ebd",
+      "preview": "import AppKit\nimport Foundation\n\nlet pb = NSPasteboard.general\nprint(\"Initial count: \\(pb.changeCount)\")\n\n// Simulate Cmd+V\nlet vKeyCode: CGKeyCode = 9\nguard let source = CGEventSource(stateID: .hidSystemState) else { exit(1) }\nlet cmdDown = CGEvent(keyboardEventSource: source, virtualKey: vKeyCode, keyDown: true)\ncmdDown?.flags = .maskCommand\nlet cmdUp = CGEvent(keyboardEventSource: source, virtualKey: vKeyCode, keyDown: false)\ncmdUp?.flags = .maskCommand\ncmdDown?.post(tap: .cghidEventTap)\ncmdUp?.post(tap: .cghidEventTap)\n\nDispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {\n    print(\"Count after paste: \\(pb.changeCount)\")\n    exit(0)\n}\nRunLoop.main.run()\n"
+    },
+    {
+      "path": "check_pb.swift",
+      "size": 87,
+      "mtime": "2026-05-21T11:13:26.268765Z",
+      "sha256": "da11b5ce6b152a145ecf667ce1c2f9673d5133fc740b9026c63ab39c6f94ac9e",
+      "preview": "import AppKit\n\nlet pb = NSPasteboard.general\nprint(\"Initial count: \\(pb.changeCount)\")\n"
+    },
+    {
+      "path": "test_fifo.sh",
+      "size": 939,
+      "mtime": "2026-05-21T11:20:13.849160Z",
+      "sha256": "a438aa272b72af2d516fd9149042579593be70c3f34a9aebd993dae0b303566d",
+      "preview": "#!/bin/bash\n\necho \"Starting multipaste...\"\n.build/debug/multipaste > app.log 2>&1 &\nAPP_PID=$!\n\necho \"App PID: $APP_PID\"\nsleep 3\n\necho \"Enabling FIFO mode via AppleScript...\"\nosascript -e 'tell application \"System Events\" to tell process \"multipaste\" to click menu item \"Enable FIFO Mode\" of menu 1 of menu bar item 1 of menu bar 2' || osascript -e 'tell application \"System Events\" to tell process \"multipaste\" to click menu item \"Enable FIFO Mode\" of menu 1 of menu bar item 1 of menu bar 1'\nsleep 1\n\necho \"Copying 'FIFO 1'...\"\necho -n \"FIFO 1\" | pbcopy\nsleep 1\n\necho \"Copying 'FIFO 2'...\"\necho -n \"FIFO 2\" | pbcopy\nsleep 1\n\necho \"Simulating Cmd+V...\"\nosascript -e 'tell application \"System Events\" to keystroke \"v\" using {command down}'\nsleep 2\n\necho \"Simulating Cmd+V...\"\nosascript -e 'tell application \"System Events\" to keystroke \"v\" using {command down}'\nsleep 2\n\necho \"Killing app...\"\nkill -9 $APP_PID\n\necho \"App Log:\"\ncat app.log\n"
+    },
+    {
+      "path": "MULTIPASTE_PLAN.md",
+      "size": 5144,
+      "mtime": "2026-05-21T11:30:10.991901Z",
+      "sha256": "2f23997c1c6adfe1d25bbca74ebadd0f78c5691af7cc4912675ac922084d21f5",
+      "preview": "# Multipaste: The \"Cycle & Drop\" Clipboard Buffer\n\n## 1. Product Vision & Philosophy\nMultipaste is an ultra-minimalist, micro-SaaS macOS clipboard utility designed specifically to solve the \"Short-Term Buffer\" problem. \n\n**The Pain Point:** Existing clipboard managers (Raycast, Maccy, Paste) are built for *Long-Term Retrieval*. They force users to break their \"flow state\" by opening a UI, searching, and hitting Enter for every single paste. This makes sequential pasting (copying 3 items and pasting them in order) a slow, frustrating experience.\n**The Solution:** Multipaste acts as a \"scalpel.\" It provides a zero-friction muscle-memory solution for the next 10 seconds of rapid-fire pasting, living invisibly alongside long-term managers like Raycast.\n\n**Core Mechanics:**\n*   **Cycle & Drop:** Hold `Cmd+Shift`, tap `V` to cycle backward through recent clips. A translucent tooltip appears *exactly* at the text cursor. Release to instantly paste.\n*   **FIFO Mode (First In, First Out):** A killer feature for developers and data-entry workers. Turn it on, copy multiple items in a row, and simply hit standard `Cmd+V` repeatedly to automatically paste them in the exact order they were copied.\n\n**Brand Name Ideas (Brainstormed):** Reel, Shift, Echo, Slip, Vee.\n\n---\n\n## 2. Technical Stack\n*   **Language:** Swift 5.9\n*   **Frameworks:** \n    *   **AppKit:** For background execution (`LSUIElement`), Menu Bar, and window management.\n    *   **SwiftUI:** For the modern, translucent tooltip UI (`VisualEffectView`).\n    *   **CoreGraphics/Carbon:** Low-level `CGEventTap` to intercept global keystrokes and synthesize pastes.\n    *   **Accessibility (AXUIElement):** To locate the exact pixel coordinates of the blinking text cursor globally across the OS.\n*   **Database:** `SQLite.swift` for fast, limitless, thread-safe local storage (solving Maccy's 999-item limit UI lag).\n\n---\n\n## 3. Current Implementation Status (What has been built)\n\nThe core engine has been successfully built and "
+    },
+    {
+      "path": "Package.swift",
+      "size": 827,
+      "mtime": "2026-05-21T11:52:34.533675Z",
+      "sha256": "ae0f4c63c5ffff33d3371d9f81b622180c533fc5ab3611eca60750ff03c3fb3b",
+      "preview": "// swift-tools-version: 5.9\n// The swift-tools-version declares the minimum version of Swift required to build this package.\n\nimport PackageDescription\n\nlet package = Package(\n    name: \"multipaste\",\n    platforms: [\n        .macOS(.v13)\n    ],\n    dependencies: [\n        .package(url: \"https://github.com/stephencelis/SQLite.swift.git\", from: \"0.14.1\")\n    ],\n    targets: [\n        // Targets are the basic building blocks of a package, defining a module or a test suite.\n        // Targets can depend on other targets in this package and products from dependencies.\n        .executableTarget(\n            name: \"multipaste\",\n            dependencies: [\n                .product(name: \"SQLite\", package: \"SQLite.swift\")\n            ]\n        ),\n        .executableTarget(\n            name: \"contextbrain\"\n        ),\n    ]\n)\n"
+    },
+    {
+      "path": "README_MANIFEST.md",
+      "size": 386,
+      "mtime": "2026-05-21T11:52:36.573868Z",
+      "sha256": "2bc940f6c550b2e7571e051da5b4ad123db309238c40825d5620e6950ca4e1b1",
+      "preview": "# Repo-local manifest for agent context\n\nThis repo contains a small manifest generator that creates `repo_context_manifest.json`.\n\nUsage:\n\n```bash\npython3 tools/generate_manifest.py\n```\n\nThe manifest contains per-file previews, modification times, sizes, and SHA256 hashes. Agents can read `repo_context_manifest.json` first to get an overview and only fetch full files when necessary.\n"
+    },
+    {
+      "path": "Sources/multipaste/HotkeyManager.swift",
+      "size": 3822,
+      "mtime": "2026-05-21T02:39:31.729438Z",
+      "sha256": "cbe3dd155b495fd14cb38d15e63a75bc77887e824641ab654289abcc20494aea",
+      "preview": "import AppKit\nimport ApplicationServices\nimport Foundation\n\nprotocol HotkeyManagerDelegate: AnyObject {\n    func hotkeyManagerDidTriggerCycle()\n    func hotkeyManagerDidReleaseModifiers()\n    func hotkeyManagerDidTriggerPaste() -> Bool // Return true if handled (e.g. FIFO mode)\n}\n\nclass HotkeyManager {\n    static let shared = HotkeyManager()\n    \n    weak var delegate: HotkeyManagerDelegate?\n    \n    private var eventTap: CFMachPort?\n    private var runLoopSource: CFRunLoopSource?\n    \n    private var isCycling = false\n    \n    private init() {}\n    \n    func start() {\n        let eventMask = (1 << CGEventType.keyDown.rawValue) | (1 << CGEventType.flagsChanged.rawValue)\n        \n        let observer = UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque())\n        \n        eventTap = CGEvent.tapCreate(\n            tap: .cgSessionEventTap,\n            place: .headInsertEventTap,\n            options: .defaultTap,\n            eventsOfInterest: CGEventMask(eventMask),\n            callback: { proxy, type, event, refcon in\n                let manager = Unmanaged<HotkeyManager>.fromOpaque(refcon!).takeUnretainedValue()\n                return manager.handleEvent(proxy: proxy, type: type, event: event)\n            },\n            userInfo: observer\n        )\n        \n        guard let eventTap = eventTap else {\n            print(\"Failed to create event tap. Ensure Accessibility permissions are granted.\")\n            return\n        }\n        \n        runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)\n        CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)\n        CGEvent.tapEnable(tap: eventTap, enable: true)\n        print(\"Event tap started.\")\n    }\n    \n    func stop() {\n        if let eventTap = eventTap {\n            CGEvent.tapEnable(tap: eventTap, enable: false)\n            if let runLoopSource = runLoopSource {\n                CFRunLoopRemoveSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)\n        "
+    },
+    {
+      "path": "Sources/multipaste/multipaste.swift",
+      "size": 326,
+      "mtime": "2026-05-21T11:12:16.056883Z",
+      "sha256": "39626e4c87e9af894d9ae2b4702584550c9234a814a2acb8301f1715aba8560a",
+      "preview": "import AppKit\nimport Darwin\n\n@main\nstruct multipaste {\n    static func main() {\n        setbuf(stdout, nil)\n        let app = NSApplication.shared\n        let delegate = AppDelegate()\n        app.delegate = delegate\n        app.setActivationPolicy(.accessory) // Run as background app (no dock icon)\n        app.run()\n    }\n}\n"
+    },
+    {
+      "path": "Sources/multipaste/ClipboardManager.swift",
+      "size": 2216,
+      "mtime": "2026-05-21T11:18:49.163599Z",
+      "sha256": "9db334ea0823f7460a94bc661d73e5936c0bca083a2cfab3c3e1a8b282536478",
+      "preview": "import AppKit\nimport Foundation\n\nclass ClipboardManager {\n    static let shared = ClipboardManager()\n    \n    private var timer: Timer?\n    private var lastChangeCount: Int = 0\n    private let pasteboard = NSPasteboard.general\n    \n    // Flag to prevent capturing our own synthetic pastes\n    var isPasting = false\n    var lastInjectedText: String?\n    \n    private init() {\n        lastChangeCount = pasteboard.changeCount\n    }\n    \n    func startPolling() {\n        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in\n            self?.checkPasteboard()\n        }\n        // Ensure timer runs even when UI is interacting\n        if let timer = timer {\n            RunLoop.current.add(timer, forMode: .common)\n        }\n    }\n    \n    func stopPolling() {\n        timer?.invalidate()\n        timer = nil\n    }\n    \n    private func checkPasteboard() {\n        let currentChangeCount = pasteboard.changeCount\n        guard currentChangeCount != lastChangeCount else { return }\n        lastChangeCount = currentChangeCount\n        \n        print(\"Pasteboard changed to count: \\(currentChangeCount)\")\n        \n        if isPasting {\n            // Skip capturing if we are currently injecting a paste\n            print(\"Skipping capture because isPasting is true\")\n            return\n        }\n        \n        if let text = pasteboard.string(forType: .string) {\n            if text == lastInjectedText {\n                print(\"Skipping capture because text matches lastInjectedText: \\(text.prefix(20))...\")\n                return\n            }\n            \n            print(\"Found text in pasteboard: \\(text.prefix(20))... (lastInjectedText was: \\(lastInjectedText?.prefix(20) ?? \"nil\"))\")\n            DatabaseManager.shared.insertClip(content: text, type: \"text\")\n            NotificationCenter.default.post(name: NSNotification.Name(\"NewClipAdded\"), object: text)\n        } else {\n            print(\"No string found in pasteboard\")\n        }\n    }\n    \n    func "
+    },
+    {
+      "path": "Sources/multipaste/TooltipManager.swift",
+      "size": 3289,
+      "mtime": "2026-05-21T02:30:14.906770Z",
+      "sha256": "1be67c85986f9647237c6c2f0a512dfa5276a4cc9450a6e7cfd9efefd71e9601",
+      "preview": "import AppKit\nimport SwiftUI\n\nclass TooltipManager {\n    static let shared = TooltipManager()\n    \n    private var window: NSWindow?\n    \n    private init() {}\n    \n    func showTooltip(content: String, index: Int, total: Int) {\n        if window == nil {\n            let panel = NSPanel(\n                contentRect: NSRect(x: 0, y: 0, width: 250, height: 80),\n                styleMask: [.nonactivatingPanel, .borderless],\n                backing: .buffered,\n                defer: false\n            )\n            panel.isFloatingPanel = true\n            panel.level = .screenSaver\n            panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]\n            panel.backgroundColor = .clear\n            panel.hasShadow = false\n            panel.isOpaque = false\n            window = panel\n        }\n        \n        let view = TooltipView(content: content, index: index, total: total)\n        window?.contentView = NSHostingView(rootView: view)\n        \n        positionWindow()\n        window?.orderFront(nil)\n    }\n    \n    func hideTooltip() {\n        window?.orderOut(nil)\n    }\n    \n    private func positionWindow() {\n        guard let window = window else { return }\n        \n        // Try to get caret position via Accessibility\n        var position = getCaretPosition()\n        \n        if position == nil {\n            // Fallback to mouse cursor\n            let mouseLoc = NSEvent.mouseLocation\n            position = CGPoint(x: mouseLoc.x + 15, y: mouseLoc.y - 15)\n        }\n        \n        if let pos = position {\n            // Adjust for window size\n            let windowFrame = NSRect(x: pos.x, y: pos.y - window.frame.height, width: window.frame.width, height: window.frame.height)\n            window.setFrame(windowFrame, display: true)\n        }\n    }\n    \n    private func getCaretPosition() -> CGPoint? {\n        let systemWideElement = AXUIElementCreateSystemWide()\n        var focusedElement: CFTypeRef?\n        \n        let error = AXUIElementCopyAttribute"
+    },
+    {
+      "path": "Sources/multipaste/AppDelegate.swift",
+      "size": 6140,
+      "mtime": "2026-05-21T02:31:18.913322Z",
+      "sha256": "abd6350e2363f8d35afe6b75b4d95c008344b3b3de0b3b8763aba0aff784a023",
+      "preview": "import AppKit\nimport ApplicationServices\n\nclass AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {\n    \n    private var clips: [(id: Int64, content: String, type: String, timestamp: Date)] = []\n    private var currentIndex: Int = -1\n    \n    private var statusItem: NSStatusItem!\n    private var isFIFOModeEnabled = false\n    private var fifoQueue: [String] = []\n    \n    func applicationDidFinishLaunching(_ notification: Notification) {\n        // Check Accessibility Permissions\n        let options = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true]\n        let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary)\n        \n        if !accessEnabled {\n            print(\"Accessibility permissions not granted. Please enable them in System Settings.\")\n        }\n        \n        setupMenuBar()\n        \n        // Initialize Database\n        _ = DatabaseManager.shared\n        \n        // Start Clipboard Polling\n        ClipboardManager.shared.startPolling()\n        \n        // Start Hotkey Interception\n        HotkeyManager.shared.delegate = self\n        HotkeyManager.shared.start()\n        \n        NotificationCenter.default.addObserver(self, selector: #selector(handleNewClip(_:)), name: NSNotification.Name(\"NewClipAdded\"), object: nil)\n        \n        print(\"Multipaste is running in the background.\")\n    }\n    \n    @objc private func handleNewClip(_ notification: Notification) {\n        guard isFIFOModeEnabled, let text = notification.object as? String else { return }\n        fifoQueue.append(text)\n        print(\"Added to FIFO queue. Queue size: \\(fifoQueue.count)\")\n    }\n    \n    private func setupMenuBar() {\n        statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)\n        if let button = statusItem.button {\n            button.title = \"MP\"\n        }\n        \n        let menu = NSMenu()\n        \n        let fifoItem = NSMenuItem(title: \"Enable FIFO Mode\", action: #selector(toggleFIFO"
+    },
+    {
+      "path": "Sources/multipaste/DatabaseManager.swift",
+      "size": 2936,
+      "mtime": "2026-05-21T11:14:50.660433Z",
+      "sha256": "2ba5497d8b903a126d321ede97fda7d18dce00ecac62a8c456d8b1a0dc292a6c",
+      "preview": "import Foundation\nimport SQLite\n\nclass DatabaseManager {\n    static let shared = DatabaseManager()\n    \n    private var db: Connection?\n    \n    private let clips = Table(\"clips\")\n    private let id = Expression<Int64>(\"id\")\n    private let content = Expression<String>(\"content\")\n    private let type = Expression<String>(\"type\")\n    private let timestamp = Expression<Date>(\"timestamp\")\n    \n    private init() {\n        setupDatabase()\n    }\n    \n    private func setupDatabase() {\n        do {\n            let fileManager = FileManager.default\n            let appSupportURL = try fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true)\n            let appDirectory = appSupportURL.appendingPathComponent(\"multipaste\", isDirectory: true)\n            \n            if !fileManager.fileExists(atPath: appDirectory.path) {\n                try fileManager.createDirectory(at: appDirectory, withIntermediateDirectories: true, attributes: nil)\n            }\n            \n            let dbURL = appDirectory.appendingPathComponent(\"db.sqlite3\")\n            db = try Connection(dbURL.path)\n            \n            try db?.run(clips.create(ifNotExists: true) { t in\n                t.column(id, primaryKey: .autoincrement)\n                t.column(content)\n                t.column(type)\n                t.column(timestamp)\n            })\n            print(\"Database initialized at \\(dbURL.path)\")\n        } catch {\n            print(\"Failed to initialize database: \\(error)\")\n        }\n    }\n    \n    func insertClip(content text: String, type clipType: String = \"text\") {\n        guard let db = db else { return }\n        do {\n            // Check if the last clip is the same to avoid duplicates\n            if let lastClip = try db.pluck(clips.order(timestamp.desc).limit(1)) {\n                if lastClip[content] == text {\n                    print(\"Skipping duplicate clip: \\(text.prefix(20))...\")\n                    return\n                } else"
+    },
+    {
+      "path": "Sources/multipaste/TooltipView.swift",
+      "size": 1314,
+      "mtime": "2026-05-21T02:28:37.636368Z",
+      "sha256": "14cdc75bcbeca97e5dc2cceeb94a6a6f8b0d129244447b613251ec5db125e55b",
+      "preview": "import SwiftUI\n\nstruct TooltipView: View {\n    var content: String\n    var index: Int\n    var total: Int\n    \n    var body: some View {\n        VStack(alignment: .leading, spacing: 4) {\n            Text(\"\\(index + 1)/\\(total)\")\n                .font(.caption2)\n                .foregroundColor(.secondary)\n            \n            Text(content)\n                .font(.system(size: 13, weight: .medium, design: .monospaced))\n                .lineLimit(3)\n                .foregroundColor(.primary)\n        }\n        .padding(8)\n        .background(VisualEffectView(material: .popover, blendingMode: .behindWindow))\n        .cornerRadius(8)\n        .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)\n        .frame(width: 250, alignment: .leading)\n    }\n}\n\nstruct VisualEffectView: NSViewRepresentable {\n    var material: NSVisualEffectView.Material\n    var blendingMode: NSVisualEffectView.BlendingMode\n    \n    func makeNSView(context: Context) -> NSVisualEffectView {\n        let view = NSVisualEffectView()\n        view.material = material\n        view.blendingMode = blendingMode\n        view.state = .active\n        return view\n    }\n    \n    func updateNSView(_ nsView: NSVisualEffectView, context: Context) {\n        nsView.material = material\n        nsView.blendingMode = blendingMode\n    }\n}\n"
+    }
+  ]
+}
