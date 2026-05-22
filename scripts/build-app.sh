@@ -57,3 +57,36 @@ cat <<EOF > "$APP_DIR/Contents/Info.plist"
 EOF
 
 echo "Done! App bundle created at $APP_DIR"
+
+# --- Phase 6: Code Signing and DMG Creation ---
+# Uncomment when ready to distribute and Apple Developer ID is available.
+#
+# IDENTITY="Developer ID Application: YOUR_NAME (TEAM_ID)"
+# echo "Code signing with $IDENTITY..."
+# codesign --force --deep --options runtime \
+#   --entitlements multipaste.entitlements \
+#   --sign "$IDENTITY" \
+#   "$APP_DIR"
+#
+# echo "Notarizing..."
+# xcrun notarytool submit "$APP_DIR" \
+#   --apple-id "YOUR_APPLE_ID" \
+#   --team-id "TEAM_ID" \
+#   --password "$NOTARY_APP_PASSWORD" \
+#   --wait
+#
+# xcrun stapler staple "$APP_DIR"
+#
+# echo "Creating DMG..."
+# create-dmg \
+#   --volname "Multipaste" \
+#   --window-pos 200 120 \
+#   --window-size 600 400 \
+#   --icon-size 128 \
+#   --icon "Multipaste.app" 150 200 \
+#   --hide-extension "Multipaste.app" \
+#   --app-drop-link 450 200 \
+#   "Multipaste-1.0.0.dmg" \
+#   "$APP_DIR"
+#
+# echo "Build and Packaging Complete!"
