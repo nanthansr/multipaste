@@ -6,8 +6,9 @@ import Foundation
 private let log = Logger(subsystem: "com.local.multipaste", category: "HotkeyManager")
 protocol HotkeyManagerDelegate: AnyObject {
     func hotkeyManagerDidTriggerCycle()
+    func hotkeyManagerDidTriggerReverseCycle()
+    func hotkeyManagerDidTriggerPaste() -> Bool
     func hotkeyManagerDidReleaseModifiers()
-    func hotkeyManagerDidTriggerPaste() -> Bool // Return true if handled (e.g. FIFO mode)
 }
 
 class HotkeyManager {

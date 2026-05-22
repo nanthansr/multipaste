@@ -9,7 +9,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     private var currentIndex: Int = -1
     
     private var statusItem: NSStatusItem!
+    
     private var isFIFOModeEnabled = false
+    private var originalPasteboardContent: String?
+
     private var fifoQueue: [String] = []
     
     func applicationDidFinishLaunching(_ notification: Notification) {
@@ -82,6 +85,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     
     // MARK: - HotkeyManagerDelegate
     
+    
+    func hotkeyManagerDidTriggerReverseCycle() {
+        guard !clips.isEmpty else { return }
+        if currentIndex == -1 { currentIndex = 0 }
+        currentIndex = (currentIndex - 1 + clips.count) % clips.count
+        
+        let clip = clips[currentIndex]
+        TooltipManager.shared.showTooltip(clip: clip, index: currentIndex, total: clips.count)
+    }
+
     func hotkeyManagerDidTriggerCycle() {
         if currentIndex == -1 {
             // First cycle, fetch recent clips
@@ -113,8 +126,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         injectPaste(content: clip.content)
     }
     
+    
     func hotkeyManagerDidTriggerPaste() -> Bool {
         guard isFIFOModeEnabled, !fifoQueue.isEmpty else { return false }
+        
+        if fifoQueue.count == 1 { // Last item to dequeue soon
+             originalPasteboardContent = NSPasteboard.general.string(forType: .string)
+        }
         
         let text = fifoQueue.removeFirst()
         log.debug("FIFO pasting: \(text). Remaining: \(self.fifoQueue.count)")
@@ -122,15 +140,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         ClipboardManager.shared.isPasting = true
         ClipboardManager.shared.setPasteboard(content: text)
         
-        // We return true to indicate we handled it, but we actually want the Cmd+V to pass through
-        // so the OS performs the paste with the new pasteboard content.
-        // We just need to reset the isPasting flag after a short delay.
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-            ClipboardManager.shared.isPasting = false
+        if fifoQueue.isEmpty {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                if let original = self.originalPasteboardContent {
+                    ClipboardManager.shared.setPasteboard(content: original)
+                }
+            }
         }
         
         return true
     }
+
     
     private func injectPaste(content: String) {
         ClipboardManager.shared.isPasting = true
