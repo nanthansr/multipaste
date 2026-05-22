@@ -1,6 +1,8 @@
+import os
 import AppKit
 import ApplicationServices
 
+private let log = Logger(subsystem: "com.local.multipaste", category: "AppDelegate")
 class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     
     private var clips: [(id: Int64, content: String, type: String, timestamp: Date)] = []
@@ -16,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary)
         
         if !accessEnabled {
-            print("Accessibility permissions not granted. Please enable them in System Settings.")
+            log.debug("Accessibility permissions not granted. Please enable them in System Settings.")
         }
         
         setupMenuBar()
@@ -33,13 +35,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleNewClip(_:)), name: NSNotification.Name("NewClipAdded"), object: nil)
         
-        print("Multipaste is running in the background.")
+        log.debug("Multipaste is running in the background.")
     }
     
     @objc private func handleNewClip(_ notification: Notification) {
         guard isFIFOModeEnabled, let text = notification.object as? String else { return }
         fifoQueue.append(text)
-        print("Added to FIFO queue. Queue size: \(fifoQueue.count)")
+        log.debug("Added to FIFO queue. Queue size: \(self.fifoQueue.count)")
     }
     
     private func setupMenuBar() {
@@ -66,10 +68,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         if isFIFOModeEnabled {
             // Initialize FIFO queue with recent clips or start fresh
             fifoQueue = []
-            print("FIFO Mode Enabled")
+            log.debug("FIFO Mode Enabled")
         } else {
             fifoQueue = []
-            print("FIFO Mode Disabled")
+            log.debug("FIFO Mode Disabled")
         }
     }
     
@@ -115,7 +117,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         guard isFIFOModeEnabled, !fifoQueue.isEmpty else { return false }
         
         let text = fifoQueue.removeFirst()
-        print("FIFO pasting: \(text). Remaining: \(fifoQueue.count)")
+        log.debug("FIFO pasting: \(text). Remaining: \(self.fifoQueue.count)")
         
         ClipboardManager.shared.isPasting = true
         ClipboardManager.shared.setPasteboard(content: text)

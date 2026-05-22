@@ -1,5 +1,7 @@
+import os
 import SwiftUI
 
+private let log = Logger(subsystem: "com.local.multipaste", category: "TooltipView")
 struct TooltipView: View {
     var content: String
     var index: Int

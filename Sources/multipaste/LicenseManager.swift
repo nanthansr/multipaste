@@ -1,5 +1,7 @@
+import os
 import Foundation
 
+private let log = Logger(subsystem: "com.local.multipaste", category: "LicenseManager")
 class LicenseManager {
     static let shared = LicenseManager()
     

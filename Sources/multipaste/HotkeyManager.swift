@@ -1,7 +1,9 @@
+import os
 import AppKit
 import ApplicationServices
 import Foundation
 
+private let log = Logger(subsystem: "com.local.multipaste", category: "HotkeyManager")
 protocol HotkeyManagerDelegate: AnyObject {
     func hotkeyManagerDidTriggerCycle()
     func hotkeyManagerDidReleaseModifiers()
@@ -38,14 +40,14 @@ class HotkeyManager {
         )
         
         guard let eventTap = eventTap else {
-            print("Failed to create event tap. Ensure Accessibility permissions are granted.")
+            log.debug("Failed to create event tap. Ensure Accessibility permissions are granted.")
             return
         }
         
         runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
         CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)
         CGEvent.tapEnable(tap: eventTap, enable: true)
-        print("Event tap started.")
+        log.debug("Event tap started.")
     }
     
     func stop() {

@@ -1,6 +1,8 @@
+import os
 import Foundation
 import SQLite
 
+private let log = Logger(subsystem: "com.local.multipaste", category: "DatabaseManager")
 class DatabaseManager {
     static let shared = DatabaseManager()
     
@@ -35,9 +37,9 @@ class DatabaseManager {
                 t.column(type)
                 t.column(timestamp)
             })
-            print("Database initialized at \(dbURL.path)")
+            log.debug("Database initialized at \(dbURL.path)")
         } catch {
-            print("Failed to initialize database: \(error)")
+            log.debug("Failed to initialize database: \(error)")
         }
     }
     
@@ -46,19 +48,19 @@ class DatabaseManager {
         do {
             // Check if the last clip is the same to avoid duplicates
             if let lastClip = try db.pluck(clips.order(timestamp.desc).limit(1)) {
-                if lastClip[content] == text {
-                    print("Skipping duplicate clip: \(text.prefix(20))...")
+                if lastClip[self.content] == text {
+                    log.debug("Skipping duplicate clip: \(text.prefix(20))...")
                     return
                 } else {
-                    print("Last clip was: \(lastClip[content].prefix(20))...")
+                    log.debug("Last clip was: \(lastClip[self.content].prefix(20))...")
                 }
             }
             
             let insert = clips.insert(self.content <- text, self.type <- clipType, self.timestamp <- Date())
             try db.run(insert)
-            print("Inserted clip: \(text.prefix(20))...")
+            log.debug("Inserted clip: \(text.prefix(20))...")
         } catch {
-            print("Failed to insert clip: \(error)")
+            log.debug("Failed to insert clip: \(error)")
         }
     }
     
@@ -70,7 +72,7 @@ class DatabaseManager {
                 result.append((clip[id], clip[content], clip[type], clip[timestamp]))
             }
         } catch {
-            print("Failed to fetch clips: \(error)")
+            log.debug("Failed to fetch clips: \(error)")
         }
         return result
     }
