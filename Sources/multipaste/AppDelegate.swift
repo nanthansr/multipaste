@@ -155,7 +155,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         clips = []
         
         // Inject paste
-        injectPaste(content: clip.content)
+        injectPaste(clip: clip)
     }
     
     
@@ -184,21 +184,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     }
 
     
-    private func injectPaste(content: String) {
+    private func injectPaste(clip: Clip) {
         ClipboardManager.shared.isPasting = true
         
         // Save current pasteboard to restore later
         let currentPasteboardContent = NSPasteboard.general.string(forType: .string)
         
-        // Set new content
-        ClipboardManager.shared.setPasteboard(content: content)
+        // Set new content based on type
+        NSPasteboard.general.clearContents()
+        if clip.type == "image", let data = clip.blob {
+            NSPasteboard.general.setData(data, forType: .tiff)
+        } else if clip.type == "file" {
+            let paths = clip.content.components(separatedBy: "\n")
+            let urls = paths.map { URL(fileURLWithPath: $0) }
+            NSPasteboard.general.writeObjects(urls as [NSURL])
+        } else {
+            NSPasteboard.general.setString(clip.content, forType: .string)
+        }
         
         // Wait a tiny bit for the OS to register the pasteboard change
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
             self.simulateCmdV()
             
-            // Restore original pasteboard content after paste
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            // Increased delay to 0.4s to prevent target app from reading too early
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
                 if let original = currentPasteboardContent {
                     ClipboardManager.shared.setPasteboard(content: original)
                 }

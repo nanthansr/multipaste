@@ -13,7 +13,7 @@ class TooltipManager {
     func showTooltip(clip: Clip, index: Int, total: Int) {
         if window == nil {
             let panel = NSPanel(
-                contentRect: NSRect(x: 0, y: 0, width: 250, height: 80),
+                contentRect: NSRect(x: 0, y: 0, width: 320, height: 150),
                 styleMask: [.nonactivatingPanel, .borderless],
                 backing: .buffered,
                 defer: false
@@ -81,10 +81,10 @@ class TooltipManager {
                 AXValueGetValue(boundsAXValue, .cgRect, &rect)
                 
                 // Convert screen coordinates to AppKit coordinates
-                if let screen = NSScreen.main {
-                    let y = screen.frame.height - rect.origin.y
-                    return CGPoint(x: rect.origin.x, y: y)
-                }
+                let screens = NSScreen.screens
+                let targetScreen = screens.first(where: { $0.frame.contains(rect.origin) }) ?? NSScreen.main ?? screens[0]
+                let y = targetScreen.frame.height - rect.origin.y
+                return CGPoint(x: rect.origin.x, y: y)
             }
         }
         return nil

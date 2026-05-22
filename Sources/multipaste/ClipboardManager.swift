@@ -19,7 +19,7 @@ class ClipboardManager {
     }
     
     func startPolling() {
-        timer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { [weak self] _ in
             self?.checkPasteboard()
         }
         // Ensure timer runs even when UI is interacting
