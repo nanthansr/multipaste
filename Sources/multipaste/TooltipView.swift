@@ -1,35 +1,45 @@
-import os
 import SwiftUI
 
-private let log = Logger(subsystem: "com.local.multipaste", category: "TooltipView")
 struct TooltipView: View {
-    var content: String
-    var index: Int
-    var total: Int
+    let clip: Clip
+    let index: Int
+    let total: Int
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 4) {
+        HStack {
             Text("\(index + 1)/\(total)")
-                .font(.caption2)
-                .foregroundColor(.secondary)
+                .font(.caption)
+                .padding(.horizontal, 6)
+                .padding(.vertical, 2)
+                .background(Capsule().fill(Color.gray.opacity(0.3)))
             
-            Text(content)
-                .font(.system(size: 13, weight: .medium, design: .monospaced))
-                .lineLimit(3)
-                .foregroundColor(.primary)
+            if clip.type == "image", let data = clip.blob, let nsImage = NSImage(data: data) {
+                Image(nsImage: nsImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 150)
+            } else if clip.type == "file" {
+                HStack {
+                    Image(systemName: "doc")
+                    Text(clip.content)
+                        .lineLimit(3)
+                }
+            } else {
+                Text(clip.content)
+                    .lineLimit(3)
+            }
         }
-        .padding(8)
-        .background(VisualEffectView(material: .popover, blendingMode: .behindWindow))
+        .padding()
+        .background(VisualEffectView(material: .menu, blendingMode: .behindWindow))
         .cornerRadius(8)
-        .shadow(color: Color.black.opacity(0.2), radius: 4, x: 0, y: 2)
-        .frame(width: 250, alignment: .leading)
+        .shadow(radius: 4)
     }
 }
 
 struct VisualEffectView: NSViewRepresentable {
     var material: NSVisualEffectView.Material
     var blendingMode: NSVisualEffectView.BlendingMode
-    
+
     func makeNSView(context: Context) -> NSVisualEffectView {
         let view = NSVisualEffectView()
         view.material = material
@@ -37,7 +47,7 @@ struct VisualEffectView: NSViewRepresentable {
         view.state = .active
         return view
     }
-    
+
     func updateNSView(_ nsView: NSVisualEffectView, context: Context) {
         nsView.material = material
         nsView.blendingMode = blendingMode

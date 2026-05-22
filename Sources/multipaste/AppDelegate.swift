@@ -5,7 +5,7 @@ import ApplicationServices
 private let log = Logger(subsystem: "com.local.multipaste", category: "AppDelegate")
 class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     
-    private var clips: [(id: Int64, content: String, type: String, timestamp: Date)] = []
+    private var clips: [Clip] = []
     private var currentIndex: Int = -1
     
     private var statusItem: NSStatusItem!
@@ -94,7 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         }
         
         let clip = clips[currentIndex]
-        TooltipManager.shared.showTooltip(content: clip.content, index: currentIndex, total: clips.count)
+        TooltipManager.shared.showTooltip(clip: clip, index: currentIndex, total: clips.count)
     }
     
     func hotkeyManagerDidReleaseModifiers() {

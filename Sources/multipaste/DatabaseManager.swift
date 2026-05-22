@@ -3,6 +3,15 @@ import Foundation
 import SQLite
 
 private let log = Logger(subsystem: "com.local.multipaste", category: "DatabaseManager")
+
+struct Clip: Identifiable {
+    let id: Int64
+    let content: String
+    let timestamp: Date
+    let type: String
+    let blob: Data?
+}
+
 class DatabaseManager {
     static let shared = DatabaseManager()
     
@@ -12,6 +21,7 @@ class DatabaseManager {
     private let id = Expression<Int64>("id")
     private let content = Expression<String>("content")
     private let type = Expression<String>("type")
+    let blobColumn = Expression<Data?>("blob")
     private let timestamp = Expression<Date>("timestamp")
     
     private init() {
@@ -31,7 +41,14 @@ class DatabaseManager {
             let dbURL = appDirectory.appendingPathComponent("db.sqlite3")
             db = try Connection(dbURL.path)
             
-            try db?.run(clips.create(ifNotExists: true) { t in
+            
+        do {
+            try db?.run("ALTER TABLE clips ADD COLUMN blob BLOB")
+        } catch {
+            log.debug("Column blob may already exist: \(error)")
+        }
+
+        try db?.run(clips.create(ifNotExists: true) { t in
                 t.column(id, primaryKey: .autoincrement)
                 t.column(content)
                 t.column(type)
@@ -43,6 +60,18 @@ class DatabaseManager {
         }
     }
     
+    
+    func insertImageClip(data: Data) {
+        guard let db = db else { return }
+        do {
+            let insert = clips.insert(self.content <- "Image", self.timestamp <- Date(), self.type <- "image", self.blobColumn <- data)
+            try db.run(insert)
+            pruneIfNeeded(cap: LicenseManager.shared.isProUnlocked ? Int.max : 50)
+        } catch {
+            log.error("Failed to insert image: \(error)")
+        }
+    }
+
     func insertClip(content text: String, type clipType: String = "text") {
         guard let db = db else { return }
         do {
@@ -58,22 +87,45 @@ class DatabaseManager {
             
             let insert = clips.insert(self.content <- text, self.type <- clipType, self.timestamp <- Date())
             try db.run(insert)
+            pruneIfNeeded(cap: LicenseManager.shared.isProUnlocked ? Int.max : 50)
             log.debug("Inserted clip: \(text.prefix(20))...")
         } catch {
             log.debug("Failed to insert clip: \(error)")
         }
     }
     
-    func fetchRecentClips(limit: Int = 50) -> [(id: Int64, content: String, type: String, timestamp: Date)] {
-        guard let db = db else { return [] }
-        var result: [(Int64, String, String, Date)] = []
+    
+    
+    func pruneIfNeeded(cap: Int) {
+        guard let db = db else { return }
         do {
-            for clip in try db.prepare(clips.order(timestamp.desc).limit(limit)) {
-                result.append((clip[id], clip[content], clip[type], clip[timestamp]))
+            let total = try db.scalar(clips.count)
+            if total > cap {
+                let excess = total - cap
+                let oldest = clips.order(timestamp.asc).limit(excess)
+                try db.run(oldest.delete())
             }
         } catch {
-            log.debug("Failed to fetch clips: \(error)")
+            log.error("Pruning failed: \(error)")
+        }
+    }
+    
+    func clearAll() {
+        guard let db = db else { return }
+        try? db.run(clips.delete())
+    }
+
+    func fetchRecentClips(limit: Int = 50) -> [Clip] {
+        guard let db = db else { return [] }
+        var result: [Clip] = []
+        do {
+            for row in try db.prepare(clips.order(timestamp.desc).limit(limit)) {
+                result.append(Clip(id: row[id], content: row[content], timestamp: row[timestamp], type: row[type], blob: row[blobColumn]))
+            }
+        } catch {
+            log.error("Failed to fetch clips: \(error)")
         }
         return result
     }
+
 }

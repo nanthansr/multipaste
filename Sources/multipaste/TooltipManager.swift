@@ -10,7 +10,7 @@ class TooltipManager {
     
     private init() {}
     
-    func showTooltip(content: String, index: Int, total: Int) {
+    func showTooltip(clip: Clip, index: Int, total: Int) {
         if window == nil {
             let panel = NSPanel(
                 contentRect: NSRect(x: 0, y: 0, width: 250, height: 80),
@@ -27,7 +27,7 @@ class TooltipManager {
             window = panel
         }
         
-        let view = TooltipView(content: content, index: index, total: total)
+        let view = TooltipView(clip: clip, index: index, total: total)
         window?.contentView = NSHostingView(rootView: view)
         
         positionWindow()

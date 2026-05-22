@@ -63,6 +63,23 @@ class ClipboardManager {
             return
         }
         
+        
+        if LicenseManager.shared.isProUnlocked,
+           let imageData = pasteboard.data(forType: .tiff) ?? pasteboard.data(forType: NSPasteboard.PasteboardType("public.png")) {
+            DatabaseManager.shared.insertImageClip(data: imageData)
+            NotificationCenter.default.post(name: NSNotification.Name("NewClipAdded"), object: "Image")
+            return
+        }
+        
+        if LicenseManager.shared.isProUnlocked,
+           let fileURLs = pasteboard.readObjects(forClasses: [NSURL.self], options: nil) as? [URL],
+           !fileURLs.isEmpty {
+            let paths = fileURLs.map { $0.path }.joined(separator: "\n")
+            DatabaseManager.shared.insertClip(content: paths, type: "file")
+            NotificationCenter.default.post(name: NSNotification.Name("NewClipAdded"), object: paths)
+            return
+        }
+
         if let text = pasteboard.string(forType: .string) {
             if text == lastInjectedText {
                 log.debug("Skipping capture because text matches lastInjectedText: \(text.prefix(20))...")
