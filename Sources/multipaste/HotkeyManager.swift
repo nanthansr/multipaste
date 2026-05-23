@@ -41,14 +41,14 @@ class HotkeyManager {
         )
         
         guard let eventTap = eventTap else {
-            log.debug("Failed to create event tap. Ensure Accessibility permissions are granted.")
+            fileLog("Failed to create event tap. Ensure Accessibility permissions are granted.")
             return
         }
         
         runLoopSource = CFMachPortCreateRunLoopSource(kCFAllocatorDefault, eventTap, 0)
         CFRunLoopAddSource(CFRunLoopGetCurrent(), runLoopSource, .commonModes)
         CGEvent.tapEnable(tap: eventTap, enable: true)
-        log.debug("Event tap started.")
+        fileLog("Event tap started.")
     }
     
     func stop() {

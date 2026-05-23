@@ -1,4 +1,18 @@
 import os
+
+import Foundation
+func fileLog(_ msg: String) {
+    let url = URL(fileURLWithPath: "/tmp/multipaste_debug.log")
+    let txt = "\(Date()): \(msg)\n"
+    if let handle = try? FileHandle(forWritingTo: url) {
+        handle.seekToEndOfFile()
+        if let data = txt.data(using: .utf8) { handle.write(data) }
+        handle.closeFile()
+    } else {
+        try? txt.write(to: url, atomically: true, encoding: .utf8)
+    }
+}
+
 import AppKit
 import ApplicationServices
 
@@ -21,7 +35,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         let accessEnabled = AXIsProcessTrustedWithOptions(options as CFDictionary)
         
         if !accessEnabled {
-            log.debug("Accessibility permissions not granted. Please enable them in System Settings.")
+            fileLog("Accessibility permissions not granted. Please enable them in System Settings.")
         }
         
         setupMenuBar()
@@ -38,19 +52,20 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleNewClip(_:)), name: NSNotification.Name("NewClipAdded"), object: nil)
         
-        log.debug("Multipaste is running in the background.")
+        fileLog("Multipaste is running in the background.")
     }
     
     @objc private func handleNewClip(_ notification: Notification) {
         guard isFIFOModeEnabled, let text = notification.object as? String else { return }
         fifoQueue.append(text)
-        log.debug("Added to FIFO queue. Queue size: \(self.fifoQueue.count)")
+        fileLog("Added to FIFO queue. Queue size: \(self.fifoQueue.count)")
     }
     
     private 
     func checkAccessibility() {
         if AXIsProcessTrusted() { return }
         
+        NSApp.activate(ignoringOtherApps: true)
         let alert = NSAlert()
         alert.messageText = "Accessibility Permission Required"
         alert.informativeText = "Multipaste needs Accessibility access to intercept your clipboard hotkeys (Cmd+Shift+V) globally.\n\nPlease click 'Open System Settings', enable Multipaste, and wait for this dialog to disappear."
@@ -103,10 +118,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         if isFIFOModeEnabled {
             // Initialize FIFO queue with recent clips or start fresh
             fifoQueue = []
-            log.debug("FIFO Mode Enabled")
+            fileLog("FIFO Mode Enabled")
         } else {
             fifoQueue = []
-            log.debug("FIFO Mode Disabled")
+            fileLog("FIFO Mode Disabled")
         }
     }
     
@@ -167,7 +182,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         }
         
         let text = fifoQueue.removeFirst()
-        log.debug("FIFO pasting: \(text). Remaining: \(self.fifoQueue.count)")
+        fileLog("FIFO pasting: \(text). Remaining: \(self.fifoQueue.count)")
         
         ClipboardManager.shared.isPasting = true
         ClipboardManager.shared.setPasteboard(content: text)
@@ -203,11 +218,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         }
         
         // Wait a tiny bit for the OS to register the pasteboard change
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.simulateCmdV()
             
             // Increased delay to 0.4s to prevent target app from reading too early
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 if let original = currentPasteboardContent {
                     ClipboardManager.shared.setPasteboard(content: original)
                 }

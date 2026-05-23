@@ -81,9 +81,9 @@ class TooltipManager {
                 AXValueGetValue(boundsAXValue, .cgRect, &rect)
                 
                 // Convert screen coordinates to AppKit coordinates
-                let screens = NSScreen.screens
-                let targetScreen = screens.first(where: { $0.frame.contains(rect.origin) }) ?? NSScreen.main ?? screens[0]
-                let y = targetScreen.frame.height - rect.origin.y
+                // AX coordinates are top-left relative to primary screen (screens[0])
+                let primaryScreenHeight = NSScreen.screens[0].frame.height
+                let y = primaryScreenHeight - rect.origin.y
                 return CGPoint(x: rect.origin.x, y: y)
             }
         }

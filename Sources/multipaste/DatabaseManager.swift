@@ -45,7 +45,7 @@ class DatabaseManager {
         do {
             try db?.run("ALTER TABLE clips ADD COLUMN blob BLOB")
         } catch {
-            log.debug("Column blob may already exist: \(error)")
+            fileLog("Column blob may already exist: \(error)")
         }
 
         try db?.run(clips.create(ifNotExists: true) { t in
@@ -54,9 +54,9 @@ class DatabaseManager {
                 t.column(type)
                 t.column(timestamp)
             })
-            log.debug("Database initialized at \(dbURL.path)")
+            fileLog("Database initialized at \(dbURL.path)")
         } catch {
-            log.debug("Failed to initialize database: \(error)")
+            fileLog("Failed to initialize database: \(error)")
         }
     }
     
@@ -68,7 +68,7 @@ class DatabaseManager {
             try db.run(insert)
             pruneIfNeeded(cap: LicenseManager.shared.isProUnlocked ? Int.max : 50)
         } catch {
-            log.error("Failed to insert image: \(error)")
+            fileLog("Failed to insert image: \(error)")
         }
     }
 
@@ -78,19 +78,19 @@ class DatabaseManager {
             // Check if the last clip is the same to avoid duplicates
             if let lastClip = try db.pluck(clips.order(timestamp.desc).limit(1)) {
                 if lastClip[self.content] == text {
-                    log.debug("Skipping duplicate clip: \(text.prefix(20))...")
+                    fileLog("Skipping duplicate clip: \(text.prefix(20))...")
                     return
                 } else {
-                    log.debug("Last clip was: \(lastClip[self.content].prefix(20))...")
+                    fileLog("Last clip was: \(lastClip[self.content].prefix(20))...")
                 }
             }
             
             let insert = clips.insert(self.content <- text, self.type <- clipType, self.timestamp <- Date())
             try db.run(insert)
             pruneIfNeeded(cap: LicenseManager.shared.isProUnlocked ? Int.max : 50)
-            log.debug("Inserted clip: \(text.prefix(20))...")
+            fileLog("Inserted clip: \(text.prefix(20))...")
         } catch {
-            log.debug("Failed to insert clip: \(error)")
+            fileLog("Failed to insert clip: \(error)")
         }
     }
     
@@ -106,7 +106,7 @@ class DatabaseManager {
                 try db.run(oldest.delete())
             }
         } catch {
-            log.error("Pruning failed: \(error)")
+            fileLog("Pruning failed: \(error)")
         }
     }
     
@@ -123,7 +123,7 @@ class DatabaseManager {
                 result.append(Clip(id: row[id], content: row[content], timestamp: row[timestamp], type: row[type], blob: row[blobColumn]))
             }
         } catch {
-            log.error("Failed to fetch clips: \(error)")
+            fileLog("Failed to fetch clips: \(error)")
         }
         return result
     }
