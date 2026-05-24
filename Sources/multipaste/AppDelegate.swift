@@ -39,7 +39,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
             fileLog("Accessibility permissions not granted. Please enable them in System Settings.")
         }
         
-        let phConfig = PostHogConfig(apiKey: "YOUR_POSTHOG_API_KEY", host: "https://us.i.posthog.com")
+        let phConfig = PostHogConfig(apiKey: "phc_zbtHkESpQgdrf32fGNjhPrvW3BwL9EUC9ELsiJuUAkvg", host: "https://us.i.posthog.com")
         PostHogSDK.shared.setup(phConfig)
         PostHogSDK.shared.capture("app_launched", properties: ["unlocked": LicenseManager.shared.isUnlocked])
 
