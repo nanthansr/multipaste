@@ -4,3 +4,27 @@ check_pb*.swift
 test_*.sh
 output.log
 .DS_Store
+
+# IDE
+.vscode/
+
+# External CLI tool auth
+.antigravitycli/
+
+# Claude Code session data (private)
+.claude/
+.context/
+.repo_context/
+repo_context_notes/
+repo_context_manifest.json
+
+# Built app bundle (binary, rebuilt each time)
+Multipaste.app/
+
+# Dev-only scripts and test output
+scripts/add_file_logger.py
+scripts/apply_fixes.py
+scripts/fix_coord.py
+scripts/test_cycle.py
+test_log.txt
+multipaste_runtime.log

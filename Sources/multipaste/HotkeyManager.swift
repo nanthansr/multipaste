@@ -9,6 +9,8 @@ protocol HotkeyManagerDelegate: AnyObject {
     func hotkeyManagerDidTriggerReverseCycle()
     func hotkeyManagerDidTriggerPaste() -> Bool
     func hotkeyManagerDidReleaseModifiers()
+    func hotkeyManagerDidOpenRadialHUD()
+    func hotkeyManagerDidDismissRadialHUD()
 }
 
 class HotkeyManager {
@@ -20,8 +22,15 @@ class HotkeyManager {
     private var runLoopSource: CFRunLoopSource?
     
     private var isCycling = false
-    
+    private var radialHUDTimer: Timer?
+    private var isShowingRadialHUD = false
+
     private init() {}
+
+    // Called by AppDelegate after the HUD is dismissed (via tile click or hide).
+    func radialHUDDidDismiss() {
+        isShowingRadialHUD = false
+    }
     
     func start() {
         let eventMask = (1 << CGEventType.keyDown.rawValue) | (1 << CGEventType.flagsChanged.rawValue)
@@ -66,19 +75,40 @@ class HotkeyManager {
         let isShiftPressed = flags.contains(.maskShift)
         
         if type == .flagsChanged {
-            if isCycling && (!isCmdPressed || !isShiftPressed) {
-                // Modifiers released, trigger paste
-                isCycling = false
-                self.delegate?.hotkeyManagerDidReleaseModifiers()
+            if isCmdPressed && isShiftPressed {
+                // Both modifiers now held - start radial HUD timer if not already cycling or showing
+                if !isCycling && !isShowingRadialHUD && radialHUDTimer == nil {
+                    radialHUDTimer = Timer.scheduledTimer(withTimeInterval: 0.3, repeats: false) { [weak self] _ in
+                        guard let self = self else { return }
+                        DispatchQueue.main.async {
+                            self.isShowingRadialHUD = true
+                            self.delegate?.hotkeyManagerDidOpenRadialHUD()
+                        }
+                    }
+                }
+            } else {
+                // One or both modifiers released
+                radialHUDTimer?.invalidate()
+                radialHUDTimer = nil
+                if isCycling {
+                    isCycling = false
+                    self.delegate?.hotkeyManagerDidReleaseModifiers()
+                } else if isShowingRadialHUD {
+                    isShowingRadialHUD = false
+                    self.delegate?.hotkeyManagerDidDismissRadialHUD()
+                }
             }
             return Unmanaged.passRetained(event)
         }
-        
+
         if type == .keyDown {
             let keycode = event.getIntegerValueField(.keyboardEventKeycode)
             let vKeyCode: Int64 = 9 // 'v' key
-            
+
             if isCmdPressed && isShiftPressed && keycode == vKeyCode {
+                // V pressed while Cmd+Shift held: cancel radial timer, enter cycle mode
+                radialHUDTimer?.invalidate()
+                radialHUDTimer = nil
                 isCycling = true
                 self.delegate?.hotkeyManagerDidTriggerCycle()
                 // Swallow the event so 'v' isn't typed

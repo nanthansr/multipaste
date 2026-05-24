@@ -66,7 +66,7 @@ class DatabaseManager {
         do {
             let insert = clips.insert(self.content <- "Image", self.timestamp <- Date(), self.type <- "image", self.blobColumn <- data)
             try db.run(insert)
-            pruneIfNeeded(cap: LicenseManager.shared.isProUnlocked ? Int.max : 50)
+            pruneIfNeeded(cap: LicenseManager.shared.isUnlocked ? Int.max : 50)
         } catch {
             fileLog("Failed to insert image: \(error)")
         }
@@ -87,7 +87,7 @@ class DatabaseManager {
             
             let insert = clips.insert(self.content <- text, self.type <- clipType, self.timestamp <- Date())
             try db.run(insert)
-            pruneIfNeeded(cap: LicenseManager.shared.isProUnlocked ? Int.max : 50)
+            pruneIfNeeded(cap: LicenseManager.shared.isUnlocked ? Int.max : 50)
             fileLog("Inserted clip: \(text.prefix(20))...")
         } catch {
             fileLog("Failed to insert clip: \(error)")

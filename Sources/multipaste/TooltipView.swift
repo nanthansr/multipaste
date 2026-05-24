@@ -6,33 +6,46 @@ struct TooltipView: View {
     let total: Int
     
     var body: some View {
-        HStack {
-            Text("\(index + 1)/\(total)")
-                .font(.caption)
-                .padding(.horizontal, 6)
-                .padding(.vertical, 2)
-                .background(Capsule().fill(Color.gray.opacity(0.3)))
-            
-            if clip.type == "image", let data = clip.blob, let nsImage = NSImage(data: data) {
-                Image(nsImage: nsImage)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 150)
-            } else if clip.type == "file" {
-                HStack {
-                    Image(systemName: "doc")
-                    Text(clip.content)
-                        .lineLimit(3)
+        contentView
+            .padding(14)
+            .background(
+                VisualEffectView(material: .popover, blendingMode: .behindWindow)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .strokeBorder(Color.primary.opacity(0.08), lineWidth: 1)
+                    )
+            )
+            .shadow(color: .black.opacity(0.22), radius: 16, x: 0, y: 6)
+            .overlay(alignment: .topTrailing) {
+                if total > 1 {
+                    Text("\(index + 1)/\(total)")
+                        .font(.caption2)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 3)
+                        .background(Capsule().fill(Color.primary.opacity(0.12)))
+                        .padding(10)
                 }
-            } else {
-                Text(clip.content)
-                    .lineLimit(3)
             }
+    }
+
+    @ViewBuilder
+    private var contentView: some View {
+        if clip.type == "image", let data = clip.blob, let nsImage = NSImage(data: data) {
+            Image(nsImage: nsImage)
+                .resizable()
+                .scaledToFit()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+        } else if clip.type == "file" {
+            HStack {
+                Image(systemName: "doc")
+                Text(clip.content)
+                    .lineLimit(6)
+            }
+        } else {
+            Text(clip.content)
+                .lineLimit(6)
         }
-        .padding()
-        .background(VisualEffectView(material: .menu, blendingMode: .behindWindow))
-        .cornerRadius(8)
-        .shadow(radius: 4)
     }
 }
 

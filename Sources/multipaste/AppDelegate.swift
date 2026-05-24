@@ -15,6 +15,7 @@ func fileLog(_ msg: String) {
 
 import AppKit
 import ApplicationServices
+import TelemetryDeck
 
 private let log = Logger(subsystem: "com.local.multipaste", category: "AppDelegate")
 class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
@@ -38,8 +39,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
             fileLog("Accessibility permissions not granted. Please enable them in System Settings.")
         }
         
+        TelemetryDeck.initialize(config: .init(appID: "YOUR_TELEMETRYDECK_APP_ID"))
+        TelemetryDeck.signal("appLaunched", parameters: ["unlocked": LicenseManager.shared.isUnlocked ? "true" : "false"])
+
         setupMenuBar()
-        
+
         // Initialize Database
         _ = DatabaseManager.shared
         
@@ -134,25 +138,25 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     
     
     func hotkeyManagerDidTriggerReverseCycle() {
+        guard LicenseManager.shared.isUnlocked else { showBuyPrompt(); return }
         guard !clips.isEmpty else { return }
         if currentIndex == -1 { currentIndex = 0 }
         currentIndex = (currentIndex - 1 + clips.count) % clips.count
-        
+
         let clip = clips[currentIndex]
         TooltipManager.shared.showTooltip(clip: clip, index: currentIndex, total: clips.count)
     }
 
     func hotkeyManagerDidTriggerCycle() {
+        guard LicenseManager.shared.isUnlocked else { showBuyPrompt(); return }
         if currentIndex == -1 {
-            // First cycle, fetch recent clips
-            clips = DatabaseManager.shared.fetchRecentClips(limit: 20)
+            clips = DatabaseManager.shared.fetchRecentClips(limit: 999)
             if clips.isEmpty { return }
             currentIndex = 0
         } else {
-            // Move to next clip
             currentIndex = (currentIndex + 1) % clips.count
         }
-        
+
         let clip = clips[currentIndex]
         TooltipManager.shared.showTooltip(clip: clip, index: currentIndex, total: clips.count)
     }
@@ -170,11 +174,46 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         clips = []
         
         // Inject paste
+        TelemetryDeck.signal("clipPasted", parameters: ["mode": "cycle"])
         injectPaste(clip: clip)
     }
-    
-    
+
+    func hotkeyManagerDidOpenRadialHUD() {
+        guard LicenseManager.shared.isUnlocked else { showBuyPrompt(); return }
+        let clips = DatabaseManager.shared.fetchRecentClips(limit: 7)
+        guard !clips.isEmpty else { return }
+        let mouseLoc = NSEvent.mouseLocation
+        RadialHUDManager.shared.show(clips: clips, at: mouseLoc) { [weak self] clip in
+            RadialHUDManager.shared.hide()
+            HotkeyManager.shared.radialHUDDidDismiss()
+            TelemetryDeck.signal("clipPasted", parameters: ["mode": "radialHUD"])
+            self?.injectPaste(clip: clip)
+        }
+    }
+
+    func hotkeyManagerDidDismissRadialHUD() {
+        RadialHUDManager.shared.hide()
+    }
+
+    private func showBuyPrompt() {
+        TelemetryDeck.signal("buyPromptShown")
+        let alert = NSAlert()
+        alert.messageText = "Multipaste requires a license"
+        alert.informativeText = "Get lifetime access for $13 at gumroad.com/l/multipaste"
+        alert.addButton(withTitle: "Buy $13")
+        alert.addButton(withTitle: "Enter License Key")
+        alert.addButton(withTitle: "Later")
+        NSApp.activate(ignoringOtherApps: true)
+        let response = alert.runModal()
+        if response == .alertFirstButtonReturn {
+            NSWorkspace.shared.open(URL(string: "https://gumroad.com/l/multipaste")!)
+        } else if response == .alertSecondButtonReturn {
+            SettingsWindowController.shared.showWindow()
+        }
+    }
+
     func hotkeyManagerDidTriggerPaste() -> Bool {
+        guard LicenseManager.shared.isUnlocked else { showBuyPrompt(); return false }
         guard isFIFOModeEnabled, !fifoQueue.isEmpty else { return false }
         
         if fifoQueue.count == 1 { // Last item to dequeue soon

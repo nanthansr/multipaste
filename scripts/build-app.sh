@@ -58,6 +58,15 @@ EOF
 
 echo "Done! App bundle created at $APP_DIR"
 
+# --- Local dev signing (self-signed cert, stable identity so AX permission persists across rebuilds) ---
+SIGN_IDENTITY="${SIGN_IDENTITY:-Multipaste Dev}"
+echo "Code signing with '$SIGN_IDENTITY'..."
+codesign --force --deep \
+  --entitlements multipaste.entitlements \
+  --sign "$SIGN_IDENTITY" \
+  "$APP_DIR"
+echo "Signed."
+
 # --- Phase 6: Code Signing and DMG Creation ---
 # Uncomment when ready to distribute and Apple Developer ID is available.
 #

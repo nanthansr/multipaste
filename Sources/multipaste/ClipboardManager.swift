@@ -64,14 +64,14 @@ class ClipboardManager {
         }
         
         
-        if LicenseManager.shared.isProUnlocked,
+        if LicenseManager.shared.isUnlocked,
            let imageData = pasteboard.data(forType: .tiff) ?? pasteboard.data(forType: NSPasteboard.PasteboardType("public.png")) {
             DatabaseManager.shared.insertImageClip(data: imageData)
             NotificationCenter.default.post(name: NSNotification.Name("NewClipAdded"), object: "Image")
             return
         }
         
-        if LicenseManager.shared.isProUnlocked,
+        if LicenseManager.shared.isUnlocked,
            let fileURLs = pasteboard.readObjects(forClasses: [NSURL.self], options: nil) as? [URL],
            !fileURLs.isEmpty {
             let paths = fileURLs.map { $0.path }.joined(separator: "\n")

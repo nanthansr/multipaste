@@ -31,10 +31,10 @@ class SettingsWindowController: NSWindowController {
         if #available(macOS 13.0, *) {
             loginButton.state = SMAppService.mainApp.status == .enabled ? .on : .off
         }
-        loginButton.isEnabled = LicenseManager.shared.isProUnlocked
+        loginButton.isEnabled = LicenseManager.shared.isUnlocked
         generalView.addSubview(loginButton)
         
-        let proLabel = NSTextField(labelWithString: LicenseManager.shared.isProUnlocked ? "" : "Upgrade to Pro to enable Launch at Login and more.")
+        let proLabel = NSTextField(labelWithString: LicenseManager.shared.isUnlocked ? "" : "Upgrade to Pro to enable Launch at Login and more.")
         proLabel.frame = NSRect(x: 20, y: 190, width: 360, height: 24)
         proLabel.textColor = .secondaryLabelColor
         generalView.addSubview(proLabel)
