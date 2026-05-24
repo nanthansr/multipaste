@@ -10,14 +10,16 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/stephencelis/SQLite.swift.git", from: "0.14.1"),
-        .package(url: "https://github.com/TelemetryDeck/SwiftSDK", from: "2.0.0")
+        .package(url: "https://github.com/PostHog/posthog-ios.git", from: "3.0.0"),
+        .package(url: "https://github.com/supabase/supabase-swift.git", from: "2.0.0")
     ],
     targets: [
         .executableTarget(
             name: "multipaste",
             dependencies: [
                 .product(name: "SQLite", package: "SQLite.swift"),
-                .product(name: "TelemetryDeck", package: "SwiftSDK")
+                .product(name: "PostHog", package: "posthog-ios"),
+                .product(name: "Supabase", package: "supabase-swift")
             ]
         ),
         .executableTarget(

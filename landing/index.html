@@ -123,11 +123,60 @@
     </div>
   </section>
 
+  <!-- Feedback -->
+  <section class="bg-[#141414] py-20 px-6">
+    <div class="max-w-md mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-3">Bug or feature request?</h2>
+      <p class="text-zinc-500 text-sm mb-8">Goes straight to my inbox. I read everything.</p>
+      <form id="feedback-form" class="flex flex-col gap-3">
+        <textarea
+          id="msg"
+          rows="4"
+          placeholder="What's broken or what would you love to see?"
+          class="w-full rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-200 placeholder-zinc-600 p-3 text-sm resize-none focus:outline-none focus:border-zinc-600"
+        ></textarea>
+        <button
+          type="submit"
+          class="bg-zinc-800 hover:bg-zinc-700 text-white font-medium py-2.5 px-6 rounded-xl transition-colors text-sm"
+        >Send feedback</button>
+        <p id="feedback-status" class="text-zinc-600 text-xs hidden">Thanks! Got it.</p>
+      </form>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="border-t border-zinc-900 py-10 px-6 text-center text-zinc-600 text-sm">
     <p>Built with <a href="https://claude.ai/code" class="underline hover:text-zinc-400">Claude Code</a> &middot; Vibe-coded in 2026</p>
     <p class="mt-2">&copy; 2026 Multipaste</p>
   </footer>
+
+  <script>
+    document.getElementById('feedback-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const msg = document.getElementById('msg').value.trim();
+      if (!msg) return;
+      const btn = e.target.querySelector('button');
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      try {
+        await fetch('YOUR_SUPABASE_URL/rest/v1/feedback', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': 'YOUR_SUPABASE_ANON_KEY',
+            'Authorization': 'Bearer YOUR_SUPABASE_ANON_KEY'
+          },
+          body: JSON.stringify({ message: msg, device_id: 'web' })
+        });
+      } catch (_) {}
+      document.getElementById('msg').value = '';
+      btn.textContent = 'Send feedback';
+      btn.disabled = false;
+      const status = document.getElementById('feedback-status');
+      status.classList.remove('hidden');
+      setTimeout(() => status.classList.add('hidden'), 3000);
+    });
+  </script>
 
 </body>
 </html>

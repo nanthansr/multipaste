@@ -15,7 +15,7 @@ func fileLog(_ msg: String) {
 
 import AppKit
 import ApplicationServices
-import TelemetryDeck
+import PostHog
 
 private let log = Logger(subsystem: "com.local.multipaste", category: "AppDelegate")
 class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
@@ -39,8 +39,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
             fileLog("Accessibility permissions not granted. Please enable them in System Settings.")
         }
         
-        TelemetryDeck.initialize(config: .init(appID: "YOUR_TELEMETRYDECK_APP_ID"))
-        TelemetryDeck.signal("appLaunched", parameters: ["unlocked": LicenseManager.shared.isUnlocked ? "true" : "false"])
+        let phConfig = PostHogConfig(apiKey: "YOUR_POSTHOG_API_KEY", host: "https://us.i.posthog.com")
+        PostHogSDK.shared.setup(phConfig)
+        PostHogSDK.shared.capture("app_launched", properties: ["unlocked": LicenseManager.shared.isUnlocked])
+
+        if accessEnabled {
+            PostHogSDK.shared.capture("accessibility_granted")
+        }
+
+        SupabaseManager.shared.recordLaunch(isLicensed: LicenseManager.shared.isUnlocked)
 
         setupMenuBar()
 
@@ -150,6 +157,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     func hotkeyManagerDidTriggerCycle() {
         guard LicenseManager.shared.isUnlocked else { showBuyPrompt(); return }
         if currentIndex == -1 {
+            if !UserDefaults.standard.bool(forKey: "multipaste.firedFirstHotkey") {
+                UserDefaults.standard.set(true, forKey: "multipaste.firedFirstHotkey")
+                PostHogSDK.shared.capture("first_hotkey_triggered")
+            }
             clips = DatabaseManager.shared.fetchRecentClips(limit: 999)
             if clips.isEmpty { return }
             currentIndex = 0
@@ -174,7 +185,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         clips = []
         
         // Inject paste
-        TelemetryDeck.signal("clipPasted", parameters: ["mode": "cycle"])
+        if !UserDefaults.standard.bool(forKey: "multipaste.firedFirstPaste") {
+            UserDefaults.standard.set(true, forKey: "multipaste.firedFirstPaste")
+            PostHogSDK.shared.capture("first_paste_completed", properties: ["mode": "cycle"])
+        }
+        PostHogSDK.shared.capture("clip_pasted", properties: ["mode": "cycle"])
+        SupabaseManager.shared.incrementUsage(mode: "cycle")
         injectPaste(clip: clip)
     }
 
@@ -186,7 +202,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         RadialHUDManager.shared.show(clips: clips, at: mouseLoc) { [weak self] clip in
             RadialHUDManager.shared.hide()
             HotkeyManager.shared.radialHUDDidDismiss()
-            TelemetryDeck.signal("clipPasted", parameters: ["mode": "radialHUD"])
+            PostHogSDK.shared.capture("clip_pasted", properties: ["mode": "radialHUD"])
+            SupabaseManager.shared.incrementUsage(mode: "hud")
             self?.injectPaste(clip: clip)
         }
     }
@@ -196,16 +213,24 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     }
 
     private func showBuyPrompt() {
-        TelemetryDeck.signal("buyPromptShown")
+        PostHogSDK.shared.capture("buy_prompt_shown")
+
+        let variant = PostHogSDK.shared.getFeatureFlag("buy_prompt_variant") as? String ?? "control"
+        let title = variant == "treatment" ? "You're one step away" : "Multipaste requires a license"
+        let info = variant == "treatment"
+            ? "Unlock Cycle & Drop, Radial HUD, and unlimited history for $13."
+            : "Get lifetime access for $13 at gumroad.com/l/multipaste"
+
         let alert = NSAlert()
-        alert.messageText = "Multipaste requires a license"
-        alert.informativeText = "Get lifetime access for $13 at gumroad.com/l/multipaste"
+        alert.messageText = title
+        alert.informativeText = info
         alert.addButton(withTitle: "Buy $13")
         alert.addButton(withTitle: "Enter License Key")
         alert.addButton(withTitle: "Later")
         NSApp.activate(ignoringOtherApps: true)
         let response = alert.runModal()
         if response == .alertFirstButtonReturn {
+            PostHogSDK.shared.capture("buy_cta_clicked", properties: ["variant": variant])
             NSWorkspace.shared.open(URL(string: "https://gumroad.com/l/multipaste")!)
         } else if response == .alertSecondButtonReturn {
             SettingsWindowController.shared.showWindow()
