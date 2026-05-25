@@ -28,3 +28,10 @@ scripts/fix_coord.py
 scripts/test_cycle.py
 test_log.txt
 multipaste_runtime.log
+
+# Task execution checkpoint (autonomous session state)
+.task-progress.md
+
+# Landing page build artifacts
+landing/node_modules/
+landing/dist/

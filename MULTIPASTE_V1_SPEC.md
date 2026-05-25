@@ -48,7 +48,7 @@ Developers and data-entry workers who repeatedly copy multiple items and paste t
 ### Pricing
 
 - **Free tier:** ungated, no trial expiry, distribute freely to maximize adoption and GitHub stars.
-- **Pro:** one-time **$17 USD** (not subscription). The indie macOS market strongly prefers one-time over subscriptions; Paste's subscription fatigue is a recurring complaint in 2026 reviews. A $17 lifetime deal is the sweet spot against Pastebot ($13) and Alfred Powerpack ($39).
+- **Pro:** one-time **$7.99 USD** (not subscription). The indie macOS market strongly prefers one-time over subscriptions; Paste's subscription fatigue is a recurring complaint in 2026 reviews.
 - **14-day Pro trial:** all Pro features unlocked from first launch; no credit card required. Banner in menu bar during trial ("Pro trial: X days remaining"). After expiry, Pro features lock gracefully.
 
 ### Distribution and license keys
