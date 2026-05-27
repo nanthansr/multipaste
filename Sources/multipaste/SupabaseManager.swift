@@ -5,8 +5,8 @@ class SupabaseManager {
     static let shared = SupabaseManager()
 
     private let client = SupabaseClient(
-        supabaseURL: URL(string: "https://yraszoowcfljiazjohki.supabase.co")!,
-        supabaseKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlyYXN6b293Y2ZsamlhempvaGtpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzk2NDMyODksImV4cCI6MjA5NTIxOTI4OX0.nXnvK5lathH0bxrE7fZwqXx7Pnlo7dIyWQR0JMI6xBo"
+        supabaseURL: Config.supabaseURL,
+        supabaseKey: Config.supabaseKey
     )
 
     private var deviceID: String {

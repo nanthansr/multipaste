@@ -3,7 +3,7 @@ import AppKit
 import ApplicationServices
 import Foundation
 
-private let log = Logger(subsystem: "com.local.multipaste", category: "HotkeyManager")
+private let log = Logger(subsystem: "com.nanthansr.multipaste", category: "HotkeyManager")
 protocol HotkeyManagerDelegate: AnyObject {
     func hotkeyManagerDidTriggerCycle()
     func hotkeyManagerDidTriggerReverseCycle()

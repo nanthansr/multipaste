@@ -31,7 +31,7 @@ cat <<EOF > "$APP_DIR/Contents/Info.plist"
 <plist version="1.0">
 <dict>
     <key>CFBundleIdentifier</key>
-    <string>com.local.multipaste</string>
+    <string>com.nanthansr.multipaste</string>
     <key>CFBundleName</key>
     <string>Multipaste</string>
     <key>CFBundleDisplayName</key>

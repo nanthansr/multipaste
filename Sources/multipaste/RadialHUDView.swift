@@ -6,6 +6,7 @@ struct RadialHUDView: View {
     let onSelect: (Clip) -> Void
 
     @State private var hoveredID: Int64? = nil
+    @State private var hoveredClip: Clip? = nil
 
     private let radius: CGFloat = 160
     // The slot frame is FIXED at 110×110 regardless of hover state.
@@ -27,10 +28,47 @@ struct RadialHUDView: View {
         }
         .frame(width: 600, height: 600)
         .background(Color.clear)
+        .overlay(alignment: .top) {
+            if let clip = hoveredClip {
+                previewCard(for: clip)
+                    .padding(.top, 16)
+                    .transition(.opacity.combined(with: .scale(scale: 0.97, anchor: .top)))
+            }
+        }
+        .animation(.easeInOut(duration: 0.15), value: hoveredClip?.id)
     }
 
-    // Each slot is always 110×110. On hover, the CONTENT changes from
-    // a compact thumbnail to an expanded preview - no scale, no floating card.
+    @ViewBuilder
+    private func previewCard(for clip: Clip) -> some View {
+        Group {
+            if clip.type == "image", let data = clip.blob, let nsImage = NSImage(data: data) {
+                Image(nsImage: nsImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 110)
+            } else if clip.type == "file" {
+                Text(clip.content)
+                    .font(.system(.caption, design: .monospaced))
+                    .lineLimit(4)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            } else {
+                Text(clip.content)
+                    .font(.system(size: 13))
+                    .lineLimit(12)
+                    .multilineTextAlignment(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+        }
+        .padding(12)
+        .frame(maxWidth: 360)
+        .background(.ultraThinMaterial)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .shadow(color: .black.opacity(0.18), radius: 8, x: 0, y: 3)
+    }
+
+    // Each slot is always 110×110. On hover, content changes from thumbnail to expanded.
+    // The floating previewCard above the ring shows the full readable content.
     @ViewBuilder
     private func tileSlot(for clip: Clip, isHovered: Bool) -> some View {
         ZStack {
@@ -56,16 +94,15 @@ struct RadialHUDView: View {
             radius: isHovered ? 14 : 4,
             x: 0, y: isHovered ? 4 : 1
         )
-        // contentShape ensures the hit area matches the fixed frame, not the visual content
         .contentShape(Rectangle())
         .animation(.spring(response: 0.2, dampingFraction: 0.82), value: isHovered)
         .onHover { entering in
             hoveredID = entering ? clip.id : (hoveredID == clip.id ? nil : hoveredID)
+            hoveredClip = entering ? clip : (hoveredClip?.id == clip.id ? nil : hoveredClip)
         }
         .onTapGesture { onSelect(clip) }
     }
 
-    // Compact thumbnail shown when not hovered
     @ViewBuilder
     private func thumbnailContent(for clip: Clip) -> some View {
         if clip.type == "image", let data = clip.blob, let nsImage = NSImage(data: data) {
@@ -91,7 +128,6 @@ struct RadialHUDView: View {
         }
     }
 
-    // Full preview shown when hovered - fills the same 110×110 slot
     @ViewBuilder
     private func expandedContent(for clip: Clip) -> some View {
         if clip.type == "image", let data = clip.blob, let nsImage = NSImage(data: data) {

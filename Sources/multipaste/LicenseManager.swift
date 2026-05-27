@@ -1,17 +1,61 @@
 import Foundation
 import Security
 
+enum LicenseState {
+    case free
+    case trial(daysRemaining: Int)
+    case pro
+    case expired
+}
+
 class LicenseManager {
     static let shared = LicenseManager()
 
-    private let permalink = "multipaste" // update to actual Gumroad slug before launch
-    private let keychainService = "com.local.multipaste.licenseKey"
+    private let permalink = "multipaste"
+    private let keychainService = "com.nanthansr.multipaste.licenseKey"
+    private let firstLaunchKey = "multipaste.firstLaunchDate"
 
-    var isUnlocked: Bool {
-        getLicenseKey() != nil
+    private(set) var state: LicenseState = .free
+
+    var isProUnlocked: Bool {
+        if case .pro = state { return true }
+        if case .trial = state { return true }
+        return false
     }
 
-    private init() {}
+    private init() {
+        refresh()
+    }
+
+    func refresh() {
+        if getLicenseKey() != nil {
+            state = .pro
+            return
+        }
+
+        let defaults = UserDefaults.standard
+        let now = Date()
+        
+        var firstLaunchDate: Date?
+        if let stored = defaults.object(forKey: firstLaunchKey) as? Date {
+            firstLaunchDate = stored
+        } else {
+            firstLaunchDate = now
+            defaults.set(now, forKey: firstLaunchKey)
+        }
+        
+        guard let start = firstLaunchDate else {
+            state = .expired
+            return
+        }
+        
+        let elapsed = Calendar.current.dateComponents([.day], from: start, to: now).day ?? 0
+        if elapsed < 14 {
+            state = .trial(daysRemaining: max(0, 14 - elapsed))
+        } else {
+            state = .expired
+        }
+    }
 
     func activate(key: String) async throws {
         let url = URL(string: "https://api.gumroad.com/v2/licenses/verify")!
@@ -35,6 +79,7 @@ class LicenseManager {
         }
 
         saveLicenseKey(key)
+        refresh()
     }
 
     private func saveLicenseKey(_ key: String) {

@@ -1,10 +1,3 @@
-import { createClient } from "@supabase/supabase-js";
-
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_ROLE_KEY
-);
-
 export default async function handler(req) {
   if (req.method !== "POST") {
     return new Response("Method not allowed", { status: 405 });
@@ -21,10 +14,19 @@ export default async function handler(req) {
     return new Response("Missing license_key", { status: 400 });
   }
 
-  await supabase.from("purchases").upsert(
-    { license_key: licenseKey, email, gumroad_sale_id: saleId },
-    { onConflict: "license_key" }
-  );
+  const supabaseUrl = process.env.SUPABASE_URL;
+  const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
+
+  await fetch(`${supabaseUrl}/rest/v1/purchases`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "apikey": serviceKey,
+      "Authorization": `Bearer ${serviceKey}`,
+      "Prefer": "resolution=merge-duplicates",
+    },
+    body: JSON.stringify({ license_key: licenseKey, email, gumroad_sale_id: saleId }),
+  });
 
   return new Response("ok", { status: 200 });
 }

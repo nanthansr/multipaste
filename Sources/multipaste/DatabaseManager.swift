@@ -2,7 +2,7 @@ import os
 import Foundation
 import SQLite
 
-private let log = Logger(subsystem: "com.local.multipaste", category: "DatabaseManager")
+private let log = Logger(subsystem: "com.nanthansr.multipaste", category: "DatabaseManager")
 
 struct Clip: Identifiable {
     let id: Int64
@@ -43,7 +43,10 @@ class DatabaseManager {
             
             
         do {
-            try db?.run("ALTER TABLE clips ADD COLUMN blob BLOB")
+            let columns = try db?.prepare("PRAGMA table_info(clips)").map { $0[1] as? String }
+            if !(columns?.contains("blob") ?? false) {
+                try db?.run("ALTER TABLE clips ADD COLUMN blob BLOB")
+            }
         } catch {
             fileLog("Column blob may already exist: \(error)")
         }
@@ -66,7 +69,7 @@ class DatabaseManager {
         do {
             let insert = clips.insert(self.content <- "Image", self.timestamp <- Date(), self.type <- "image", self.blobColumn <- data)
             try db.run(insert)
-            pruneIfNeeded(cap: LicenseManager.shared.isUnlocked ? Int.max : 50)
+            pruneIfNeeded(cap: LicenseManager.shared.isProUnlocked ? Int.max : 50)
         } catch {
             fileLog("Failed to insert image: \(error)")
         }
@@ -87,7 +90,7 @@ class DatabaseManager {
             
             let insert = clips.insert(self.content <- text, self.type <- clipType, self.timestamp <- Date())
             try db.run(insert)
-            pruneIfNeeded(cap: LicenseManager.shared.isUnlocked ? Int.max : 50)
+            pruneIfNeeded(cap: Int.max)
             fileLog("Inserted clip: \(text.prefix(20))...")
         } catch {
             fileLog("Failed to insert clip: \(error)")

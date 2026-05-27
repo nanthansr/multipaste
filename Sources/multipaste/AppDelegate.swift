@@ -2,14 +2,23 @@ import os
 
 import Foundation
 func fileLog(_ msg: String) {
-    let url = URL(fileURLWithPath: "/tmp/multipaste_debug.log")
-    let txt = "\(Date()): \(msg)\n"
-    if let handle = try? FileHandle(forWritingTo: url) {
-        handle.seekToEndOfFile()
-        if let data = txt.data(using: .utf8) { handle.write(data) }
-        handle.closeFile()
-    } else {
-        try? txt.write(to: url, atomically: true, encoding: .utf8)
+    if let appSupportURL = try? FileManager.default.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true) {
+        let appDirectory = appSupportURL.appendingPathComponent("multipaste", isDirectory: true)
+        try? FileManager.default.createDirectory(at: appDirectory, withIntermediateDirectories: true, attributes: nil)
+        let url = appDirectory.appendingPathComponent("debug.log")
+        let txt = "\(Date()): \(msg)\n"
+        
+        if !FileManager.default.fileExists(atPath: url.path) {
+            FileManager.default.createFile(atPath: url.path, contents: nil, attributes: [.posixPermissions: 0o600])
+        }
+        
+        if let handle = try? FileHandle(forWritingTo: url) {
+            handle.seekToEndOfFile()
+            if let data = txt.data(using: .utf8) { handle.write(data) }
+            handle.closeFile()
+        } else {
+            try? txt.write(to: url, atomically: true, encoding: .utf8)
+        }
     }
 }
 
@@ -17,7 +26,7 @@ import AppKit
 import ApplicationServices
 import PostHog
 
-private let log = Logger(subsystem: "com.local.multipaste", category: "AppDelegate")
+private let log = Logger(subsystem: "com.nanthansr.multipaste", category: "AppDelegate")
 class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     
     private var clips: [Clip] = []
@@ -39,15 +48,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
             fileLog("Accessibility permissions not granted. Please enable them in System Settings.")
         }
         
-        let phConfig = PostHogConfig(apiKey: "phc_zbtHkESpQgdrf32fGNjhPrvW3BwL9EUC9ELsiJuUAkvg", host: "https://us.i.posthog.com")
-        PostHogSDK.shared.setup(phConfig)
-        PostHogSDK.shared.capture("app_launched", properties: ["unlocked": LicenseManager.shared.isUnlocked])
-
-        if accessEnabled {
-            PostHogSDK.shared.capture("accessibility_granted")
+        if UserDefaults.standard.object(forKey: "multipaste.settings.telemetryEnabled") == nil {
+            UserDefaults.standard.set(true, forKey: "multipaste.settings.telemetryEnabled")
         }
-
-        SupabaseManager.shared.recordLaunch(isLicensed: LicenseManager.shared.isUnlocked)
+        
+        if UserDefaults.standard.bool(forKey: "multipaste.settings.telemetryEnabled") {
+            let phConfig = PostHogConfig(projectToken: Config.posthogToken, host: "https://us.i.posthog.com")
+            PostHogSDK.shared.setup(phConfig)
+            PostHogSDK.shared.capture("app_launched")
+            if accessEnabled {
+                PostHogSDK.shared.capture("accessibility_granted")
+            }
+            SupabaseManager.shared.recordLaunch(isLicensed: true)
+        }
 
         setupMenuBar()
 
@@ -113,8 +126,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         
         let menu = NSMenu()
         
-        let fifoItem = NSMenuItem(title: "Enable FIFO Mode", action: #selector(toggleFIFO), keyEquivalent: "")
+        let licenseStateStr: String
+        switch LicenseManager.shared.state {
+        case .free: licenseStateStr = "Upgrade to Pro..."
+        case .trial(let days): licenseStateStr = "License: Trial (\(days) days remaining)"
+        case .pro: licenseStateStr = "License: Pro"
+        case .expired: licenseStateStr = "Upgrade to Pro..."
+        }
+        
+        menu.addItem(NSMenuItem(title: licenseStateStr, action: #selector(showLicenseUI), keyEquivalent: ""))
+        menu.addItem(NSMenuItem.separator())
+        
+        let fifoItem = NSMenuItem(title: isFIFOModeEnabled ? "Disable FIFO Mode" : "Enable FIFO Mode", action: #selector(toggleFIFO), keyEquivalent: "")
         menu.addItem(fifoItem)
+        
+        menu.addItem(NSMenuItem(title: "Clear History", action: #selector(clearHistory), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Settings...", action: #selector(showSettings), keyEquivalent: ","))
         
         menu.addItem(NSMenuItem.separator())
         menu.addItem(NSMenuItem(title: "Quit", action: #selector(NSApplication.terminate(_:)), keyEquivalent: "q"))
@@ -122,17 +149,84 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         statusItem.menu = menu
     }
     
+    @objc private func showLicenseUI() {
+        // Simple alert for now, could be a proper window later
+        let alert = NSAlert()
+        alert.messageText = "Enter License Key"
+        alert.informativeText = "Please enter your Gumroad license key:"
+        alert.alertStyle = .informational
+        let input = NSTextField(frame: NSRect(x: 0, y: 0, width: 300, height: 24))
+        alert.accessoryView = input
+        alert.addButton(withTitle: "Activate")
+        alert.addButton(withTitle: "Cancel")
+        
+        if alert.runModal() == .alertFirstButtonReturn {
+            let key = input.stringValue.trimmingCharacters(in: .whitespacesAndNewlines)
+            guard !key.isEmpty else { return }
+            
+            Task {
+                do {
+                    try await LicenseManager.shared.activate(key: key)
+                    DispatchQueue.main.async {
+                        let successAlert = NSAlert()
+                        successAlert.messageText = "Activated!"
+                        successAlert.informativeText = "Thank you for supporting Multipaste."
+                        successAlert.runModal()
+                        self.setupMenuBar() // Refresh menu
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        let errorAlert = NSAlert()
+                        errorAlert.messageText = "Activation Failed"
+                        errorAlert.informativeText = error.localizedDescription
+                        errorAlert.runModal()
+                    }
+                }
+            }
+        }
+    }
+    
+    @objc private func clearHistory() {
+        let alert = NSAlert()
+        alert.messageText = "Clear History"
+        alert.informativeText = "Are you sure you want to delete all saved clips? This cannot be undone."
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "Clear")
+        alert.addButton(withTitle: "Cancel")
+        
+        if alert.runModal() == .alertFirstButtonReturn {
+            DatabaseManager.shared.clearAll()
+        }
+    }
+    
+    @objc private func showSettings() {
+        SettingsWindowController.shared.showWindow()
+    }
+    
     @objc private func toggleFIFO(_ sender: NSMenuItem) {
+        if !LicenseManager.shared.isProUnlocked && !isFIFOModeEnabled {
+            let alert = NSAlert()
+            alert.messageText = "Upgrade to Pro"
+            alert.informativeText = "FIFO Sequential Paste is a Pro feature."
+            alert.alertStyle = .informational
+            alert.addButton(withTitle: "OK")
+            alert.runModal()
+            return
+        }
+
         isFIFOModeEnabled.toggle()
         sender.title = isFIFOModeEnabled ? "Disable FIFO Mode" : "Enable FIFO Mode"
         
         if isFIFOModeEnabled {
-            // Initialize FIFO queue with recent clips or start fresh
+            originalPasteboardContent = NSPasteboard.general.string(forType: .string)
             fifoQueue = []
             fileLog("FIFO Mode Enabled")
         } else {
             fifoQueue = []
             fileLog("FIFO Mode Disabled")
+            if let original = originalPasteboardContent {
+                ClipboardManager.shared.setPasteboard(content: original)
+            }
         }
     }
     
@@ -145,7 +239,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     
     
     func hotkeyManagerDidTriggerReverseCycle() {
-        guard LicenseManager.shared.isUnlocked else { showBuyPrompt(); return }
         guard !clips.isEmpty else { return }
         if currentIndex == -1 { currentIndex = 0 }
         currentIndex = (currentIndex - 1 + clips.count) % clips.count
@@ -155,12 +248,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
     }
 
     func hotkeyManagerDidTriggerCycle() {
-        guard LicenseManager.shared.isUnlocked else { showBuyPrompt(); return }
         if currentIndex == -1 {
+        if UserDefaults.standard.bool(forKey: "multipaste.settings.telemetryEnabled") {
             if !UserDefaults.standard.bool(forKey: "multipaste.firedFirstHotkey") {
                 UserDefaults.standard.set(true, forKey: "multipaste.firedFirstHotkey")
                 PostHogSDK.shared.capture("first_hotkey_triggered")
             }
+        }
             clips = DatabaseManager.shared.fetchRecentClips(limit: 999)
             if clips.isEmpty { return }
             currentIndex = 0
@@ -185,25 +279,30 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         clips = []
         
         // Inject paste
-        if !UserDefaults.standard.bool(forKey: "multipaste.firedFirstPaste") {
-            UserDefaults.standard.set(true, forKey: "multipaste.firedFirstPaste")
-            PostHogSDK.shared.capture("first_paste_completed", properties: ["mode": "cycle"])
+        if UserDefaults.standard.bool(forKey: "multipaste.settings.telemetryEnabled") {
+            if !UserDefaults.standard.bool(forKey: "multipaste.firedFirstPaste") {
+                UserDefaults.standard.set(true, forKey: "multipaste.firedFirstPaste")
+                PostHogSDK.shared.capture("first_paste_completed", properties: ["mode": "cycle"])
+            }
+            PostHogSDK.shared.capture("clip_pasted", properties: ["mode": "cycle"])
+            SupabaseManager.shared.incrementUsage(mode: "cycle")
         }
-        PostHogSDK.shared.capture("clip_pasted", properties: ["mode": "cycle"])
-        SupabaseManager.shared.incrementUsage(mode: "cycle")
         injectPaste(clip: clip)
     }
 
     func hotkeyManagerDidOpenRadialHUD() {
-        guard LicenseManager.shared.isUnlocked else { showBuyPrompt(); return }
-        let clips = DatabaseManager.shared.fetchRecentClips(limit: 7)
+        let savedCount = UserDefaults.standard.integer(forKey: "multipaste.hudTileCount")
+        let tileCount = savedCount > 0 ? max(3, min(7, savedCount)) : 6
+        let clips = DatabaseManager.shared.fetchRecentClips(limit: tileCount)
         guard !clips.isEmpty else { return }
         let mouseLoc = NSEvent.mouseLocation
         RadialHUDManager.shared.show(clips: clips, at: mouseLoc) { [weak self] clip in
             RadialHUDManager.shared.hide()
             HotkeyManager.shared.radialHUDDidDismiss()
-            PostHogSDK.shared.capture("clip_pasted", properties: ["mode": "radialHUD"])
-            SupabaseManager.shared.incrementUsage(mode: "hud")
+            if UserDefaults.standard.bool(forKey: "multipaste.settings.telemetryEnabled") {
+                PostHogSDK.shared.capture("clip_pasted", properties: ["mode": "radialHUD"])
+                SupabaseManager.shared.incrementUsage(mode: "hud")
+            }
             self?.injectPaste(clip: clip)
         }
     }
@@ -212,41 +311,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, HotkeyManagerDelegate {
         RadialHUDManager.shared.hide()
     }
 
-    private func showBuyPrompt() {
-        PostHogSDK.shared.capture("buy_prompt_shown")
-
-        let variant = PostHogSDK.shared.getFeatureFlag("buy_prompt_variant") as? String ?? "control"
-        let title = variant == "treatment" ? "You're one step away" : "Multipaste requires a license"
-        let info = variant == "treatment"
-            ? "Unlock Cycle & Drop, Radial HUD, and unlimited history for $13."
-            : "Get lifetime access for $13 at gumroad.com/l/multipaste"
-
-        let alert = NSAlert()
-        alert.messageText = title
-        alert.informativeText = info
-        alert.addButton(withTitle: "Buy $13")
-        alert.addButton(withTitle: "Enter License Key")
-        alert.addButton(withTitle: "Later")
-        NSApp.activate(ignoringOtherApps: true)
-        let response = alert.runModal()
-        if response == .alertFirstButtonReturn {
-            PostHogSDK.shared.capture("buy_cta_clicked", properties: ["variant": variant])
-            NSWorkspace.shared.open(URL(string: "https://gumroad.com/l/multipaste")!)
-        } else if response == .alertSecondButtonReturn {
-            SettingsWindowController.shared.showWindow()
-        }
-    }
-
     func hotkeyManagerDidTriggerPaste() -> Bool {
-        guard LicenseManager.shared.isUnlocked else { showBuyPrompt(); return false }
         guard isFIFOModeEnabled, !fifoQueue.isEmpty else { return false }
         
-        if fifoQueue.count == 1 { // Last item to dequeue soon
-             originalPasteboardContent = NSPasteboard.general.string(forType: .string)
-        }
-        
         let text = fifoQueue.removeFirst()
-        fileLog("FIFO pasting: \(text). Remaining: \(self.fifoQueue.count)")
+        fileLog("FIFO pasting: remaining: \(self.fifoQueue.count)")
         
         ClipboardManager.shared.isPasting = true
         ClipboardManager.shared.setPasteboard(content: text)

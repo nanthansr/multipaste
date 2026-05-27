@@ -69,9 +69,7 @@ export default function PrivacyPolicy() {
 
         <Section title="Analytics (anonymous)">
           <p>
-            Multipaste sends anonymous usage telemetry to two services:{' '}
-            <strong className="text-slate-300">PostHog</strong> and{' '}
-            <strong className="text-slate-300">TelemetryDeck</strong>.
+            Multipaste sends anonymous usage telemetry to <strong className="text-slate-300">PostHog</strong>.
           </p>
           <p>What is collected:</p>
           <ul className="list-disc list-inside space-y-1 ml-2">
@@ -86,8 +84,8 @@ export default function PrivacyPolicy() {
             <li>Your identity, name, or email</li>
           </ul>
           <p>
-            You can opt out of analytics entirely in Settings → Privacy → Disable telemetry.
-            Both PostHog and TelemetryDeck process data under GDPR-compliant terms.
+            You can opt out of analytics entirely in Settings → General → Enable anonymous analytics.
+            PostHog processes data under GDPR-compliant terms.
           </p>
         </Section>
 

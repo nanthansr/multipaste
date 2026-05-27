@@ -2,7 +2,7 @@ import os
 import AppKit
 import Foundation
 
-private let log = Logger(subsystem: "com.local.multipaste", category: "ClipboardManager")
+private let log = Logger(subsystem: "com.nanthansr.multipaste", category: "ClipboardManager")
 class ClipboardManager {
     static let shared = ClipboardManager()
     
@@ -64,15 +64,13 @@ class ClipboardManager {
         }
         
         
-        if LicenseManager.shared.isUnlocked,
-           let imageData = pasteboard.data(forType: .tiff) ?? pasteboard.data(forType: NSPasteboard.PasteboardType("public.png")) {
+        if LicenseManager.shared.isProUnlocked, let imageData = pasteboard.data(forType: .tiff) ?? pasteboard.data(forType: NSPasteboard.PasteboardType("public.png")) {
             DatabaseManager.shared.insertImageClip(data: imageData)
             NotificationCenter.default.post(name: NSNotification.Name("NewClipAdded"), object: "Image")
             return
         }
         
-        if LicenseManager.shared.isUnlocked,
-           let fileURLs = pasteboard.readObjects(forClasses: [NSURL.self], options: nil) as? [URL],
+        if LicenseManager.shared.isProUnlocked, let fileURLs = pasteboard.readObjects(forClasses: [NSURL.self], options: nil) as? [URL],
            !fileURLs.isEmpty {
             let paths = fileURLs.map { $0.path }.joined(separator: "\n")
             DatabaseManager.shared.insertClip(content: paths, type: "file")
@@ -82,11 +80,11 @@ class ClipboardManager {
 
         if let text = pasteboard.string(forType: .string) {
             if text == lastInjectedText {
-                fileLog("Skipping capture because text matches lastInjectedText: \(text.prefix(20))...")
-                return
-            }
-            
-            fileLog("Found text in pasteboard: \(text.prefix(20))... (lastInjectedText was: \(self.lastInjectedText?.prefix(20) ?? "nil"))")
+            fileLog("Skipping capture because text matches lastInjectedText")
+            return
+        }
+        
+        fileLog("Found text in pasteboard")
             DatabaseManager.shared.insertClip(content: text, type: "text")
             NotificationCenter.default.post(name: NSNotification.Name("NewClipAdded"), object: text)
         } else {

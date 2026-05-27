@@ -15,7 +15,7 @@ While other clipboard managers focus on long-term retrieval, Multipaste sits inv
 
 ### Free vs Pro
 
-| Feature | Free | Pro ($17) |
+| Feature | Free | Pro ($7.99) |
 |---|---|---|
 | Cycle & Drop (text clips) | Yes | Yes |
 | Recent history cap | Last 50 clips | Unlimited |

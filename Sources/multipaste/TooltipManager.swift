@@ -2,7 +2,7 @@ import os
 import AppKit
 import SwiftUI
 
-private let log = Logger(subsystem: "com.local.multipaste", category: "TooltipManager")
+private let log = Logger(subsystem: "com.nanthansr.multipaste", category: "TooltipManager")
 class TooltipManager {
     static let shared = TooltipManager()
     

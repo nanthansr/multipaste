@@ -2,7 +2,9 @@
 
 ## Read this first
 
-Before writing any code, read `MULTIPASTE_V1_SPEC.md` in this directory. It is the authoritative build spec. Everything you need - architecture decisions, phase plan, acceptance criteria, file-level pointers, guardrails - is in that document. Do not re-derive context that is already there.
+Before writing any code, read `HANDOFF.md` in this directory. It is the primary pickup document for all AI agents and contains the exact current state of the project.
+
+After that, read `MULTIPASTE_V1_SPEC.md`. It is the authoritative build spec. Everything you need - architecture decisions, phase plan, acceptance criteria, file-level pointers, guardrails - is in that document. Do not re-derive context that is already there.
 
 ## Project state
 

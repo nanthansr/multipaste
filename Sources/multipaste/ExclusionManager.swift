@@ -4,7 +4,7 @@ import os
 class ExclusionManager {
     static let shared = ExclusionManager()
     
-    private let log = Logger(subsystem: "com.local.multipaste", category: "ExclusionManager")
+    private let log = Logger(subsystem: "com.nanthansr.multipaste", category: "ExclusionManager")
     
     var exclusions: Set<String> {
         get {

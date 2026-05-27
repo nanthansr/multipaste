@@ -2,7 +2,7 @@ import os
 import AppKit
 import Darwin
 
-private let log = Logger(subsystem: "com.local.multipaste", category: "multipaste")
+private let log = Logger(subsystem: "com.nanthansr.multipaste", category: "multipaste")
 @main
 struct multipaste {
     static func main() {
