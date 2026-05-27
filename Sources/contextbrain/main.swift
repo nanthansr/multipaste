@@ -21,10 +21,10 @@ struct ContextBrain {
             let manifest = renderManifest(root: config.rootURL, records: records)
 
             if config.dryRun {
-                print(manifest)
+                fputs("\(manifest)\n", stdout)
             } else {
                 try write(manifest: manifest, to: config.outputURL)
-                print("Wrote context manifest to \(config.outputURL.path)")
+                fputs("Wrote context manifest to \(config.outputURL.path)\n", stdout)
             }
         } catch {
             fputs("contextbrain failed: \(error)\n", stderr)
@@ -76,7 +76,7 @@ private struct Configuration {
     }
 
     private static func printHelp() {
-        print("Usage: swift run contextbrain [--root PATH] [--output PATH] [--dry-run]")
+        fputs("Usage: swift run contextbrain [--root PATH] [--output PATH] [--dry-run]\n", stdout)
     }
 }
 
