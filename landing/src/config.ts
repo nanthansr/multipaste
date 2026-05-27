@@ -1,4 +1,3 @@
-// Replace GUMROAD_URL with your real product URL before launch
 export const GUMROAD_URL = 'https://gumroad.com/l/multipaste';
 export const PRICE = '$7.99';
 export const APP_VERSION = 'v1.0';

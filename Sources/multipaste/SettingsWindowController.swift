@@ -1,5 +1,6 @@
 import AppKit
 import ServiceManagement
+import PostHog
 
 class SettingsWindowController: NSWindowController {
 
@@ -90,7 +91,14 @@ class SettingsWindowController: NSWindowController {
     }
     
     @objc func toggleTelemetry(_ sender: NSButton) {
-        UserDefaults.standard.set(sender.state == .on, forKey: "multipaste.settings.telemetryEnabled")
+        let isEnabled = sender.state == .on
+        UserDefaults.standard.set(isEnabled, forKey: "multipaste.settings.telemetryEnabled")
+        if isEnabled {
+            let phConfig = PostHogConfig(projectToken: Config.posthogToken, host: "https://us.i.posthog.com")
+            PostHogSDK.shared.setup(phConfig)
+        } else {
+            PostHogSDK.shared.close()
+        }
     }
 
     @objc func toggleLogin(_ sender: NSButton) {

@@ -14,6 +14,7 @@ class LicenseManager {
     private let permalink = "multipaste"
     private let keychainService = "com.nanthansr.multipaste.licenseKey"
     private let firstLaunchKey = "multipaste.firstLaunchDate"
+    private let firstLaunchKeychainService = "com.nanthansr.multipaste.firstLaunchDate"
 
     private(set) var state: LicenseState = .free
 
@@ -37,11 +38,38 @@ class LicenseManager {
         let now = Date()
         
         var firstLaunchDate: Date?
-        if let stored = defaults.object(forKey: firstLaunchKey) as? Date {
+        
+        // Try keychain first (tamper resistant)
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrService as String: firstLaunchKeychainService,
+            kSecReturnData as String: true,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+        var dataTypeRef: AnyObject?
+        if SecItemCopyMatching(query as CFDictionary, &dataTypeRef) == errSecSuccess, let data = dataTypeRef as? Data, let dateString = String(data: data, encoding: .utf8), let interval = TimeInterval(dateString) {
+            firstLaunchDate = Date(timeIntervalSince1970: interval)
+            defaults.set(firstLaunchDate, forKey: firstLaunchKey)
+        } else if let stored = defaults.object(forKey: firstLaunchKey) as? Date {
             firstLaunchDate = stored
+            // Backup to keychain
+            let data = String(stored.timeIntervalSince1970).data(using: .utf8)!
+            let addQuery: [String: Any] = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrService as String: firstLaunchKeychainService,
+                kSecValueData as String: data
+            ]
+            SecItemAdd(addQuery as CFDictionary, nil)
         } else {
             firstLaunchDate = now
             defaults.set(now, forKey: firstLaunchKey)
+            let data = String(now.timeIntervalSince1970).data(using: .utf8)!
+            let addQuery: [String: Any] = [
+                kSecClass as String: kSecClassGenericPassword,
+                kSecAttrService as String: firstLaunchKeychainService,
+                kSecValueData as String: data
+            ]
+            SecItemAdd(addQuery as CFDictionary, nil)
         }
         
         guard let start = firstLaunchDate else {

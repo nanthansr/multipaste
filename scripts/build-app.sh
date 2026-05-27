@@ -70,7 +70,7 @@ echo "Signed."
 # --- Phase 6: Code Signing and DMG Creation ---
 # Uncomment when ready to distribute and Apple Developer ID is available.
 #
-# IDENTITY="Developer ID Application: YOUR_NAME (TEAM_ID)"
+# IDENTITY="Developer ID Application: Nanthansr (TEAM_IDENTIFIER)"
 # echo "Code signing with $IDENTITY..."
 # codesign --force --deep --options runtime \
 #   --entitlements multipaste.entitlements \
@@ -79,8 +79,8 @@ echo "Signed."
 #
 # echo "Notarizing..."
 # xcrun notarytool submit "$APP_DIR" \
-#   --apple-id "YOUR_APPLE_ID" \
-#   --team-id "TEAM_ID" \
+#   --apple-id "APPLE_ID_EMAIL" \
+#   --team-id "TEAM_IDENTIFIER" \
 #   --password "$NOTARY_APP_PASSWORD" \
 #   --wait
 #

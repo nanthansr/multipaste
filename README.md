@@ -4,7 +4,7 @@
 
 While other clipboard managers focus on long-term retrieval, Multipaste sits invisibly in the background, designed specifically for rapid sequential copying and pasting.
 
-![Multipaste Demo](https://placeholder.com/demo.gif)
+![Multipaste Demo](https://raw.githubusercontent.com/nanthansr/multipaste/main/demo.gif)
 
 ## Features
 

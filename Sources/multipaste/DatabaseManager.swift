@@ -81,19 +81,20 @@ class DatabaseManager {
             // Check if the last clip is the same to avoid duplicates
             if let lastClip = try db.pluck(clips.order(timestamp.desc).limit(1)) {
                 if lastClip[self.content] == text {
-                    fileLog("Skipping duplicate clip: \(text.prefix(20))...")
+                    log.debug("Skipping duplicate clip")
                     return
                 } else {
-                    fileLog("Last clip was: \(lastClip[self.content].prefix(20))...")
+                    log.debug("Last clip was different, proceeding with insert")
                 }
             }
             
             let insert = clips.insert(self.content <- text, self.type <- clipType, self.timestamp <- Date())
             try db.run(insert)
-            pruneIfNeeded(cap: Int.max)
-            fileLog("Inserted clip: \(text.prefix(20))...")
+            log.info("Inserted new clip of type: \(clipType)")
+            let cap = LicenseManager.shared.isProUnlocked ? Int.max : 50
+            pruneIfNeeded(cap: cap)
         } catch {
-            fileLog("Failed to insert clip: \(error)")
+            log.error("Failed to insert clip: \(error.localizedDescription)")
         }
     }
     

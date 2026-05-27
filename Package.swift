@@ -20,6 +20,9 @@ let package = Package(
                 .product(name: "SQLite", package: "SQLite.swift"),
                 .product(name: "PostHog", package: "posthog-ios"),
                 .product(name: "Supabase", package: "supabase-swift")
+            ],
+            resources: [
+                .process("PrivacyInfo.xcprivacy")
             ]
         ),
         .executableTarget(
